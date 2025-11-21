@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class RoomCreateRequest(BaseModel):
     room_name: Optional[str] = None
     privacy: str = "public"
-    max_participants: int = 200
+    max_participants: Optional[int] = None
 
 class RoomResponse(BaseModel):
     url: str
