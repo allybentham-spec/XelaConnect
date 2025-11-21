@@ -80,7 +80,7 @@ class VideoCallingTester:
         # Test 1: Create room with default settings
         room_data = {
             "privacy": "public",
-            "max_participants": 200
+            "max_participants": 10
         }
         
         try:
