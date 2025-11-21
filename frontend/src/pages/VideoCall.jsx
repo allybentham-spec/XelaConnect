@@ -38,21 +38,16 @@ const VideoCall = () => {
     const initializeCall = async () => {
       try {
         setLoading(true);
-        const token = localStorage.getItem('authToken');
         
-        if (!token) {
+        // Check if user is authenticated
+        if (!isAuthenticated || !user) {
           setError('Please login to join a call');
-          navigate('/login');
+          setTimeout(() => navigate('/login'), 1500);
           return;
         }
 
-        // Get user info
-        const userResponse = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}/api/auth/me`,
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-        
-        const userName = userResponse.data.user.name || 'User';
+        const userName = user.name || 'User';
+        const token = user.session_token;
         let finalRoomName = roomName;
 
         // If no room name, create a new room
