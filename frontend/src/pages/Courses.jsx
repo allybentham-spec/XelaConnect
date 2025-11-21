@@ -186,7 +186,8 @@ const Courses = () => {
               </div>
             </Card>
           ))}
-        </div>
+          </div>
+        )}
 
         {/* Encouragement Card */}
         <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
