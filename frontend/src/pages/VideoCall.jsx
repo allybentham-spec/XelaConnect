@@ -49,32 +49,46 @@ const VideoCall = () => {
         const userName = user.name || 'User';
         const token = user.session_token;
         let finalRoomName = roomName;
+        let meetingToken = null;
 
-        // If no room name, create a new room
-        if (!finalRoomName) {
-          const roomResponse = await axios.post(
-            `${process.env.REACT_APP_BACKEND_URL}/api/video/rooms/create`,
-            {
-              privacy: 'public'
-            },
-            { headers: { Authorization: `Bearer ${token}` } }
-          );
-          finalRoomName = roomResponse.data.name;
+        // Only make API calls if user has a session token (real login)
+        if (token) {
+          try {
+            // If no room name, create a new room
+            if (!finalRoomName) {
+              const roomResponse = await axios.post(
+                `${process.env.REACT_APP_BACKEND_URL}/api/video/rooms/create`,
+                {
+                  privacy: 'public'
+                },
+                { headers: { Authorization: `Bearer ${token}` } }
+              );
+              finalRoomName = roomResponse.data.name;
+            }
+
+            // Generate meeting token
+            const tokenResponse = await axios.post(
+              `${process.env.REACT_APP_BACKEND_URL}/api/video/rooms/token`,
+              {
+                room_name: finalRoomName,
+                user_name: userName,
+                is_owner: isHost,
+                expiration_minutes: 120
+              },
+              { headers: { Authorization: `Bearer ${token}` } }
+            );
+
+            meetingToken = tokenResponse.data.token;
+          } catch (apiError) {
+            console.error('API error:', apiError);
+            setError('Failed to create room. Please try again or use a room name.');
+            setLoading(false);
+            return;
+          }
+        } else {
+          // Demo mode for mock users - use a default room name
+          finalRoomName = roomName || `xela-demo-${Date.now().toString().slice(-6)}`;
         }
-
-        // Generate meeting token
-        const tokenResponse = await axios.post(
-          `${process.env.REACT_APP_BACKEND_URL}/api/video/rooms/token`,
-          {
-            room_name: finalRoomName,
-            user_name: userName,
-            is_owner: isHost,
-            expiration_minutes: 120
-          },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-
-        const meetingToken = tokenResponse.data.token;
 
         // Create Daily call object with iframe
         const newCallFrame = DailyIframe.createFrame(containerRef.current, {
