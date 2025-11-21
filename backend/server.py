@@ -337,6 +337,7 @@ app.include_router(api_router)
 app.include_router(messaging_router, prefix="/api")
 app.include_router(presence_router, prefix="/api")
 app.include_router(safety_router, prefix="/api")
+app.include_router(video_router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,
