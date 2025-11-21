@@ -79,14 +79,34 @@ const Courses = () => {
           </div>
         </Card>
 
-        {/* Course Categories */}
-        <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <h2 className="text-xl font-semibold text-white">Your Courses</h2>
+        {/* Category Filter */}
+        <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap smooth-transition ${
+                selectedCategory === category
+                  ? 'bg-gradient-to-r from-[#39CCB7] to-[#8834AE] text-white'
+                  : 'glass-card text-white/70 hover:text-white'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
+        {/* Loading State */}
+        {loading && (
+          <div className="flex items-center justify-center py-20">
+            <Loader2 className="w-8 h-8 text-[#39CCB7] animate-spin" />
+          </div>
+        )}
+
         {/* Courses List */}
-        <div className="space-y-4">
-          {mockCourses.map((course, idx) => (
+        {!loading && (
+          <div className="space-y-4">
+            {filteredCourses.map((course, idx) => (
             <Card
               key={course.id}
               className="glass-card rounded-3xl p-6 border-0 hover:bg-white/10 smooth-transition animate-fade-in-up"
