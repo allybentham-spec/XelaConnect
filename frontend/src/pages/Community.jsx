@@ -194,7 +194,15 @@ const Community = () => {
               </Card>
             );
           })}
-        </div>
+          </div>
+        )}
+
+        {/* No circles message */}
+        {!loading && filteredCircles.length === 0 && (
+          <div className="text-center py-20">
+            <p className="text-white/60">No circles found in this category.</p>
+          </div>
+        )}
 
         {/* Bottom Message */}
         <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up">
