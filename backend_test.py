@@ -283,6 +283,47 @@ class VideoCallingTester:
             except Exception as e:
                 self.log_result(f"Auth Required - {method} {endpoint}", False, f"Exception: {str(e)}")
     
+    def test_delete_room(self):
+        """Test DELETE /api/video/rooms/{room_name}"""
+        print("\n=== TESTING ROOM DELETION ===")
+        
+        # Create a room specifically for deletion
+        delete_room_name = f"delete-test-{int(time.time())}"
+        room_data = {
+            "room_name": delete_room_name,
+            "privacy": "public"
+        }
+        
+        try:
+            # First create the room
+            response = requests.post(
+                f"{API_BASE}/video/rooms/create",
+                json=room_data,
+                headers=self.get_auth_headers(),
+                timeout=30
+            )
+            
+            if response.status_code == 200:
+                # Now delete it
+                delete_response = requests.delete(
+                    f"{API_BASE}/video/rooms/{delete_room_name}",
+                    headers=self.get_auth_headers(),
+                    timeout=30
+                )
+                
+                if delete_response.status_code == 200:
+                    data = delete_response.json()
+                    if "message" in data and delete_room_name in data["message"]:
+                        self.log_result("Delete Room", True, f"Room deleted successfully: {delete_room_name}")
+                    else:
+                        self.log_result("Delete Room", False, "Unexpected delete response format", data)
+                else:
+                    self.log_result("Delete Room", False, f"Delete failed with status: {delete_response.status_code}", delete_response.json())
+            else:
+                self.log_result("Delete Room", False, f"Could not create room for deletion test: {response.status_code}")
+        except Exception as e:
+            self.log_result("Delete Room", False, f"Exception: {str(e)}")
+    
     def test_error_handling(self):
         """Test error handling scenarios"""
         print("\n=== TESTING ERROR HANDLING ===")
