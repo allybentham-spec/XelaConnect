@@ -80,11 +80,16 @@ const Community = () => {
                     alt={circle.name}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${circle.gradient || 'from-[#39CCB7] to-[#8834AE]'} opacity-60`} />
+                  
+                  {/* Emoji Badge */}
+                  <div className="absolute top-4 left-4 glass-card-light p-3 rounded-2xl">
+                    <span className="text-3xl">{circle.emoji || '✨'}</span>
+                  </div>
                   
                   {/* Category Badge */}
                   <Badge
-                    className="absolute top-4 right-4 glass-card-light border-0 text-white"
+                    className="absolute top-4 right-4 glass-card-light border-0 text-white text-xs"
                   >
                     {circle.category}
                   </Badge>
