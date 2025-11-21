@@ -35,7 +35,9 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "backendUrl": "YOUR_BACKEND_URL_HERE"
+      "eas": {
+        "projectId": "xelaconnect-app"
+      }
     }
   }
 }
