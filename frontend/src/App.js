@@ -12,7 +12,7 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Community from './pages/Community';
 import Courses from './pages/Courses';
-import Discover from './pages/Discover';
+import Discover from './pages/DiscoverEnhanced';
 import XelaTalks from './pages/XelaTalks';
 import Activity from './pages/Activity';
 import Profile from './pages/Profile';
