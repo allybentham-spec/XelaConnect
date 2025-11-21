@@ -470,13 +470,12 @@ async def get_connections(user = Depends(get_current_user)):
 
 # ==================== XELATALKS (AI CHAT) ENDPOINTS ====================
 
-from emergentintegrations import OpenAI
+from emergentintegrations.llm.chat import LlmChat, UserMessage
 
 EMERGENT_LLM_KEY = os.getenv("EMERGENT_LLM_KEY", "sk-emergent-6FdF57b7b5aF21f672")
-ai_client = OpenAI(api_key=EMERGENT_LLM_KEY)
 
-async def get_ai_response(user_message: str, conversation_history: list) -> str:
-    """Get AI response from OpenAI GPT-5"""
+async def get_ai_response(user_message: str, conversation_history: list, user_id: str) -> str:
+    """Get AI response using Emergent LLM integration"""
     system_prompt = """You are Xela, an emotionally intelligent AI companion for XelaConnect.
     
     Your role:
@@ -489,27 +488,20 @@ async def get_ai_response(user_message: str, conversation_history: list) -> str:
     
     Tone: Calm, wise, empathetic, encouraging"""
     
-    messages = [{"role": "system", "content": system_prompt}]
-    
-    # Add conversation history (last 10 messages for context)
-    for msg in conversation_history[-10:]:
-        messages.append({
-            "role": "assistant" if msg["is_ai"] else "user",
-            "content": msg["content"]
-        })
-    
-    # Add current user message
-    messages.append({"role": "user", "content": user_message})
-    
     try:
-        response = ai_client.chat.completions.create(
-            model="gpt-4o",
-            messages=messages,
-            temperature=0.7,
-            max_tokens=150
-        )
+        # Initialize chat with current session
+        chat = LlmChat(
+            api_key=EMERGENT_LLM_KEY,
+            session_id=f"xela_{user_id}",
+            system_message=system_prompt
+        ).with_model("openai", "gpt-4o")
         
-        return response.choices[0].message.content
+        # Create user message
+        message = UserMessage(text=user_message)
+        
+        # Get AI response
+        response = await chat.send_message(message)
+        return response
     except Exception as e:
         logger.error(f"AI error: {str(e)}")
         return "I'm here for you. Sometimes my thoughts get tangled, but I'm listening. Could you share a bit more?"
