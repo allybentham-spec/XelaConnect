@@ -129,10 +129,17 @@ const VideoCall = () => {
           });
 
         // Join the room
-        await newCallFrame.join({
+        const joinOptions = {
           url: `https://xelaconnect.daily.co/${finalRoomName}`,
-          token: meetingToken
-        });
+          userName: userName
+        };
+        
+        // Only add token if we have one (real auth users)
+        if (meetingToken) {
+          joinOptions.token = meetingToken;
+        }
+        
+        await newCallFrame.join(joinOptions);
 
         setCallObject(newCallFrame);
 
