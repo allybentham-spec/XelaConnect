@@ -1,20 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
-import { Users, CheckCircle2, ChevronRight } from 'lucide-react';
-import { mockCircles } from '../mock';
+import { Users, CheckCircle2, Loader2 } from 'lucide-react';
+import { circlesAPI } from '../utils/api';
 import { toast } from '../hooks/use-toast';
 
 const Community = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [joinedCircles, setJoinedCircles] = useState(['circle-001', 'circle-002']);
+  const [circles, setCircles] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [joinedCircles, setJoinedCircles] = useState([]);
 
   const categories = ['All', 'Wellness', 'Fitness', 'Creative', 'Social', 'Outdoor', 'Lifestyle'];
 
-  const filteredCircles = selectedCategory === 'All'
-    ? mockCircles
-    : mockCircles.filter(circle => circle.category === selectedCategory);
+  useEffect(() => {
+    fetchCircles();
+  }, [selectedCategory]);
+
+  const fetchCircles = async () => {
+    try {
+      setLoading(true);
+      const response = await circlesAPI.getAll(selectedCategory);
+      setCircles(response.data.circles || []);
+    } catch (error) {
+      console.error('Error fetching circles:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to load circles',
+        variant: 'destructive'
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredCircles = circles;
 
   const handleJoinCircle = (circleId, circleName) => {
     if (joinedCircles.includes(circleId)) {
