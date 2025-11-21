@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Progress } from '../components/ui/progress';
-import { BookOpen, Clock, PlayCircle } from 'lucide-react';
-import { mockCourses } from '../mock';
+import { BookOpen, Clock, PlayCircle, Loader2 } from 'lucide-react';
+import { coursesAPI } from '../utils/api';
 import { toast } from '../hooks/use-toast';
 
 const Courses = () => {
