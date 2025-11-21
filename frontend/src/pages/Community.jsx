@@ -99,9 +99,17 @@ const Community = () => {
           ))}
         </div>
 
+        {/* Loading State */}
+        {loading && (
+          <div className="flex items-center justify-center py-20">
+            <Loader2 className="w-8 h-8 text-[#39CCB7] animate-spin" />
+          </div>
+        )}
+
         {/* Circles Grid */}
-        <div className="space-y-4">
-          {filteredCircles.map((circle, idx) => {
+        {!loading && (
+          <div className="space-y-4">
+            {filteredCircles.map((circle, idx) => {
             const isJoined = joinedCircles.includes(circle.id);
             
             return (
