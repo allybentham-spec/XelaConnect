@@ -112,7 +112,7 @@ const DiscoverEnhanced = () => {
   const sections = [
     {
       id: 'highMatch',
-      title: 'People You'll Really Connect With',
+      title: "People You'll Really Connect With",
       subtitle: 'Based on personality + goals',
       icon: Sparkles
     },
