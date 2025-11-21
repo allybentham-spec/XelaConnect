@@ -302,6 +302,22 @@ class VideoCallingTester:
                 self.log_result("Invalid Token Request", False, f"Expected 422, got {response.status_code}", response.json())
         except Exception as e:
             self.log_result("Invalid Token Request", False, f"Exception: {str(e)}")
+        
+        # Test max_participants limitation (Daily.co account restriction)
+        try:
+            response = requests.post(
+                f"{API_BASE}/video/rooms/create",
+                json={"privacy": "public", "max_participants": 50},
+                headers=self.get_auth_headers(),
+                timeout=30
+            )
+            
+            if response.status_code == 400 and "max_participants" in response.text:
+                self.log_result("Max Participants Restriction", True, "Daily.co account correctly restricts max_participants setting")
+            else:
+                self.log_result("Max Participants Restriction", False, f"Unexpected response: {response.status_code}", response.json())
+        except Exception as e:
+            self.log_result("Max Participants Restriction", False, f"Exception: {str(e)}")
     
     def run_all_tests(self):
         """Run all tests"""
