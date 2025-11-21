@@ -141,7 +141,7 @@ const VideoCall = () => {
         callFrame.destroy();
       }
     };
-  }, [roomName, isHost, navigate]);
+  }, [roomName, isHost, navigate, isAuthenticated, user]);
 
   const updateParticipants = (frame) => {
     if (frame) {
