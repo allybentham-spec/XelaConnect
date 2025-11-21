@@ -484,7 +484,7 @@ async def get_connections(user = Depends(get_current_user)):
 
 from emergentintegrations.llm.chat import LlmChat, UserMessage
 
-EMERGENT_LLM_KEY = os.getenv("EMERGENT_LLM_KEY", "sk-emergent-6FdF57b7b5aF21f672")
+EMERGENT_LLM_KEY = os.environ.get("EMERGENT_LLM_KEY")
 
 async def get_ai_response(user_message: str, conversation_history: list, user_id: str) -> str:
     """Get AI response using Emergent LLM integration"""
