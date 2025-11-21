@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Video, Users, Sparkles } from 'lucide-react';
+import { Video, Users, Sparkles, AlertCircle } from 'lucide-react';
 
 const VideoLobby = () => {
   const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
   const [roomName, setRoomName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showDemoWarning, setShowDemoWarning] = useState(false);
+  
+  useEffect(() => {
+    // Check if user is using mock account (no session_token)
+    if (isAuthenticated && user && !user.session_token) {
+      setShowDemoWarning(true);
+    }
+  }, [isAuthenticated, user]);
 
   const startNewCall = () => {
     setIsLoading(true);
