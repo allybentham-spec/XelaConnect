@@ -35,6 +35,8 @@ function App() {
             <Route path="/xelatalks" element={<XelaTalks />} />
             <Route path="/activity" element={<Activity />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/referral" element={<Referral />} />
+            <Route path="/store" element={<Store />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Toaster />
