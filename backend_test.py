@@ -336,6 +336,7 @@ class VideoCallingTester:
         self.test_generate_token()
         self.test_get_room()
         self.test_list_rooms()
+        self.test_delete_room()
         self.test_error_handling()
         
         # Summary
