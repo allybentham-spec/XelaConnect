@@ -56,16 +56,19 @@ class DailyService:
         self,
         room_name: Optional[str] = None,
         privacy: str = "public",
-        max_participants: int = 200
+        max_participants: Optional[int] = None
     ) -> Dict[str, Any]:
         """Create a new Daily.co room"""
         try:
             payload = {
                 "properties": {
-                    "exp": int((datetime.utcnow() + timedelta(days=1)).timestamp()),
-                    "max_participants": max_participants
+                    "exp": int((datetime.utcnow() + timedelta(days=1)).timestamp())
                 }
             }
+            
+            # Only set max_participants if explicitly provided
+            if max_participants is not None:
+                payload["properties"]["max_participants"] = max_participants
             
             if room_name:
                 payload["name"] = room_name
