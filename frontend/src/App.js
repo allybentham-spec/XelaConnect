@@ -39,6 +39,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/referral" element={<Referral />} />
             <Route path="/store" element={<Store />} />
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/chat/:userId" element={<Chat />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Toaster />
