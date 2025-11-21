@@ -8,10 +8,28 @@ export const mockUser = {
   age: 28,
   city: 'San Francisco',
   interests: ['Wellness', 'Fitness', 'Creative', 'Social'],
+  identityBadge: 'Connector',
   streak: 7,
   connections: 24,
-  emotionalPathProgress: 65
+  emotionalPathProgress: 65,
+  credits: 250,
+  subscriptionTier: 'premium',
+  badges: ['Insightful', 'Connected', 'Early Adopter'],
+  referralCode: 'XC8JF02AB1'
 };
+
+export const identityBadges = [
+  { id: 'connector', name: 'Connector', description: 'Brings people together naturally', emoji: '🤝' },
+  { id: 'creator', name: 'Creator', description: 'Expresses through art and innovation', emoji: '🎨' },
+  { id: 'thinker', name: 'Thinker', description: 'Loves deep conversations and ideas', emoji: '💭' },
+  { id: 'builder', name: 'Builder', description: 'Creates and manifests visions', emoji: '🔨' },
+  { id: 'explorer', name: 'Explorer', description: 'Seeks new experiences and adventures', emoji: '🧭' },
+  { id: 'visionary', name: 'Visionary', description: 'Sees possibilities others miss', emoji: '🔮' },
+  { id: 'calm-presence', name: 'Calm Presence', description: 'Grounds and centers those around', emoji: '🧘' },
+  { id: 'funny-friend', name: 'Funny Friend', description: 'Brings joy and laughter', emoji: '😄' },
+  { id: 'listener', name: 'Listener', description: 'Holds space for others with empathy', emoji: '👂' },
+  { id: 'leader', name: 'Leader', description: 'Guides and inspires action', emoji: '⭐' }
+];
 
 export const mockCircles = [
   {
