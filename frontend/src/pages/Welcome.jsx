@@ -15,8 +15,12 @@ const Welcome = () => {
         {/* Logo/Brand */}
         <div className="text-center space-y-4">
           <div className="flex justify-center mb-6">
-            <div className="glass-card-light p-6 rounded-3xl pulse-glow">
-              <Sparkles className="w-16 h-16 text-[#39CCB7]" />
+            <div className="glass-card-light p-4 rounded-3xl pulse-glow">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_brandtone-1/artifacts/11ho960t_AppIcon.png" 
+                alt="XelaConnect Logo" 
+                className="w-24 h-24 object-contain"
+              />
             </div>
           </div>
           <h1 className="text-5xl font-bold text-white mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
