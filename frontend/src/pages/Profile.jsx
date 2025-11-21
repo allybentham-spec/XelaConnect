@@ -42,7 +42,7 @@ const Profile = () => {
       icon: UserIcon,
       label: 'Edit Profile',
       description: 'Update your information',
-      action: () => toast({ title: 'Coming soon', description: 'Profile editing will be available soon' })
+      action: () => navigate('/edit-profile')
     },
     {
       icon: Bell,
