@@ -31,6 +31,11 @@ logger = logging.getLogger(__name__)
 
 # ==================== AUTHENTICATION ENDPOINTS ====================
 
+@api_router.get("/")
+async def root():
+    """Test endpoint"""
+    return {"message": "XelaConnect API is running!", "version": "1.0.0"}
+
 @api_router.post("/auth/signup", response_model=AuthResponse)
 async def signup(user_data: UserCreate):
     """Sign up with email and password"""
