@@ -331,8 +331,11 @@ async def get_course_detail(course_id: str, user = Depends(get_current_user)):
         "is_purchased": course_id in [p.get("course_id") for p in user.get("courses_progress", [])]
     }
 
-# Include the router in the main app
+# Include all routers in the main app
 app.include_router(api_router)
+app.include_router(messaging_router, prefix="/api")
+app.include_router(presence_router, prefix="/api")
+app.include_router(safety_router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,
