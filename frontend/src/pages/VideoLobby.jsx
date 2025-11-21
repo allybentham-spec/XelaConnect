@@ -39,6 +39,35 @@ const VideoLobby = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#8834AE] via-purple-600 to-[#39CCB7] flex items-center justify-center p-4">
       <div className="w-full max-w-4xl">
+        {/* Demo Warning */}
+        {showDemoWarning && (
+          <div className="mb-6 bg-yellow-500/20 backdrop-blur-md border-2 border-yellow-400/50 rounded-xl p-4 text-white">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="font-semibold text-lg mb-1">Demo Account Limitation</h3>
+                <p className="text-white/90 text-sm mb-3">
+                  Video calling requires a full account with authentication. Your current demo account doesn't support video calls.
+                </p>
+                <div className="flex gap-2">
+                  <Button
+                    onClick={() => navigate('/signup')}
+                    className="bg-white/20 hover:bg-white/30 text-white text-sm px-4 py-2 h-auto"
+                  >
+                    Sign Up for Full Access
+                  </Button>
+                  <Button
+                    onClick={() => navigate('/login')}
+                    className="bg-transparent hover:bg-white/10 text-white text-sm px-4 py-2 h-auto border border-white/30"
+                  >
+                    Login
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        
         {/* Header */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-4">
