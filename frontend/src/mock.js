@@ -35,62 +35,68 @@ export const mockCircles = [
   {
     id: 'circle-001',
     name: 'Mindful Mornings',
+    emoji: '🌅',
     category: 'Wellness',
-    description: 'Start your day with intention and calm',
+    description: 'Start your day with intention, meditation, and calm reflection',
     members: 142,
     image: 'https://images.unsplash.com/photo-1682278763548-f349e3c73793',
-    active: true,
-    color: '#39CCB7'
+    gradient: 'from-[#39CCB7] to-[#207690]',
+    active: true
   },
   {
     id: 'circle-002',
     name: 'Running Club',
+    emoji: '👣',
     category: 'Fitness',
-    description: 'Connect with fellow runners in your area',
-    members: 89,
+    description: 'Connect with fellow runners and explore new trails',
+    members: 234,
     image: 'https://images.pexels.com/photos/4534682/pexels-photo-4534682.jpeg',
-    active: true,
-    color: '#207690'
+    gradient: 'from-[#207690] to-[#3240AC]',
+    active: true
   },
   {
     id: 'circle-003',
-    name: 'Creative Writers',
+    name: 'Writers & Storytellers',
+    emoji: '✍️',
     category: 'Creative',
-    description: 'Share stories, poems, and creative expression',
-    members: 67,
+    description: 'Craft stories, share words, and inspire through writing',
+    members: 127,
     image: 'https://images.unsplash.com/photo-1501084817091-a4f3d1d19e07',
-    active: false,
-    color: '#8834AE'
+    gradient: 'from-[#F59E0B] to-[#8834AE]',
+    active: true
   },
   {
     id: 'circle-004',
-    name: 'Coffee & Connection',
+    name: 'Kitchen Table Talks',
+    emoji: '☕',
     category: 'Social',
-    description: 'Meet new people over coffee and conversation',
-    members: 203,
+    description: 'Warm conversations over coffee and connection',
+    members: 287,
     image: 'https://images.unsplash.com/photo-1625246433906-6cfa33544b31',
-    active: true,
-    color: '#6AAD73'
+    gradient: 'from-[#D97706] to-[#92400E]',
+    active: true
   },
   {
     id: 'circle-005',
-    name: 'Yoga Flow',
-    category: 'Wellness',
-    description: 'Find your balance and inner peace',
-    members: 156,
-    image: 'https://images.unsplash.com/photo-1602192509154-0b900ee1f851',
-    active: true,
-    color: '#39CCB7'
+    name: 'Hiking & Trail Explorers',
+    emoji: '⛰️',
+    category: 'Outdoor',
+    description: 'Explore trails and summit peaks together',
+    members: 219,
+    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306',
+    gradient: 'from-[#059669] to-[#047857]',
+    active: true
   },
   {
     id: 'circle-006',
-    name: 'Art Collective',
-    category: 'Creative',
-    description: 'Visual artists connecting and collaborating',
-    members: 94,
-    image: 'https://images.pexels.com/photos/34803285/pexels-photo-34803285.jpeg',
-    active: false,
-    color: '#3240AC'
+    name: 'Travel & Wanderlust',
+    emoji: '✈️',
+    category: 'Lifestyle',
+    description: 'Share adventures and discover new destinations',
+    members: 245,
+    image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828',
+    gradient: 'from-[#06B6D4] to-[#0284C7]',
+    active: true
   }
 ];
 
