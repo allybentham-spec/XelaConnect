@@ -9,9 +9,9 @@ const Layout = ({ children }) => {
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
+    { name: 'Messages', href: '/messages', icon: MessageCircle },
     { name: 'Community', href: '/community', icon: Users },
-    { name: 'Courses', href: '/courses', icon: BookOpen },
-    { name: 'Discover', href: '/discover', icon: Compass },
+    { name: 'Discover', href: '/discover', icon: BookOpen },
     { name: 'Activity', href: '/activity', icon: Zap },
     { name: 'Profile', href: '/profile', icon: User }
   ];
