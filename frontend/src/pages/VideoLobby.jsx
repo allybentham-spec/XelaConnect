@@ -1,0 +1,148 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Video, Users, Sparkles } from 'lucide-react';
+
+const VideoLobby = () => {
+  const navigate = useNavigate();
+  const [roomName, setRoomName] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const startNewCall = () => {
+    setIsLoading(true);
+    // Navigate to video call without room name - will create new room
+    navigate('/video-call?host=true');
+  };
+
+  const joinCall = () => {
+    if (!roomName.trim()) {
+      alert('Please enter a room name to join');
+      return;
+    }
+    setIsLoading(true);
+    navigate(`/video-call?room=${roomName.trim()}&host=false`);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-[#8834AE] via-purple-600 to-[#39CCB7] flex items-center justify-center p-4">
+      <div className="w-full max-w-4xl">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm mb-4">
+            <Video className="w-10 h-10 text-white" />
+          </div>
+          <h1 className="text-4xl font-bold text-white mb-2">
+            XelaConnect Video Calls
+          </h1>
+          <p className="text-white/80 text-lg">
+            Connect face-to-face with your community
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Start New Call Card */}
+          <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/15 transition-all">
+            <CardHeader>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 rounded-lg bg-[#39CCB7]/20">
+                  <Sparkles className="w-6 h-6 text-[#39CCB7]" />
+                </div>
+                <CardTitle className="text-2xl">Start New Call</CardTitle>
+              </div>
+              <CardDescription className="text-white/70 text-base">
+                Create a new video room and invite others to join
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="p-4 rounded-lg bg-white/5 border border-white/10">
+                  <h4 className="font-semibold mb-2 flex items-center gap-2">
+                    <Users className="w-4 h-4" />
+                    Features
+                  </h4>
+                  <ul className="space-y-1 text-sm text-white/80">
+                    <li>• Host a 1-on-1 or group call</li>
+                    <li>• Up to 200 participants</li>
+                    <li>• Audio & video controls</li>
+                    <li>• Screen sharing</li>
+                  </ul>
+                </div>
+                <Button
+                  onClick={startNewCall}
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-r from-[#39CCB7] to-[#39CCB7]/80 hover:from-[#39CCB7]/90 hover:to-[#39CCB7]/70 text-white font-semibold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
+                >
+                  {isLoading ? 'Starting...' : 'Start New Call'}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Join Existing Call Card */}
+          <Card className="bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/15 transition-all">
+            <CardHeader>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 rounded-lg bg-[#8834AE]/20">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle className="text-2xl">Join Call</CardTitle>
+              </div>
+              <CardDescription className="text-white/70 text-base">
+                Enter a room name to join an existing call
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="roomName" className="text-white font-medium">
+                    Room Name
+                  </Label>
+                  <Input
+                    id="roomName"
+                    type="text"
+                    placeholder="e.g., wellness-chat-2025"
+                    value={roomName}
+                    onChange={(e) => setRoomName(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        joinCall();
+                      }
+                    }}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:bg-white/15 focus:border-white/40 h-12"
+                  />
+                  <p className="text-xs text-white/60">
+                    Ask the host for the room name to join
+                  </p>
+                </div>
+
+                <Button
+                  onClick={joinCall}
+                  disabled={isLoading || !roomName.trim()}
+                  className="w-full bg-white/20 hover:bg-white/30 text-white font-semibold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? 'Joining...' : 'Join Call'}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Info Section */}
+        <div className="mt-8 text-center">
+          <div className="inline-block bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/20">
+            <p className="text-white/80 text-sm">
+              <span className="font-semibold text-white">Free Tier:</span> 10,000 minutes/month • 
+              Up to 200 participants per room • HD video & audio
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default VideoLobby;
