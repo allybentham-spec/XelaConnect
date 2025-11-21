@@ -18,6 +18,8 @@ import Activity from './pages/Activity';
 import Profile from './pages/Profile';
 import Referral from './pages/Referral';
 import Store from './pages/Store';
+import Messages from './pages/Messages';
+import Chat from './pages/Chat';
 
 function App() {
   return (
