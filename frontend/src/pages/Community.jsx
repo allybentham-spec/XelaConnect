@@ -10,7 +10,7 @@ const Community = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [joinedCircles, setJoinedCircles] = useState(['circle-001', 'circle-002']);
 
-  const categories = ['All', 'Wellness', 'Fitness', 'Creative', 'Social'];
+  const categories = ['All', 'Wellness', 'Fitness', 'Creative', 'Social', 'Outdoor', 'Lifestyle'];
 
   const filteredCircles = selectedCategory === 'All'
     ? mockCircles
