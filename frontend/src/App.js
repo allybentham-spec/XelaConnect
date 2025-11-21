@@ -42,6 +42,7 @@ function App() {
             <Route path="/store" element={<Store />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/chat/:userId" element={<Chat />} />
+            <Route path="/edit-profile" element={<EditProfile />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Toaster />
