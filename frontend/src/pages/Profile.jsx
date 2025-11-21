@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
-import { Settings, LogOut, ChevronRight, User as UserIcon, Shield, Bell, HelpCircle } from 'lucide-react';
+import { Settings, LogOut, ChevronRight, User as UserIcon, Shield, Bell, HelpCircle, Gift, ShoppingBag, Sparkles, Award } from 'lucide-react';
 import { toast } from '../hooks/use-toast';
+import { identityBadges } from '../mock';
 
 const Profile = () => {
   const { user, logout } = useAuth();
@@ -20,7 +21,23 @@ const Profile = () => {
     navigate('/');
   };
 
+  const userIdentityBadge = identityBadges.find(b => b.name === user?.identityBadge);
+
   const menuItems = [
+    {
+      icon: Gift,
+      label: 'Referral Program',
+      description: 'Invite friends, earn rewards',
+      action: () => navigate('/referral'),
+      highlight: true
+    },
+    {
+      icon: ShoppingBag,
+      label: 'Store',
+      description: `${user?.credits || 0} credits available`,
+      action: () => navigate('/store'),
+      highlight: true
+    },
     {
       icon: UserIcon,
       label: 'Edit Profile',
