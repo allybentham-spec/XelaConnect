@@ -110,7 +110,7 @@ class VideoCallingTester:
         room_data_custom = {
             "room_name": custom_room_name,
             "privacy": "public",
-            "max_participants": 50
+            "max_participants": 10
         }
         
         try:
