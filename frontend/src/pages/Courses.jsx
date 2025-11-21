@@ -150,7 +150,7 @@ const Courses = () => {
                   <div className="flex items-center space-x-4 text-xs text-white/50">
                     <div className="flex items-center space-x-1">
                       <BookOpen className="w-3 h-3" />
-                      <span>{course.modules} modules</span>
+                      <span>{course.total_modules || (course.modules && course.modules.length) || 0} modules</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <Clock className="w-3 h-3" />
