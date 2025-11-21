@@ -558,7 +558,8 @@ async def send_xelatalks_message(message_data: dict, user = Depends(get_current_
     # Get AI response
     ai_response_text = await get_ai_response(
         user_message,
-        conversation.get("messages", [])
+        conversation.get("messages", []),
+        user["id"]
     )
     
     # Add AI message
