@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import DailyIframe from '@daily-co/daily-js';
 import axios from 'axios';
+import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
 import { 
   Video, 
@@ -17,6 +18,7 @@ import {
 const VideoCall = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
   
   const [callObject, setCallObject] = useState(null);
   const [callFrame, setCallFrame] = useState(null);
