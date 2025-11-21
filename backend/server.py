@@ -17,6 +17,7 @@ from auth import (
 )
 from messaging import messaging_router
 from presence import presence_router, safety_router
+from video_calling import video_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
