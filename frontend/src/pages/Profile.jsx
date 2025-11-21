@@ -114,8 +114,40 @@ const Profile = () => {
           </div>
         </Card>
 
+        {/* Identity Badge */}
+        {userIdentityBadge && (
+          <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div className="flex items-center space-x-4">
+              <div className="text-5xl">{userIdentityBadge.emoji}</div>
+              <div className="flex-1">
+                <div className="text-sm text-white/60 mb-1">Connection Identity</div>
+                <h3 className="text-xl font-semibold text-white mb-1">{userIdentityBadge.name}</h3>
+                <p className="text-sm text-white/70">{userIdentityBadge.description}</p>
+              </div>
+            </div>
+          </Card>
+        )}
+
+        {/* Badges & Achievements */}
+        {user?.badges && user.badges.length > 0 && (
+          <div className="animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+            <h2 className="text-lg font-semibold text-white mb-3">Achievements</h2>
+            <div className="flex flex-wrap gap-2">
+              {user.badges.map((badge, idx) => (
+                <Badge
+                  key={idx}
+                  className="glass-card-light border-0 text-white px-4 py-2 flex items-center space-x-2"
+                >
+                  <Award className="w-4 h-4 text-[#39CCB7]" />
+                  <span>{badge}</span>
+                </Badge>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Interests */}
-        <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <h2 className="text-lg font-semibold text-white mb-3">Your Interests</h2>
           <div className="flex flex-wrap gap-2">
             {(user?.interests || ['Wellness', 'Fitness', 'Creative']).map((interest, idx) => (
@@ -128,6 +160,29 @@ const Profile = () => {
             ))}
           </div>
         </div>
+
+        {/* Credits Display */}
+        {user?.credits !== undefined && (
+          <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="glass-card-light p-3 rounded-xl">
+                  <Sparkles className="w-6 h-6 text-[#39CCB7]" />
+                </div>
+                <div>
+                  <div className="text-sm text-white/60">Your Credits</div>
+                  <div className="text-2xl font-bold text-white">{user.credits}</div>
+                </div>
+              </div>
+              <Button
+                onClick={() => navigate('/store')}
+                className="rounded-xl glass-button text-white hover:bg-white/10"
+              >
+                Get More
+              </Button>
+            </div>
+          </Card>
+        )}
 
         {/* Menu Items */}
         <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
