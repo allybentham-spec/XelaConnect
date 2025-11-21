@@ -77,10 +77,9 @@ class VideoCallingTester:
         """Test POST /api/video/rooms/create"""
         print("\n=== TESTING ROOM CREATION ===")
         
-        # Test 1: Create room with default settings
+        # Test 1: Create room with default settings (minimal config)
         room_data = {
-            "privacy": "public",
-            "max_participants": 10
+            "privacy": "public"
         }
         
         try:
