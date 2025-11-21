@@ -50,10 +50,12 @@ class UserSession(BaseModel):
 class Circle(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str
-    category: str  # Wellness, Fitness, Creative, Social
+    emoji: str
+    category: str  # Wellness, Fitness, Creative, Social, Outdoor, Lifestyle
     description: str
     image: str
-    color: str
+    gradient: str  # Gradient colors for display
+    tags: List[str] = []
     members_count: int = 0
     members: List[str] = []
     active: bool = True
