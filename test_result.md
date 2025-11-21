@@ -101,3 +101,156 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: |
+  Implement Phase 2: Audio/Video Calling with Daily.co integration
+  - Support both 1-on-1 and group calls
+  - Audio + Video capabilities (both options available)
+  - Use Daily.co free tier (10,000 minutes/month)
+
+backend:
+  - task: "Daily.co API Integration"
+    implemented: true
+    working: "NA"  # Needs testing
+    file: "/app/backend/video_calling.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Created Daily.co service with room creation, token generation, and video call management. Added video_router with endpoints: POST /api/video/rooms/create, GET /api/video/rooms/{room_name}, POST /api/video/rooms/token, GET /api/video/rooms, DELETE /api/video/rooms/{room_name}. All endpoints require authentication."
+  
+  - task: "Video Router Integration"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Imported video_router and included it in server.py with /api prefix. Backend restarted successfully."
+  
+  - task: "Daily.co API Key Configuration"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/.env"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Added DAILY_API_KEY to .env file with user-provided API key."
+
+frontend:
+  - task: "Video Call Interface"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/VideoCall.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Created VideoCall component using @daily-co/daily-js library. Implemented video call interface with controls: mic toggle, camera toggle, screen share, and leave call. Displays participant count and handles room joining with tokens."
+  
+  - task: "Video Lobby Interface"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/VideoLobby.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Created VideoLobby component with two cards: Start New Call (creates new room) and Join Call (enter room name). Matches XelaConnect's glassmorphism aesthetic with purple-teal gradient."
+  
+  - task: "Video Call Routes"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/App.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Added routes: /video-lobby and /video-call. Imported VideoLobby and VideoCall components."
+  
+  - task: "Dashboard Video Call Button"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Dashboard.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Added Video Call button to Quick Actions section on Dashboard. Button navigates to /video-lobby."
+  
+  - task: "Daily.co Library Installation"
+    implemented: true
+    working: true
+    file: "/app/frontend/package.json"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Installed @daily-co/daily-js@0.85.0 via yarn successfully."
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Daily.co API Integration"
+    - "Video Router Integration"
+    - "Video Call Interface"
+    - "Video Lobby Interface"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: |
+      Implemented complete Daily.co video calling feature:
+      
+      BACKEND:
+      - Created video_calling.py with DailyService class
+      - Endpoints: create room, get room, generate token, list rooms, delete room
+      - All endpoints require authentication via get_current_user
+      - Added DAILY_API_KEY to .env
+      - Backend running successfully
+      
+      FRONTEND:
+      - Created VideoLobby.jsx with Start/Join call options
+      - Created VideoCall.jsx with full video interface (mic, camera, screen share controls)
+      - Added routes /video-lobby and /video-call
+      - Added Video Call button to Dashboard
+      - Installed @daily-co/daily-js library
+      - UI matches XelaConnect aesthetic (glassmorphism, purple-teal gradient)
+      
+      FEATURES:
+      - 1-on-1 and group calls (up to 200 participants)
+      - Audio + Video capabilities
+      - Screen sharing support
+      - Host/participant roles
+      - Meeting tokens for secure access
+      - 2-hour token expiration
+      
+      Ready for backend testing. Need to test:
+      1. POST /api/video/rooms/create (with auth token)
+      2. POST /api/video/rooms/token (with room_name)
+      3. End-to-end video call functionality
