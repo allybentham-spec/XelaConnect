@@ -643,9 +643,3 @@ async def mark_activity_read(activity_id: str, user = Depends(get_current_user))
     )
     
     return {"message": "Activity marked as read"}
-
-)
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()
