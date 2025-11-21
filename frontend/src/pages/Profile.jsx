@@ -185,18 +185,24 @@ const Profile = () => {
         )}
 
         {/* Menu Items */}
-        <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           {menuItems.map((item, idx) => {
             const Icon = item.icon;
             return (
               <Card
                 key={idx}
                 onClick={item.action}
-                className="glass-card rounded-2xl p-4 border-0 hover:bg-white/10 smooth-transition cursor-pointer"
+                className={`rounded-2xl p-4 border-0 hover:bg-white/10 smooth-transition cursor-pointer ${
+                  item.highlight ? 'glass-card ring-1 ring-[#39CCB7]/30' : 'glass-card'
+                }`}
               >
                 <div className="flex items-center space-x-4">
-                  <div className="glass-card-light p-3 rounded-xl">
-                    <Icon className="w-5 h-5 text-[#39CCB7]" />
+                  <div className={`p-3 rounded-xl ${
+                    item.highlight ? 'bg-gradient-to-br from-[#39CCB7]/20 to-[#8834AE]/20' : 'glass-card-light'
+                  }`}>
+                    <Icon className={`w-5 h-5 ${
+                      item.highlight ? 'text-[#39CCB7]' : 'text-[#39CCB7]'
+                    }`} />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-white font-medium">{item.label}</h3>
