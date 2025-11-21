@@ -16,6 +16,8 @@ import Discover from './pages/Discover';
 import XelaTalks from './pages/XelaTalks';
 import Activity from './pages/Activity';
 import Profile from './pages/Profile';
+import Referral from './pages/Referral';
+import Store from './pages/Store';
 
 function App() {
   return (
