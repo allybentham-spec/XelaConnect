@@ -46,11 +46,11 @@ const VideoCall = () => {
 
         // Get user info
         const userResponse = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL}/api/users/me`,
+          `${process.env.REACT_APP_BACKEND_URL}/api/auth/me`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         
-        const userName = userResponse.data.name || 'User';
+        const userName = userResponse.data.user.name || 'User';
         let finalRoomName = roomName;
 
         // If no room name, create a new room
