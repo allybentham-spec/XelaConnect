@@ -45,6 +45,14 @@ const VideoCall = () => {
           setTimeout(() => navigate('/login'), 1500);
           return;
         }
+        
+        // Check if user has real authentication (not mock)
+        if (!user.session_token) {
+          setError('Video calling requires a full account. Please sign up or login with a real account.');
+          setLoading(false);
+          setTimeout(() => navigate('/signup'), 3000);
+          return;
+        }
 
         const userName = user.name || 'User';
         const token = user.session_token;
