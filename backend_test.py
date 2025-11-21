@@ -104,11 +104,12 @@ class VideoCallingTester:
         except Exception as e:
             self.log_result("Create Room (Default)", False, f"Exception: {str(e)}")
         
-        # Test 2: Create room with custom name
+        # Test 2: Create room with custom name and max_participants
         custom_room_name = f"test-room-{int(time.time())}"
         room_data_custom = {
             "room_name": custom_room_name,
-            "privacy": "public"
+            "privacy": "public",
+            "max_participants": 50
         }
         
         try:
