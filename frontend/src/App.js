@@ -21,6 +21,8 @@ import Store from './pages/Store';
 import Messages from './pages/Messages';
 import Chat from './pages/Chat';
 import EditProfile from './pages/EditProfile';
+import VideoLobby from './pages/VideoLobby';
+import VideoCall from './pages/VideoCall';
 
 function App() {
   return (
