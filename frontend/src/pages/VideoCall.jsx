@@ -123,28 +123,28 @@ const VideoCall = () => {
             setError(`Call error: ${error.errorMsg || 'Unknown error'}`);
           });
 
-        // Join the room
-        const joinOptions = {
-          url: `https://xelaconnect.daily.co/${finalRoomName}`,
-          userName: userName
-        };
-        
-        // Only add token if we have one (real auth users)
-        if (meetingToken) {
-          joinOptions.token = meetingToken;
-        }
-        
-        await newCallFrame.join(joinOptions);
+          // Join the room
+          await newCallFrame.join({
+            url: `https://xelaconnect.daily.co/${finalRoomName}`,
+            token: meetingToken,
+            userName: userName
+          });
 
-        setCallObject(newCallFrame);
+          setCallObject(newCallFrame);
+
+        } catch (apiError) {
+          console.error('API error:', apiError);
+          setError(
+            apiError.response?.data?.detail || 
+            apiError.message || 
+            'Failed to create or join room'
+          );
+          setLoading(false);
+        }
 
       } catch (err) {
         console.error('Error initializing call:', err);
-        setError(
-          err.response?.data?.detail || 
-          err.message || 
-          'Failed to initialize call'
-        );
+        setError(err.message || 'Failed to initialize call');
         setLoading(false);
       }
     };
