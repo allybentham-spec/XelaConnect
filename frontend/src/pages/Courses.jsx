@@ -8,12 +8,43 @@ import { coursesAPI } from '../utils/api';
 import { toast } from '../hooks/use-toast';
 
 const Courses = () => {
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const categories = ['All', 'Mental Health', 'Relationships', 'Self-Growth', 'Mindfulness', 'Emotional Intelligence'];
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+  const fetchCourses = async () => {
+    try {
+      setLoading(true);
+      const response = await coursesAPI.getAll();
+      setCourses(response.data.courses || []);
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to load courses',
+        variant: 'destructive'
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleStartCourse = (courseTitle) => {
     toast({
       title: 'Course Started',
       description: `You've started: ${courseTitle}`
     });
   };
+
+  const filteredCourses = selectedCategory === 'All'
+    ? courses
+    : courses.filter(course => course.category === selectedCategory);
 
   return (
     <div className="min-h-screen pb-32">
