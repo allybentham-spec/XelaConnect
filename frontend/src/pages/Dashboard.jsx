@@ -139,6 +139,13 @@ const Dashboard = () => {
           <h2 className="text-xl font-semibold text-white">Quick Actions</h2>
           <div className="grid grid-cols-2 gap-3">
             <Button
+              onClick={() => navigate('/video-lobby')}
+              className="h-20 rounded-2xl glass-button text-white hover:bg-white/10 flex flex-col items-center justify-center"
+            >
+              <Video className="w-6 h-6 mb-2" />
+              <span className="text-sm">Video Call</span>
+            </Button>
+            <Button
               onClick={() => navigate('/community')}
               className="h-20 rounded-2xl glass-button text-white hover:bg-white/10 flex flex-col items-center justify-center"
             >
