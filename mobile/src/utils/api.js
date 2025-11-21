@@ -2,8 +2,8 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants';
 
-// Get backend URL from app.json extra config
-const BACKEND_URL = Constants.expoConfig?.extra?.backendUrl || 'http://localhost:8001';
+// Get backend URL from environment variable
+const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL || Constants.expoConfig?.extra?.backendUrl || 'http://localhost:8001';
 
 const api = axios.create({
   baseURL: `${BACKEND_URL}/api`,
