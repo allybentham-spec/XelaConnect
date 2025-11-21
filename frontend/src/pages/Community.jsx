@@ -160,7 +160,7 @@ const Community = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2 text-white/60">
                       <Users className="w-4 h-4" />
-                      <span className="text-sm">{circle.members} members</span>
+                      <span className="text-sm">{circle.members_count || circle.members || 0} members</span>
                     </div>
 
                     <Button
