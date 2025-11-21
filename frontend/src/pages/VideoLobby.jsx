@@ -112,10 +112,10 @@ const VideoLobby = () => {
                 </div>
                 <Button
                   onClick={startNewCall}
-                  disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-[#39CCB7] to-[#39CCB7]/80 hover:from-[#39CCB7]/90 hover:to-[#39CCB7]/70 text-white font-semibold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
+                  disabled={isLoading || showDemoWarning}
+                  className="w-full bg-gradient-to-r from-[#39CCB7] to-[#39CCB7]/80 hover:from-[#39CCB7]/90 hover:to-[#39CCB7]/70 text-white font-semibold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isLoading ? 'Starting...' : 'Start New Call'}
+                  {isLoading ? 'Starting...' : showDemoWarning ? 'Requires Full Account' : 'Start New Call'}
                 </Button>
               </div>
             </CardContent>
