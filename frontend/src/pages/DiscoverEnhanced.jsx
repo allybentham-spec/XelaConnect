@@ -142,7 +142,7 @@ const DiscoverEnhanced = () => {
         {/* Header */}
         <div className=\"space-y-3 animate-fade-in-up\">
           <h1 className=\"text-3xl font-bold text-white\" style={{ fontFamily: 'Playfair Display, serif' }}>
-            People You'll Click With
+            People You Will Click With
           </h1>
           <p className=\"text-white/60\">
             Not based on looks — based on compatibility & what you care about.
