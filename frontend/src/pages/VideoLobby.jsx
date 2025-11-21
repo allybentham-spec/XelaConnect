@@ -160,10 +160,10 @@ const VideoLobby = () => {
 
                 <Button
                   onClick={joinCall}
-                  disabled={isLoading || !roomName.trim()}
+                  disabled={isLoading || !roomName.trim() || showDemoWarning}
                   className="w-full bg-white/20 hover:bg-white/30 text-white font-semibold py-6 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isLoading ? 'Joining...' : 'Join Call'}
+                  {isLoading ? 'Joining...' : showDemoWarning ? 'Requires Full Account' : 'Join Call'}
                 </Button>
               </div>
             </CardContent>
