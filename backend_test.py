@@ -108,8 +108,7 @@ class VideoCallingTester:
         custom_room_name = f"test-room-{int(time.time())}"
         room_data_custom = {
             "room_name": custom_room_name,
-            "privacy": "public",
-            "max_participants": 10
+            "privacy": "public"
         }
         
         try:
