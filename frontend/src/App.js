@@ -45,6 +45,8 @@ function App() {
             <Route path="/messages" element={<Messages />} />
             <Route path="/chat/:userId" element={<Chat />} />
             <Route path="/edit-profile" element={<EditProfile />} />
+            <Route path="/video-lobby" element={<VideoLobby />} />
+            <Route path="/video-call" element={<VideoCall />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Toaster />
