@@ -58,8 +58,7 @@ const VideoCall = () => {
           const roomResponse = await axios.post(
             `${process.env.REACT_APP_BACKEND_URL}/api/video/rooms/create`,
             {
-              privacy: 'public',
-              max_participants: 200
+              privacy: 'public'
             },
             { headers: { Authorization: `Bearer ${token}` } }
           );
