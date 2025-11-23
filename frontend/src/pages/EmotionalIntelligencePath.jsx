@@ -509,12 +509,13 @@ const EmotionalIntelligencePath = () => {
                   <ChevronRight className="w-5 h-5 text-[#39ccb7] group-open:rotate-90 transition-transform" />
                 </summary>
                 <div className="px-5 pb-5 pt-3 space-y-2 border-t border-white/5">
-                  <a href="tel:988" className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all block">
-                    <p className="text-white/90 font-medium mb-2">Veterans Crisis Line</p>
-                    <div className="flex items-center space-x-2">
+                  <a href="tel:988" className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all block group/vet">
+                    <p className="text-white/90 font-medium mb-2 group-hover/vet:text-[#39ccb7] transition-colors">Veterans Crisis Line</p>
+                    <div className="flex items-center space-x-2 mb-2">
                       <Phone className="w-4 h-4 text-[#39ccb7]" />
-                      <span className="text-[#39ccb7] font-bold">Call 988 then press 1</span>
+                      <span className="text-[#39ccb7] font-bold">Tap to call 988</span>
                     </div>
+                    <p className="text-white/50 text-xs">Then press 1 when connected</p>
                   </a>
                   <a href="tel:866-781-8010" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
                     <span className="text-white/90 group-hover/item:text-white font-medium">Centerstone Military Services</span>
