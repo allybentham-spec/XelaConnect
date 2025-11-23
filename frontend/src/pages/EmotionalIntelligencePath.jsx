@@ -19,6 +19,7 @@ import {
   Target
 } from 'lucide-react';
 import { toast } from '../hooks/use-toast';
+import { reflectionsAPI } from '../utils/api';
 
 const EmotionalIntelligencePath = () => {
   const navigate = useNavigate();
