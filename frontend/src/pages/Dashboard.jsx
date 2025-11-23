@@ -177,42 +177,58 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Discover & Connect Section */}
-        <div className="grid grid-cols-2 gap-3 animate-fade-in-up" style={{ animationDelay: '0.45s' }}>
-          <Card 
-            onClick={() => navigate('/community')}
-            className="glass-card rounded-2xl p-6 border-0 hover:bg-white/10 hover:scale-[1.02] smooth-transition cursor-pointer"
-          >
-            <div className="space-y-3">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#39CCB7]/20">
-                <Users className="w-6 h-6 text-[#39CCB7]" />
+        {/* Expand Your Circle Section */}
+        <Card 
+          className="glass-card rounded-3xl overflow-hidden border border-[#39CCB7]/30 animate-fade-in-up relative" 
+          style={{ animationDelay: '0.45s' }}
+        >
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 opacity-30">
+            <img 
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+              alt="Connection"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#39CCB7]/50 via-[#1a1a2e]/80 to-[#8834AE]/50" />
+          </div>
+          
+          <div className="relative z-10 p-6 space-y-4">
+            <div className="text-center space-y-2">
+              <div className="flex items-center justify-center mb-3">
+                <div className="glass-card-light p-3 rounded-2xl backdrop-blur-xl">
+                  <Users className="w-7 h-7 text-[#39CCB7]" />
+                </div>
               </div>
-              <div>
-                <h3 className="text-white font-semibold text-lg mb-1">Join Circles</h3>
-                <p className="text-white/60 text-sm">
-                  Find communities that match your vibe
-                </p>
-              </div>
+              <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
+                Expand Your Circle
+              </h3>
+              <p className="text-white/90 text-sm leading-relaxed max-w-md mx-auto">
+                Get matched with people who truly understand you. Find your community.
+              </p>
             </div>
-          </Card>
 
-          <Card 
-            onClick={() => navigate('/discover')}
-            className="glass-card rounded-2xl p-6 border-0 hover:bg-white/10 hover:scale-[1.02] smooth-transition cursor-pointer"
-          >
-            <div className="space-y-3">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#8834AE]/20">
-                <Sparkles className="w-6 h-6 text-[#8834AE]" />
-              </div>
-              <div>
-                <h3 className="text-white font-semibold text-lg mb-1">Discover</h3>
-                <p className="text-white/60 text-sm">
-                  Meet people who understand you
-                </p>
-              </div>
+            {/* Action Buttons */}
+            <div className="grid grid-cols-2 gap-3 pt-2">
+              <Button
+                onClick={() => navigate('/community')}
+                className="h-20 rounded-2xl glass-button text-white hover:bg-white/10 flex flex-col items-center justify-center border border-white/20"
+              >
+                <Users className="w-6 h-6 mb-2 text-[#39CCB7]" />
+                <span className="font-semibold">Join Circles</span>
+                <span className="text-xs text-white/60 mt-1">Find your community</span>
+              </Button>
+
+              <Button
+                onClick={() => navigate('/discover')}
+                className="h-20 rounded-2xl glass-button text-white hover:bg-white/10 flex flex-col items-center justify-center border border-white/20"
+              >
+                <Sparkles className="w-6 h-6 mb-2 text-[#8834AE]" />
+                <span className="font-semibold">Discover</span>
+                <span className="text-xs text-white/60 mt-1">Meet your people</span>
+              </Button>
             </div>
-          </Card>
-        </div>
+          </div>
+        </Card>
 
         {/* Gentle Reminder */}
         <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
