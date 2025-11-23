@@ -210,6 +210,37 @@ const Profile = () => {
     }
   };
 
+  const handlePauseSubscription = () => {
+    toast({
+      title: 'Subscription Paused',
+      description: 'Your subscription has been paused for 30 days. Reactivate anytime!'
+    });
+  };
+
+  const handleCancelAttempt = () => {
+    setShowCancelModal(true);
+  };
+
+  const handleFinalCancel = () => {
+    if (cancelReason) {
+      toast({
+        title: 'Subscription Cancelled',
+        description: 'We\'re sorry to see you go. You have access until the end of your billing period.'
+      });
+      setShowCancelModal(false);
+      setCurrentPlan('Free');
+    }
+  };
+
+  const handleInterestToggle = (interest) => {
+    setProfileData(prev => ({
+      ...prev,
+      interests: prev.interests.includes(interest)
+        ? prev.interests.filter(i => i !== interest)
+        : [...prev.interests, interest]
+    }));
+  };
+
   return (
     <div className="min-h-screen pb-32">
       <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
