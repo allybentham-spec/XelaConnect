@@ -101,10 +101,8 @@ const CommunityEnhanced = () => {
           description: `You're now part of ${circle.name}`
         });
         
-        // Navigate to circle detail after a brief delay
-        setTimeout(() => {
-          navigate(`/circle/${circle.id}`);
-        }, 800);
+        // Navigate to circle detail immediately
+        navigate(`/circle/${circle.id}`);
       }
       
       fetchCircles();
