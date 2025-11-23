@@ -375,17 +375,19 @@ async def enroll_course(course_id: str, user = Depends(get_current_user)):
     return {"message": "Enrolled successfully", "enrolled": True}
 
 @api_router.get("/courses/{course_id}/content")
-async def get_course_content(course_id: str, user = Depends(get_current_user)):
+async def get_course_content(course_id: str, user = Depends(get_current_user_optional)):
     """Get course content with modules and lessons"""
     course = await db.courses.find_one({"id": course_id})
     
     if not course:
         raise HTTPException(status_code=404, detail="Course not found")
     
-    # Check if user is enrolled
-    is_enrolled = course_id in [p.get("course_id") for p in user.get("courses_progress", [])]
-    if not is_enrolled:
-        raise HTTPException(status_code=403, detail="Not enrolled in this course")
+    # For demo purposes, allow access if no user (mock user scenario)
+    # In production, you'd want to enforce enrollment
+    if user:
+        is_enrolled = course_id in [p.get("course_id") for p in user.get("courses_progress", [])]
+        if not is_enrolled and course.get("price") != "Free":
+            raise HTTPException(status_code=403, detail="Not enrolled in this course")
     
     if "_id" in course:
         del course["_id"]
