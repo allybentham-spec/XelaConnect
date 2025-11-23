@@ -424,132 +424,183 @@ const EmotionalIntelligencePath = () => {
               </details>
 
               {/* Teens & Youth */}
-              <details className="glass-card rounded-2xl overflow-hidden group">
-                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <Users className="w-5 h-5 text-[#39ccb7]" />
-                    <span className="text-white font-medium">Teens & Youth Support</span>
+              <details className="glass-card rounded-2xl overflow-hidden group border border-transparent hover:border-white/10 transition-all">
+                <summary className="p-5 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#39ccb7]/20 flex items-center justify-center">
+                      <Users className="w-5 h-5 text-[#39ccb7]" />
+                    </div>
+                    <span className="text-white font-semibold text-lg">Teens & Youth Support</span>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-[#39ccb7] group-open:rotate-90 transition-transform" />
                 </summary>
-                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">YouthLine</span>
-                    <a href="tel:877-968-8491" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(877) 968-8491</a>
-                  </div>
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">Teen Line</span>
-                    <a href="tel:800-852-8336" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">800-852-8336</a>
-                  </div>
-                  <div className="py-2">
-                    <span className="text-white/80">Safe Place TXT 4 HELP</span>
-                    <p className="text-[#39ccb7] font-semibold text-sm mt-1">Text "4HELP" to 44357</p>
+                <div className="px-5 pb-5 pt-3 space-y-2 border-t border-white/5">
+                  <a href="tel:877-968-8491" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">YouthLine</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">(877) 968-8491</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
+                  <a href="tel:800-852-8336" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">Teen Line</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">800-852-8336</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
+                  <div className="p-4 rounded-xl bg-white/5">
+                    <p className="text-white/90 font-medium mb-2">Safe Place TXT 4 HELP</p>
+                    <div className="flex items-center space-x-2">
+                      <MessageCircle className="w-4 h-4 text-[#39ccb7]" />
+                      <span className="text-[#39ccb7] font-bold">Text "4HELP" to 44357</span>
+                    </div>
                   </div>
                 </div>
               </details>
 
               {/* Veterans & Military */}
-              <details className="glass-card rounded-2xl overflow-hidden group">
-                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <Shield className="w-5 h-5 text-[#39ccb7]" />
-                    <span className="text-white font-medium">Veterans & Military</span>
+              <details className="glass-card rounded-2xl overflow-hidden group border border-transparent hover:border-white/10 transition-all">
+                <summary className="p-5 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#39ccb7]/20 flex items-center justify-center">
+                      <Shield className="w-5 h-5 text-[#39ccb7]" />
+                    </div>
+                    <span className="text-white font-semibold text-lg">Veterans & Military</span>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-[#39ccb7] group-open:rotate-90 transition-transform" />
                 </summary>
-                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
-                  <div className="py-2">
-                    <span className="text-white/80">Veterans Crisis Line</span>
-                    <p className="text-[#39ccb7] font-semibold text-sm mt-1">Call 988 then press 1</p>
-                  </div>
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">Centerstone Military Services</span>
-                    <a href="tel:866-781-8010" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(866) 781-8010</a>
-                  </div>
+                <div className="px-5 pb-5 pt-3 space-y-2 border-t border-white/5">
+                  <a href="tel:988" className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all block">
+                    <p className="text-white/90 font-medium mb-2">Veterans Crisis Line</p>
+                    <div className="flex items-center space-x-2">
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                      <span className="text-[#39ccb7] font-bold">Call 988 then press 1</span>
+                    </div>
+                  </a>
+                  <a href="tel:866-781-8010" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">Centerstone Military Services</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">(866) 781-8010</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
                 </div>
               </details>
 
               {/* Parents & Caregivers */}
-              <details className="glass-card rounded-2xl overflow-hidden group">
-                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <Heart className="w-5 h-5 text-[#39ccb7]" />
-                    <span className="text-white font-medium">Parents & Caregivers</span>
+              <details className="glass-card rounded-2xl overflow-hidden group border border-transparent hover:border-white/10 transition-all">
+                <summary className="p-5 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#39ccb7]/20 flex items-center justify-center">
+                      <Heart className="w-5 h-5 text-[#39ccb7]" />
+                    </div>
+                    <span className="text-white font-semibold text-lg">Parents & Caregivers</span>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-[#39ccb7] group-open:rotate-90 transition-transform" />
                 </summary>
-                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">National Maternal Mental Health</span>
-                    <a href="tel:1-833-852-6262" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-833-852-6262</a>
-                  </div>
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">Parent & Youth Helpline</span>
-                    <a href="tel:1-855-427-2736" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-855-427-2736</a>
-                  </div>
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">Caregiver Action Network</span>
-                    <a href="tel:855-227-3640" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(855) 227-3640</a>
-                  </div>
+                <div className="px-5 pb-5 pt-3 space-y-2 border-t border-white/5">
+                  <a href="tel:1-833-852-6262" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">Maternal Mental Health</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">1-833-852-6262</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
+                  <a href="tel:1-855-427-2736" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">Parent & Youth Helpline</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">1-855-427-2736</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
+                  <a href="tel:855-227-3640" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">Caregiver Action Network</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">(855) 227-3640</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
                 </div>
               </details>
 
               {/* BIPOC Community */}
-              <details className="glass-card rounded-2xl overflow-hidden group">
-                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <Heart className="w-5 h-5 text-[#8834ae]" />
-                    <span className="text-white font-medium">BIPOC Community</span>
+              <details className="glass-card rounded-2xl overflow-hidden group border border-transparent hover:border-white/10 transition-all">
+                <summary className="p-5 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#8834ae]/20 flex items-center justify-center">
+                      <Heart className="w-5 h-5 text-[#8834ae]" />
+                    </div>
+                    <span className="text-white font-semibold text-lg">BIPOC Community</span>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-[#8834ae] group-open:rotate-90 transition-transform" />
                 </summary>
-                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">Call BlackLine</span>
-                    <a href="tel:800-604-5841" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">800-604-5841</a>
-                  </div>
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">Su Familia (Hispanic/Latino)</span>
-                    <a href="tel:1-866-783-2645" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-866-783-2645</a>
-                  </div>
+                <div className="px-5 pb-5 pt-3 space-y-2 border-t border-white/5">
+                  <a href="tel:800-604-5841" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">Call BlackLine</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#8834ae] font-bold group-hover/item:text-[#8834ae]/80">800-604-5841</span>
+                      <Phone className="w-4 h-4 text-[#8834ae]" />
+                    </div>
+                  </a>
+                  <a href="tel:1-866-783-2645" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">Su Familia (Hispanic/Latino)</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#8834ae] font-bold group-hover/item:text-[#8834ae]/80">1-866-783-2645</span>
+                      <Phone className="w-4 h-4 text-[#8834ae]" />
+                    </div>
+                  </a>
                 </div>
               </details>
 
               {/* Grief & Loss */}
-              <details className="glass-card rounded-2xl overflow-hidden group">
-                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <Heart className="w-5 h-5 text-[#39ccb7]" />
-                    <span className="text-white font-medium">Grief & Loss Support</span>
+              <details className="glass-card rounded-2xl overflow-hidden group border border-transparent hover:border-white/10 transition-all">
+                <summary className="p-5 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#39ccb7]/20 flex items-center justify-center">
+                      <Heart className="w-5 h-5 text-[#39ccb7]" />
+                    </div>
+                    <span className="text-white font-semibold text-lg">Grief & Loss Support</span>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-[#39ccb7] group-open:rotate-90 transition-transform" />
                 </summary>
-                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">Friends for Survival</span>
-                    <a href="tel:800-646-7322" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(800) 646-7322</a>
-                  </div>
+                <div className="px-5 pb-5 pt-3 space-y-2 border-t border-white/5">
+                  <a href="tel:800-646-7322" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">Friends for Survival</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">(800) 646-7322</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
                 </div>
               </details>
 
               {/* Additional Support */}
-              <details className="glass-card rounded-2xl overflow-hidden group">
-                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <Target className="w-5 h-5 text-[#39ccb7]" />
-                    <span className="text-white font-medium">Additional Support</span>
+              <details className="glass-card rounded-2xl overflow-hidden group border border-transparent hover:border-white/10 transition-all">
+                <summary className="p-5 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#39ccb7]/20 flex items-center justify-center">
+                      <Target className="w-5 h-5 text-[#39ccb7]" />
+                    </div>
+                    <span className="text-white font-semibold text-lg">Additional Support</span>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-[#39ccb7] group-open:rotate-90 transition-transform" />
                 </summary>
-                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">National Grad Crisis Line</span>
-                    <a href="tel:877-472-3457" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(877) 472-3457</a>
-                  </div>
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">Disaster Distress Helpline</span>
-                    <a href="tel:1-800-985-5990" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-800-985-5990</a>
-                  </div>
+                <div className="px-5 pb-5 pt-3 space-y-2 border-t border-white/5">
+                  <a href="tel:877-472-3457" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">National Grad Crisis Line</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">(877) 472-3457</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
+                  <a href="tel:1-800-985-5990" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">Disaster Distress Helpline</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">1-800-985-5990</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
                 </div>
               </details>
             </div>
