@@ -430,12 +430,12 @@ const LonelinessQuiz = () => {
               {/* Score Display */}
               <div className="glass-card-light rounded-2xl p-6">
                 <p className="text-white/60 text-sm mb-3 text-center">Your Connection Score</p>
-                <div className="text-5xl font-bold text-white mb-4 text-center">{getScore()}/42</div>
+                <div className="text-5xl font-bold text-white mb-4 text-center">{getScore()}/70</div>
                 <div className="h-3 bg-white/10 rounded-full overflow-hidden mb-6">
                   <div 
                     className="h-full rounded-full transition-all duration-500"
                     style={{ 
-                      width: `${(getScore() / 42) * 100}%`,
+                      width: `${(getScore() / 70) * 100}%`,
                       background: `linear-gradient(to right, ${result.color}, #8834AE)`
                     }}
                   />
