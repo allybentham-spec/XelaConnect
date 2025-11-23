@@ -151,6 +151,11 @@ const Courses = () => {
                         {course.category}
                       </Badge>
                     </div>
+                    {course.tagline && (
+                      <p className="text-xs text-[#39CCB7] italic mb-1">
+                        {course.tagline}
+                      </p>
+                    )}
                     <p className="text-sm text-white/60 leading-relaxed">
                       {course.description}
                     </p>
