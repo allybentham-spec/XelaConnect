@@ -81,7 +81,8 @@ const Dashboard = () => {
             return (
               <Card
                 key={idx}
-                className="glass-card rounded-2xl p-4 border-0 hover:bg-white/10 smooth-transition cursor-pointer"
+                onClick={stat.action}
+                className="glass-card rounded-2xl p-4 border-0 hover:bg-white/10 hover:scale-[1.05] smooth-transition cursor-pointer"
               >
                 <div className="flex flex-col items-center text-center space-y-2">
                   <div
