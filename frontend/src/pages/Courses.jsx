@@ -62,24 +62,30 @@ const Courses = () => {
         </div>
 
         {/* Featured Course */}
-        <Card className="glass-card rounded-3xl overflow-hidden border-0 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-          <div className="relative h-48 overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1682278763548-f349e3c73793"
-              alt="Featured Course"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            
-            <div className="absolute bottom-0 left-0 right-0 p-6">
-              <Badge className="mb-3 bg-[#39CCB7]/20 text-[#39CCB7] border-0">
-                Featured
-              </Badge>
-              <h2 className="text-2xl font-bold text-white mb-2">Master Your Emotions</h2>
-              <p className="text-white/80 text-sm">Build emotional intelligence for deeper connections</p>
+        {courses.length > 0 && (
+          <Card 
+            onClick={() => navigate(`/course/${courses[0].id}`)}
+            className="glass-card rounded-3xl overflow-hidden border-0 animate-fade-in-up cursor-pointer hover:scale-[1.02] transition-transform" 
+            style={{ animationDelay: '0.1s' }}
+          >
+            <div className="relative h-48 overflow-hidden">
+              <img
+                src={courses[0].image || "https://images.unsplash.com/photo-1682278763548-f349e3c73793"}
+                alt="Featured Course"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <Badge className="mb-3 bg-[#39CCB7]/20 text-[#39CCB7] border-0">
+                  Featured
+                </Badge>
+                <h2 className="text-2xl font-bold text-white mb-2">{courses[0].title}</h2>
+                <p className="text-white/80 text-sm">{courses[0].description}</p>
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        )}
 
         {/* Category Filter */}
         <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
