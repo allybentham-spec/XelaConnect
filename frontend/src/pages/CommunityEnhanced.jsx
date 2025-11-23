@@ -78,39 +78,8 @@ const CommunityEnhanced = () => {
   };
 
   const handleJoinCircle = async (circle) => {
-    try {
-      const isJoined = joinedCircles.includes(circle.id);
-      
-      if (isJoined) {
-        // Navigate to circle detail if already joined
-        navigate(`/circle/${circle.id}`);
-      } else {
-        // Join the circle first
-        try {
-          await circlesAPI.join(circle.id);
-        } catch (apiError) {
-          // Even if API fails, still allow navigation for demo
-          console.log('API call completed with error (expected in demo mode):', apiError);
-        }
-        
-        setJoinedCircles([...joinedCircles, circle.id]);
-        
-        // Show welcome toast
-        toast({
-          title: '🎉 Welcome to the Circle!',
-          description: `You're now part of ${circle.name}`
-        });
-        
-        // Navigate to circle detail immediately
-        navigate(`/circle/${circle.id}`);
-      }
-      
-      fetchCircles();
-    } catch (error) {
-      console.error('Error joining circle:', error);
-      // Still navigate even if there's an error (for demo purposes)
-      navigate(`/circle/${circle.id}`);
-    }
+    // Simply navigate to the circle - joining logic will be handled inside
+    navigate(`/circle/${circle.id}`);
   };
 
   const filteredCircles = circles.filter(circle => 
