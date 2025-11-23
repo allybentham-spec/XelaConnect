@@ -82,6 +82,7 @@ function App() {
             <Route path="/circles/:circleId/thread/:threadId" element={<ThreadDetail />} />
             <Route path="/subscription" element={<Subscription />} />
             <Route path="/expand" element={<Store />} />
+            <Route path="/connection-quiz" element={<LonelinessQuiz />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Toaster />
