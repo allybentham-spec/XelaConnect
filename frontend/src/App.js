@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { Toaster } from './components/ui/toaster';
 import Layout from './components/Layout';
+import SplashScreen from './components/SplashScreen';
 
 // Pages
 import Welcome from './pages/Welcome';
