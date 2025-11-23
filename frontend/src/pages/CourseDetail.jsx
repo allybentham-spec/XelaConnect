@@ -295,30 +295,46 @@ const CourseDetail = () => {
               const isLocked = !isEnrolled && !isPreview;
               
               return (
-              <div
-                key={idx}
-                className="glass-card rounded-2xl p-4 hover:bg-white/10 transition-all cursor-pointer"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#39CCB7] to-[#8834AE] flex items-center justify-center text-white font-semibold">
-                      {idx + 1}
+                <div
+                  key={idx}
+                  className={`glass-card rounded-2xl p-5 transition-all ${
+                    isLocked ? 'opacity-60' : 'hover:bg-white/10 cursor-pointer'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-semibold text-lg ${
+                        isPreview ? 'bg-gradient-to-br from-[#39CCB7] to-[#8834AE]' : 
+                        isLocked ? 'bg-white/10' : 'bg-gradient-to-br from-[#39CCB7] to-[#8834AE]'
+                      }`}>
+                        {idx + 1}
+                      </div>
+                      <div>
+                        <div className="flex items-center space-x-2 mb-1">
+                          <h3 className="text-white font-semibold">{module.title}</h3>
+                          {isPreview && (
+                            <Badge className="bg-[#39CCB7]/20 text-[#39CCB7] border-0 text-xs">
+                              FREE PREVIEW
+                            </Badge>
+                          )}
+                        </div>
+                        {module.description && (
+                          <p className="text-white/60 text-sm mb-1">{module.description}</p>
+                        )}
+                        <p className="text-white/50 text-sm">
+                          {module.lessons?.length || 0} lessons · {module.duration}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-white font-semibold">{module.module}</h3>
-                      <p className="text-white/50 text-sm">
-                        {module.lessons} lessons · {module.duration}
-                      </p>
-                    </div>
+                    {isLocked ? (
+                      <Lock className="w-5 h-5 text-white/40" />
+                    ) : (
+                      <Play className="w-5 h-5 text-[#39CCB7]" />
+                    )}
                   </div>
-                  {module.locked ? (
-                    <Lock className="w-5 h-5 text-white/40" />
-                  ) : (
-                    <Play className="w-5 h-5 text-[#39CCB7]" />
-                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </Card>
 
