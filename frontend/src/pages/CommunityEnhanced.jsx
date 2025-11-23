@@ -389,12 +389,12 @@ const CommunityEnhanced = () => {
                         {isJoined ? (
                           <>
                             <CheckCircle2 className="w-4 h-4 mr-2" />
-                            Enter Circle
+                            Enter Circle →
                           </>
                         ) : (
                           <>
                             <Users className="w-4 h-4 mr-2" />
-                            Join Circle
+                            Join & Enter
                           </>
                         )}
                       </Button>
