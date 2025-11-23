@@ -35,37 +35,37 @@ const Welcome = () => {
       title: "You're Tired of Feeling Alone in a Crowded Room",
       preview: "You're tired of feeling alone in a crowded room. XelaConnect ends that.",
       content: "You've spent too many nights wondering why success feels so hollow. Why winning means nothing when there's no one who truly gets it. You're surrounded by people, yet starving for real connection. XelaConnect ends that. Here, loneliness doesn't exist — because every person you meet actually sees you, challenges you, and celebrates you the way you've been craving.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+      image: "https://images.unsplash.com/photo-1494548162494-384bba4ab999?w=800&q=80"
     },
     {
       title: "People Who Multiply Your Energy",
       preview: "The people here don't just match your energy — they multiply it.",
       content: "Imagine walking into a room where everyone operates at your frequency. No explaining. No code-switching. No dimming your light. Just pure, electric alignment with people who are building empires, chasing dreams, and refusing mediocrity just like you. This is your circle. These are your people. And once you're in, you'll wonder how you survived without them.",
-      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80"
+      image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80"
     },
     {
       title: "Connections Built to Last",
       preview: "Every connection is built to last — not just to swipe.",
       content: "You're done wasting precious time on people who ghost, flake, or treat you like an option. Here, every single person is intentional, vetted, and hungry for depth. You'll never have to beg for reciprocity again. No more one-sided effort. No more surface-level small talk that drains your soul. Just real humans showing up the way you always have.",
-      image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&q=80"
+      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&q=80"
     },
     {
       title: "Life Becomes Exponential",
       preview: "This is where your life becomes exponential.",
       content: "The right connection doesn't just change your week — it changes your trajectory. One conversation leads to a business partnership. One friendship unlocks opportunities you never saw coming. One person believes in you so fiercely that you finally believe in yourself. This isn't networking. This is life transformation. And it starts the moment you join.",
-      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80"
+      image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80"
     },
     {
       title: "How It Works",
       preview: "Three simple steps to meaningful friendship.",
       content: "Tell Us Who You Are: Share what makes you unique — your energy, interests, and what you're looking for in friendships. Our thoughtful onboarding helps us understand you beyond surface-level details.\n\nMeet People Who Actually Get You: Browse authentic profiles, join Community Circles around shared interests, and discover people whose energy matches yours. No endless swiping — just quality connections.\n\nBuild Friendships That Last: Start real conversations, share reflections, and grow together. With tools like Xela Talks (your AI companion) and built-in messaging, meaningful friendships happen naturally.",
-      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&q=80"
+      image: "https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=800&q=80"
     },
     {
       title: "A Safe Space You Can Trust",
       preview: "Your peace of mind matters — you're protected here.",
       content: "Your peace of mind matters to us. XelaConnect is built on verified members, clear community standards, and a genuine commitment to keeping this space positive and respectful. You're protected here, and we take that responsibility seriously. This is a place where you can be vulnerable, authentic, and confident that the community will hold that with care.",
-      image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&q=80"
+      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
     }
   ];
 
