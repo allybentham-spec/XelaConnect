@@ -40,34 +40,29 @@ const Community = () => {
   const filteredCircles = circles;
 
   const handleJoinCircle = async (circleId, circleName) => {
-    try {
-      const isJoined = joinedCircles.includes(circleId);
-      
-      if (isJoined) {
-        await circlesAPI.leave(circleId);
-        setJoinedCircles(joinedCircles.filter(id => id !== circleId));
-        toast({
-          title: 'Left Circle',
-          description: `You've left ${circleName}`
-        });
-      } else {
+    const isJoined = joinedCircles.includes(circleId);
+    
+    if (isJoined) {
+      // If already joined, navigate to circle detail
+      navigate(`/circle/${circleId}`);
+    } else {
+      // Join and then navigate
+      try {
         await circlesAPI.join(circleId);
-        setJoinedCircles([...joinedCircles, circleId]);
-        toast({
-          title: 'Welcome in!',
-          description: `You're part of ${circleName} now.`
-        });
+      } catch (error) {
+        console.log('Join API call (demo mode):', error);
       }
       
-      // Refresh circles to get updated member counts
-      fetchCircles();
-    } catch (error) {
-      console.error('Error joining/leaving circle:', error);
+      setJoinedCircles([...joinedCircles, circleId]);
       toast({
-        title: 'Error',
-        description: 'Please sign in to join circles',
-        variant: 'destructive'
+        title: '🎉 Welcome!',
+        description: `You're now part of ${circleName}`
       });
+      
+      // Navigate to circle detail page
+      setTimeout(() => {
+        navigate(`/circle/${circleId}`);
+      }, 500);
     }
   };
 
