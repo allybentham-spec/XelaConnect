@@ -31,6 +31,7 @@ import EmotionalIntelligencePath from './pages/EmotionalIntelligencePath';
 import CircleDetail from './pages/CircleDetail';
 import ThreadDetail from './pages/ThreadDetail';
 import Subscription from './pages/Subscription';
+import LonelinessQuiz from './pages/LonelinessQuiz';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
