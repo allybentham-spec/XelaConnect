@@ -82,24 +82,28 @@ const CommunityEnhanced = () => {
       const isJoined = joinedCircles.includes(circle.id);
       
       if (isJoined) {
-        await circlesAPI.leave(circle.id);
-        setJoinedCircles(joinedCircles.filter(id => id !== circle.id));
-        toast({
-          title: 'Left Circle',
-          description: `You've left ${circle.name}. We hope to see you back!`
-        });
+        // Navigate to circle detail if already joined
+        navigate(`/circle/${circle.id}`);
       } else {
+        // Join the circle first
         await circlesAPI.join(circle.id);
         setJoinedCircles([...joinedCircles, circle.id]);
+        
+        // Show welcome toast
         toast({
           title: '🎉 Welcome to the Circle!',
-          description: `You're now part of ${circle.name}. Say hi to the community!`
+          description: `You're now part of ${circle.name}`
         });
+        
+        // Navigate to circle detail after a brief delay
+        setTimeout(() => {
+          navigate(`/circle/${circle.id}`);
+        }, 800);
       }
       
       fetchCircles();
     } catch (error) {
-      console.error('Error joining/leaving circle:', error);
+      console.error('Error joining circle:', error);
       toast({
         title: 'Authentication Required',
         description: 'Please sign in to join circles',
