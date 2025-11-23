@@ -219,6 +219,99 @@ const Profile = () => {
           </div>
         </div>
 
+
+        {/* My Reflections */}
+        <div className="animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center space-x-2">
+              <BookOpen className="w-5 h-5 text-[#39CCB7]" />
+              <h2 className="text-xl font-semibold text-white">My Reflections</h2>
+            </div>
+            <Badge className="glass-card-light border-0 text-white">
+              {reflections.length}
+            </Badge>
+          </div>
+
+          {loadingReflections ? (
+            <Card className="glass-card rounded-2xl p-8 border-0 text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#39CCB7] mx-auto mb-4"></div>
+              <p className="text-white/60">Loading reflections...</p>
+            </Card>
+          ) : reflections.length === 0 ? (
+            <Card className="glass-card rounded-2xl p-8 border-0 text-center">
+              <Sparkles className="w-12 h-12 text-[#39CCB7] mx-auto mb-4" />
+              <p className="text-white/70 mb-4">No reflections yet</p>
+              <Button
+                onClick={() => navigate('/emotional-intelligence')}
+                className="bg-gradient-to-r from-[#39ccb7] to-[#8834ae]"
+              >
+                Start Reflecting
+              </Button>
+            </Card>
+          ) : (
+            <div className="space-y-3">
+              {reflections.map((reflection) => (
+                <Card key={reflection.id} className="glass-card rounded-2xl p-6 border-0 hover:bg-white/5 transition-all">
+                  <div className="space-y-4">
+                    {/* Prompt */}
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <p className="text-[#39CCB7] font-semibold text-sm mb-2">
+                          {reflection.prompt}
+                        </p>
+                        <p className="text-white/80 leading-relaxed">
+                          {reflection.content}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Footer */}
+                    <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                      <div className="flex items-center space-x-4">
+                        {/* Privacy Toggle */}
+                        <button
+                          onClick={() => handleTogglePrivacy(reflection.id, reflection.is_public)}
+                          className="flex items-center space-x-2 text-sm text-white/60 hover:text-white transition-colors"
+                        >
+                          {reflection.is_public ? (
+                            <>
+                              <Globe className="w-4 h-4" />
+                              <span>Public</span>
+                            </>
+                          ) : (
+                            <>
+                              <Lock className="w-4 h-4" />
+                              <span>Private</span>
+                            </>
+                          )}
+                        </button>
+
+                        {/* Timestamp */}
+                        <span className="text-xs text-white/40">
+                          {new Date(reflection.created_at).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric'
+                          })}
+                        </span>
+                      </div>
+
+                      {/* Delete Button */}
+                      <button
+                        onClick={() => handleDeleteReflection(reflection.id)}
+                        className="p-2 rounded-lg hover:bg-white/10 transition-all text-white/60 hover:text-red-400"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
+        </div>
+
+
         {/* Credits Display */}
         {user?.credits !== undefined && (
           <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
