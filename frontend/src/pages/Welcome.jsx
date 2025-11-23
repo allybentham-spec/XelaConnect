@@ -112,21 +112,25 @@ const Welcome = () => {
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#39CCB7]/10 via-transparent to-[#8834AE]/10" />
       
-      {/* Auth Icons - Top Right */}
+      {/* Auth Buttons - Top Right */}
       <div className="absolute top-6 right-6 flex items-center space-x-3 z-20">
         <button
           onClick={() => navigate('/signup')}
-          className="glass-card-light p-3 rounded-full hover:bg-white/20 smooth-transition group"
-          title="Create Account"
+          className="glass-card-light px-4 py-2 rounded-xl hover:bg-white/20 smooth-transition group flex items-center space-x-2"
         >
-          <UserPlus className="w-5 h-5 text-white group-hover:text-[#39CCB7] transition-colors" />
+          <UserPlus className="w-4 h-4 text-white group-hover:text-[#39CCB7] transition-colors" />
+          <span className="text-white text-sm font-medium group-hover:text-[#39CCB7] transition-colors">
+            Create Account
+          </span>
         </button>
         <button
           onClick={() => navigate('/login')}
-          className="glass-card-light p-3 rounded-full hover:bg-white/20 smooth-transition group"
-          title="Sign In"
+          className="glass-card-light px-4 py-2 rounded-xl hover:bg-white/20 smooth-transition group flex items-center space-x-2"
         >
-          <LogIn className="w-5 h-5 text-white group-hover:text-[#39CCB7] transition-colors" />
+          <LogIn className="w-4 h-4 text-white group-hover:text-[#39CCB7] transition-colors" />
+          <span className="text-white text-sm font-medium group-hover:text-[#39CCB7] transition-colors">
+            Sign In
+          </span>
         </button>
       </div>
       
