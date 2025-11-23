@@ -29,6 +29,27 @@ const Profile = () => {
   const [idFile, setIdFile] = useState(null);
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [isVerified, setIsVerified] = useState(false);
+  const [showCancelModal, setShowCancelModal] = useState(false);
+  const [cancelReason, setCancelReason] = useState('');
+  const [currentPlan, setCurrentPlan] = useState('Premium'); // Mock: Premium, Elite, or Free
+  
+  const interestOptions = [
+    'Wellness & Self-Care',
+    'Fitness & Health',
+    'Creative Arts',
+    'Personal Growth',
+    'Career & Business',
+    'Travel & Adventure',
+    'Music & Entertainment',
+    'Food & Cooking',
+    'Reading & Writing',
+    'Technology & Innovation',
+    'Mental Health',
+    'Spirituality',
+    'Social Impact',
+    'Photography',
+    'Sports & Outdoors'
+  ];
   
   // Profile completeness calculation
   const calculateCompleteness = () => {
