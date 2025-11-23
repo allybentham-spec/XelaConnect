@@ -4,15 +4,15 @@ const SplashScreen = ({ onComplete }) => {
   const [fadeStage, setFadeStage] = useState(0);
 
   useEffect(() => {
-    // Fade-in sequence timing
+    // Fade-in sequence timing (slower, more contemplative)
     const timers = [
-      setTimeout(() => setFadeStage(1), 100),      // Logo fade in
-      setTimeout(() => setFadeStage(2), 600),      // Tagline fade in
-      setTimeout(() => setFadeStage(3), 1100),     // Breathing animation
-      setTimeout(() => setFadeStage(4), 1600),     // Welcome message
+      setTimeout(() => setFadeStage(1), 300),      // Logo fade in (wait a bit)
+      setTimeout(() => setFadeStage(2), 1200),     // Tagline fade in (give logo time)
+      setTimeout(() => setFadeStage(3), 2000),     // Breathing animation (pause)
+      setTimeout(() => setFadeStage(4), 2800),     // Welcome message
       setTimeout(() => {
         if (onComplete) onComplete();
-      }, 3000) // Complete after 3 seconds
+      }, 4500) // Complete after 4.5 seconds (was 3)
     ];
 
     return () => timers.forEach(timer => clearTimeout(timer));
