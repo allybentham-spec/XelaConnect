@@ -161,15 +161,25 @@ const Courses = () => {
                     </p>
                   </div>
 
-                  <div className="flex items-center space-x-4 text-xs text-white/50">
-                    <div className="flex items-center space-x-1">
-                      <BookOpen className="w-3 h-3" />
-                      <span>{course.total_modules || (course.modules && course.modules.length) || 0} modules</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4 text-xs text-white/50">
+                      <div className="flex items-center space-x-1">
+                        <BookOpen className="w-3 h-3" />
+                        <span>{course.total_modules || (course.modules && course.modules.length) || 0} modules</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="w-3 h-3" />
+                        <span>{course.duration}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-1">
-                      <Clock className="w-3 h-3" />
-                      <span>{course.duration}</span>
-                    </div>
+                    {course.price && (
+                      <div className="flex items-center space-x-2">
+                        {course.original_price && (
+                          <span className="text-xs text-white/30 line-through">{course.original_price}</span>
+                        )}
+                        <span className="text-lg font-bold text-[#39CCB7]">{course.price}</span>
+                      </div>
+                    )}
                   </div>
 
                   {course.progress > 0 ? (
