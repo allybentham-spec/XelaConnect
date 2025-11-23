@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Progress } from '../components/ui/progress';
-import { Flame, Users, BookOpen, TrendingUp, MessageCircle, Sparkles, Video } from 'lucide-react';
+import { Flame, Users, BookOpen, TrendingUp, MessageCircle, Sparkles, Video, Heart } from 'lucide-react';
 import { mockDashboardStats, mockDailyMessages } from '../mock';
 
 const Dashboard = () => {
