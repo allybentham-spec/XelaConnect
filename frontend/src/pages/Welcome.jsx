@@ -112,26 +112,32 @@ const Welcome = () => {
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#39CCB7]/10 via-transparent to-[#8834AE]/10" />
       
-      {/* Auth Buttons - Top Right */}
-      <div className="absolute top-6 right-6 flex items-center space-x-3 z-20">
-        <button
-          onClick={() => navigate('/signup')}
-          className="glass-card-light px-4 py-2 rounded-xl hover:bg-white/20 smooth-transition group flex items-center space-x-2"
-        >
-          <UserPlus className="w-4 h-4 text-white group-hover:text-[#39CCB7] transition-colors" />
-          <span className="text-white text-sm font-medium group-hover:text-[#39CCB7] transition-colors">
-            Create Account
-          </span>
-        </button>
-        <button
-          onClick={() => navigate('/login')}
-          className="glass-card-light px-4 py-2 rounded-xl hover:bg-white/20 smooth-transition group flex items-center space-x-2"
-        >
-          <LogIn className="w-4 h-4 text-white group-hover:text-[#39CCB7] transition-colors" />
-          <span className="text-white text-sm font-medium group-hover:text-[#39CCB7] transition-colors">
-            Sign In
-          </span>
-        </button>
+      {/* Premium Nav Bar */}
+      <div className="absolute top-0 left-0 right-0 z-20">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Logo Placeholder (left side - optional) */}
+          <div className="w-32"></div>
+          
+          {/* Auth Buttons (right side) */}
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={() => navigate('/login')}
+              className="glass-card-light px-5 py-2.5 rounded-xl hover:bg-white/20 smooth-transition group flex items-center space-x-2"
+            >
+              <span className="text-white text-sm font-medium group-hover:text-[#39CCB7] transition-colors">
+                Sign In
+              </span>
+            </button>
+            <button
+              onClick={() => navigate('/signup')}
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 smooth-transition flex items-center space-x-2"
+            >
+              <span className="text-white text-sm font-semibold">
+                Create Account
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
       
       <div className="max-w-md w-full space-y-8 animate-fade-in-up relative z-10">
