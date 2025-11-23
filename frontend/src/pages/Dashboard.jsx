@@ -163,8 +163,72 @@ const Dashboard = () => {
               <Sparkles className="w-6 h-6 mb-2" />
               <span className="text-sm">Discover People</span>
             </Button>
+            <Button
+              onClick={() => navigate('/expand')}
+              className="h-20 rounded-2xl glass-button text-white hover:bg-white/10 flex flex-col items-center justify-center"
+            >
+              <TrendingUp className="w-6 h-6 mb-2" />
+              <span className="text-sm">Expand</span>
+            </Button>
           </div>
         </div>
+
+        {/* Premium Upgrade Card */}
+        <Card 
+          onClick={() => navigate('/expand')}
+          className="glass-card rounded-3xl p-8 border border-[#39CCB7]/30 cursor-pointer hover:scale-[1.02] smooth-transition animate-fade-in-up relative overflow-hidden" 
+          style={{ animationDelay: '0.45s' }}
+        >
+          {/* Animated gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#39CCB7]/10 via-transparent to-[#8834AE]/10 animate-pulse" />
+          
+          <div className="relative z-10 space-y-4">
+            <div className="flex items-center justify-center mb-4">
+              <div className="glass-card-light p-4 rounded-2xl">
+                <Sparkles className="w-8 h-8 text-[#39CCB7]" />
+              </div>
+            </div>
+            
+            <div className="text-center space-y-2">
+              <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
+                Unlock Your Full Potential
+              </h3>
+              <p className="text-white/70 text-sm leading-relaxed max-w-sm mx-auto">
+                Access premium courses, unlimited connections, and exclusive community circles. Elevate your emotional growth journey.
+              </p>
+            </div>
+
+            <div className="flex items-center justify-center space-x-6 py-4">
+              <div className="text-center">
+                <div className="text-lg font-bold text-[#39CCB7]">∞</div>
+                <div className="text-xs text-white/60">Connections</div>
+              </div>
+              <div className="w-px h-8 bg-white/20" />
+              <div className="text-center">
+                <div className="text-lg font-bold text-[#39CCB7]">50+</div>
+                <div className="text-xs text-white/60">Premium Courses</div>
+              </div>
+              <div className="w-px h-8 bg-white/20" />
+              <div className="text-center">
+                <div className="text-lg font-bold text-[#39CCB7]">VIP</div>
+                <div className="text-xs text-white/60">Access</div>
+              </div>
+            </div>
+
+            <Button
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate('/expand');
+              }}
+              className="w-full h-14 rounded-2xl bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 smooth-transition shadow-lg text-lg font-bold relative overflow-hidden group"
+            >
+              <span className="relative z-10 flex items-center justify-center">
+                <TrendingUp className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                Become Limitless
+              </span>
+            </Button>
+          </div>
+        </Card>
 
         {/* Gentle Reminder */}
         <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
