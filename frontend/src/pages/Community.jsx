@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -7,6 +8,7 @@ import { circlesAPI } from '../utils/api';
 import { toast } from '../hooks/use-toast';
 
 const Community = () => {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [circles, setCircles] = useState([]);
   const [loading, setLoading] = useState(true);
