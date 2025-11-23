@@ -438,8 +438,14 @@ async def get_course_content(course_id: str, user = Depends(get_current_user_opt
     return course
 
 @api_router.get("/courses/{course_id}/progress")
-async def get_course_progress(course_id: str, user = Depends(get_current_user)):
+async def get_course_progress(course_id: str, user = Depends(get_current_user_optional)):
     """Get user's progress in a course"""
+    if not user:
+        return {
+            "progress": 0,
+            "completedLessons": []
+        }
+    
     user_progress = next(
         (p for p in user.get("courses_progress", []) if p.get("course_id") == course_id),
         {"progress": 0, "completed_lessons": []}
