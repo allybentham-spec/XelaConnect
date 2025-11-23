@@ -76,4 +76,13 @@ export const activityAPI = {
   markRead: (id) => api.post(`/activity/${id}/mark-read`),
 };
 
+export const reflectionsAPI = {
+  create: (data) => api.post('/reflections', data),
+  getAll: () => api.get('/reflections'),
+  getPublic: (limit) => api.get('/reflections/public', { params: { limit } }),
+  getById: (id) => api.get(`/reflections/${id}`),
+  update: (id, data) => api.put(`/reflections/${id}`, data),
+  delete: (id) => api.delete(`/reflections/${id}`),
+};
+
 export default api;
