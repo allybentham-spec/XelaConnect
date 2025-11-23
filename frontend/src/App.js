@@ -79,6 +79,7 @@ function App() {
             <Route path="/emotional-intelligence" element={<EmotionalIntelligencePath />} />
             <Route path="/circles/:circleId" element={<CircleDetail />} />
             <Route path="/circles/:circleId/thread/:threadId" element={<ThreadDetail />} />
+            <Route path="/subscription" element={<Subscription />} />
             <Route path="/expand" element={<Store />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
