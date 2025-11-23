@@ -168,7 +168,10 @@ const Courses = () => {
                         <span className="text-xs text-white/60">{course.progress}% Complete</span>
                         <Button
                           size="sm"
-                          onClick={() => handleStartCourse(course.title)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/course/${course.id}/learn`);
+                          }}
                           className="h-8 rounded-lg bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90"
                         >
                           <PlayCircle className="w-4 h-4 mr-1" />
@@ -179,10 +182,13 @@ const Courses = () => {
                   ) : (
                     <Button
                       size="sm"
-                      onClick={() => handleStartCourse(course.title)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/course/${course.id}`);
+                      }}
                       className="w-full h-9 rounded-lg glass-button text-white hover:bg-white/10"
                     >
-                      Start Course
+                      View Course
                     </Button>
                   )}
                 </div>
