@@ -74,6 +74,24 @@ const Welcome = () => {
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#39CCB7]/10 via-transparent to-[#8834AE]/10" />
       
+      {/* Auth Icons - Top Right */}
+      <div className="absolute top-6 right-6 flex items-center space-x-3 z-20">
+        <button
+          onClick={() => navigate('/signup')}
+          className="glass-card-light p-3 rounded-full hover:bg-white/20 smooth-transition group"
+          title="Create Account"
+        >
+          <UserPlus className="w-5 h-5 text-white group-hover:text-[#39CCB7] transition-colors" />
+        </button>
+        <button
+          onClick={() => navigate('/login')}
+          className="glass-card-light p-3 rounded-full hover:bg-white/20 smooth-transition group"
+          title="Sign In"
+        >
+          <LogIn className="w-5 h-5 text-white group-hover:text-[#39CCB7] transition-colors" />
+        </button>
+      </div>
+      
       <div className="max-w-md w-full space-y-8 animate-fade-in-up relative z-10">
         {/* Logo/Brand */}
         <div className="text-center space-y-4">
