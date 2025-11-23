@@ -392,7 +392,8 @@ const CircleDetail = () => {
             {circle.discussion_threads.map((thread) => (
               <Card
                 key={thread.id}
-                className="glass-card rounded-3xl p-6 border-0 hover:bg-white/10 transition-all cursor-pointer"
+                onClick={() => navigate(`/circles/${circleId}/thread/${thread.id}`)}
+                className="glass-card rounded-3xl p-6 border-0 hover:bg-white/10 hover:scale-[1.01] transition-all cursor-pointer"
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -405,6 +406,17 @@ const CircleDetail = () => {
                 </div>
               </Card>
             ))}
+            
+            {/* Create New Thread Button */}
+            <Card
+              onClick={() => {/* TODO: Open create thread modal */}}
+              className="glass-card rounded-3xl p-6 border-2 border-dashed border-white/20 hover:border-[#39CCB7]/50 hover:bg-white/5 transition-all cursor-pointer"
+            >
+              <div className="flex items-center justify-center space-x-3 text-white/60 hover:text-[#39CCB7] transition-colors">
+                <MessageCircle className="w-5 h-5" />
+                <span className="font-medium">Start a New Discussion</span>
+              </div>
+            </Card>
           </div>
         )}
 
