@@ -204,7 +204,7 @@ const Dashboard = () => {
                 How Connected Do You Feel?
               </h3>
               <p className="text-white/90 text-base leading-relaxed max-w-lg mx-auto">
-                Take our quick 2-minute check-in to understand your connection needs and get personalized recommendations.
+                Take our science-backed assessment to understand your emotional well-being across 4 key dimensions and receive personalized insights.
               </p>
             </div>
 
