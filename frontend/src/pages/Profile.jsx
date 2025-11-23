@@ -191,7 +191,14 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen pb-32">
-      <div className="max-w-lg mx-auto px-6 py-8 space-y-6">
+      <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+        {/* Page Title */}
+        <div className="text-center space-y-2 animate-fade-in-up">
+          <h1 className="text-4xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
+            Profile & Settings
+          </h1>
+          <p className="text-white/60">Manage your account and preferences</p>
+        </div>
         {/* Profile Header */}
         <Card className="glass-card rounded-3xl p-8 border-0 text-center animate-fade-in-up">
           <div className="flex flex-col items-center space-y-4">
