@@ -165,23 +165,46 @@ const CourseDetail = () => {
               </p>
             </div>
 
-            {/* Course Stats */}
-            <div className="flex items-center space-x-6 py-4 border-y border-white/10">
-              <div className="flex items-center space-x-2 text-white/70">
-                <Clock className="w-5 h-5" />
-                <span>{course.duration || '6 weeks'}</span>
-              </div>
-              <div className="flex items-center space-x-2 text-white/70">
-                <BookOpen className="w-5 h-5" />
-                <span>{course.lessons || 24} lessons</span>
-              </div>
-              <div className="flex items-center space-x-2 text-white/70">
-                <Users className="w-5 h-5" />
-                <span>{course.enrolled || 1240} enrolled</span>
-              </div>
-              <div className="flex items-center space-x-2 text-[#39CCB7]">
-                <Star className="w-5 h-5 fill-current" />
-                <span className="font-semibold">{course.rating || 4.8}</span>
+            {/* Price and Stats */}
+            <div className="glass-card rounded-2xl p-6 space-y-4">
+              {course.price && (
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-white/60 text-sm mb-1">Course Investment</p>
+                    <div className="flex items-center space-x-3">
+                      <span className="text-4xl font-bold text-white">{course.price}</span>
+                      {course.original_price && (
+                        <span className="text-lg text-white/40 line-through">{course.original_price}</span>
+                      )}
+                    </div>
+                  </div>
+                  {course.original_price && course.price && (
+                    <div className="text-right">
+                      <Badge className="bg-[#39CCB7]/20 text-[#39CCB7] border-0 text-lg px-4 py-2">
+                        Save {Math.round(((parseFloat(course.original_price.replace('$', '')) - parseFloat(course.price.replace('$', ''))) / parseFloat(course.original_price.replace('$', ''))) * 100)}%
+                      </Badge>
+                    </div>
+                  )}
+                </div>
+              )}
+              
+              <div className="flex items-center space-x-6 py-2 border-t border-white/10">
+                <div className="flex items-center space-x-2 text-white/70">
+                  <Clock className="w-5 h-5" />
+                  <span>{course.duration || '6 weeks'}</span>
+                </div>
+                <div className="flex items-center space-x-2 text-white/70">
+                  <BookOpen className="w-5 h-5" />
+                  <span>{course.total_lessons || course.lessons || 24} lessons</span>
+                </div>
+                <div className="flex items-center space-x-2 text-white/70">
+                  <Users className="w-5 h-5" />
+                  <span>{course.enrolled || 1240} enrolled</span>
+                </div>
+                <div className="flex items-center space-x-2 text-[#39CCB7]">
+                  <Star className="w-5 h-5 fill-current" />
+                  <span className="font-semibold">{course.rating || 4.8}</span>
+                </div>
               </div>
             </div>
 
