@@ -363,7 +363,7 @@ const CourseDetail = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-white/70">{review.comment}</p>
+                <p className="text-white/70">{review.text || review.comment}</p>
               </div>
             ))}
           </div>
