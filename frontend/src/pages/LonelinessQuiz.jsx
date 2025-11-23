@@ -227,7 +227,7 @@ const LonelinessQuiz = () => {
     Object.keys(categories).forEach(cat => {
       const catQuestions = categories[cat];
       const catScore = catQuestions.reduce((sum, qId) => sum + (answers[qId] || 0), 0);
-      const maxScore = catQuestions.length * 3;
+      const maxScore = catQuestions.length * 5;
       scores[cat] = {
         score: catScore,
         percentage: Math.round((catScore / maxScore) * 100),
@@ -241,7 +241,7 @@ const LonelinessQuiz = () => {
     const score = getScore();
     const categoryScores = getCategoryScores();
     
-    if (score <= 18) {
+    if (score <= 28) {
       return {
         level: "Thriving",
         color: "#39CCB7",
