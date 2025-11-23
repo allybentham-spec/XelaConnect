@@ -375,18 +375,90 @@ const Profile = () => {
           </Card>
         </div>
 
-        {/* Identity Badge */}
-        {userIdentityBadge && (
-          <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            <div className="flex items-center space-x-4">
-              <div className="text-5xl">{userIdentityBadge.emoji}</div>
-              <div className="flex-1">
-                <div className="text-sm text-white/60 mb-1">Connection Identity</div>
-                <h3 className="text-xl font-semibold text-white mb-1">{userIdentityBadge.name}</h3>
-                <p className="text-sm text-white/70">{userIdentityBadge.description}</p>
-              </div>
+        {/* Identity Verification */}
+        <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+          <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
+            <Shield className="w-6 h-6 text-[#39CCB7]" />
+            <span>Identity Verification</span>
+          </h2>
+          
+          <Card className="glass-card rounded-3xl p-6 border-0">
+            <div className="space-y-4">
+              <p className="text-white/80 text-sm">
+                Get a verified badge on your profile by uploading a government-issued ID
+              </p>
+
+              {isVerified ? (
+                <div className="glass-card-light rounded-xl p-6 text-center">
+                  <CheckCircle className="w-12 h-12 text-[#39CCB7] mx-auto mb-3" />
+                  <p className="text-[#39CCB7] font-semibold text-lg mb-1">Verified</p>
+                  <p className="text-white/60 text-sm">Your identity has been verified successfully</p>
+                </div>
+              ) : (
+                <>
+                  <div className="glass-card-light rounded-xl p-6 text-center">
+                    <AlertTriangle className="w-12 h-12 text-yellow-500 mx-auto mb-3" />
+                    <p className="text-yellow-500 font-semibold text-lg mb-1">Not Verified</p>
+                    <p className="text-white/60 text-sm mb-4">
+                      Upload a government-issued ID to get verified and build trust with other members
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={() => setShowUploadModal(true)}
+                    className="w-full h-12 rounded-xl glass-button border border-white/20 text-white hover:bg-white/10"
+                  >
+                    <Upload className="w-5 h-5 mr-2" />
+                    Upload ID
+                  </Button>
+
+                  <div className="text-white/50 text-xs space-y-1 pt-2">
+                    <p>• Accepted formats: JPG, PNG, PDF (max 10MB)</p>
+                    <p>• We accept: Driver's License, Passport, National ID Card</p>
+                    <p>• Your ID will be securely stored and only used for verification purposes</p>
+                  </div>
+                </>
+              )}
             </div>
           </Card>
+        </div>
+
+        {/* ID Upload Modal */}
+        {showUploadModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-6">
+            <div 
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setShowUploadModal(false)}
+            />
+            <Card className="relative glass-card rounded-3xl p-8 border-0 max-w-md w-full">
+              <h3 className="text-2xl font-bold text-white mb-4">Upload Your ID</h3>
+              <p className="text-white/70 text-sm mb-6">
+                Please upload a clear photo of your government-issued ID
+              </p>
+              
+              <label className="block">
+                <div className="glass-card-light rounded-2xl p-12 border-2 border-dashed border-white/20 hover:border-[#39CCB7]/50 transition-all cursor-pointer text-center">
+                  <Upload className="w-12 h-12 text-[#39CCB7] mx-auto mb-4" />
+                  <p className="text-white/80 font-medium mb-2">Choose File</p>
+                  <p className="text-white/50 text-xs">JPG, PNG, PDF up to 10MB</p>
+                </div>
+                <input
+                  type="file"
+                  accept=".jpg,.jpeg,.png,.pdf"
+                  className="hidden"
+                  onChange={handleIdUpload}
+                />
+              </label>
+
+              <Button
+                onClick={() => setShowUploadModal(false)}
+                variant="outline"
+                className="w-full mt-4 h-12 rounded-xl glass-button text-white border-white/20"
+              >
+                Cancel
+              </Button>
+            </Card>
+          </div>
         )}
 
         {/* Badges & Achievements */}
