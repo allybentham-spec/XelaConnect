@@ -1,11 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
-import { Sparkles, Zap, Crown, Eye, MapPin, TrendingUp, BookOpen } from 'lucide-react';
+import { Sparkles, Zap, Eye, MapPin, TrendingUp, Crown, Target, Heart } from 'lucide-react';
 import { toast } from '../hooks/use-toast';
 
 const Store = () => {
+  const navigate = useNavigate();
   const userCredits = 250; // Mock data - will come from backend
 
   const handlePurchase = (item) => {
@@ -15,55 +17,7 @@ const Store = () => {
     });
   };
 
-  const subscriptionTiers = [
-    {
-      name: 'Premium',
-      price: 9.99,
-      period: 'month',
-      features: [
-        'Unlimited circles',
-        'Unlimited messages',
-        'All course previews',
-        'Advanced matching',
-        'Priority support'
-      ],
-      color: '#39CCB7',
-      popular: false
-    },
-    {
-      name: 'Elite',
-      price: 19.99,
-      period: 'month',
-      features: [
-        'Everything in Premium',
-        'ALL courses unlocked',
-        'Unlimited AI sessions',
-        'Priority visibility',
-        'Profile boosts included',
-        'Exclusive circles',
-        'Advanced analytics'
-      ],
-      color: '#8834AE',
-      popular: true
-    },
-    {
-      name: 'Lifetime Elite',
-      price: 149,
-      period: 'once',
-      features: [
-        'Everything in Elite',
-        'Lifetime access',
-        'Founder badge',
-        'Early feature access',
-        'VIP support',
-        'Never pay again'
-      ],
-      color: '#207690',
-      popular: false
-    }
-  ];
-
-  const addOns = [
+  const powerUps = [
     {
       name: 'Profile Boost',
       description: '3x visibility for 24 hours',
