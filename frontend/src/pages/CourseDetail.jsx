@@ -340,13 +340,13 @@ const CourseDetail = () => {
 
         {/* Reviews */}
         <Card className="glass-card rounded-3xl p-8 border-0">
-          <h2 className="text-2xl font-bold text-white mb-6">Student Reviews</h2>
+          <h2 className="text-2xl font-bold text-white mb-6">Student Testimonials</h2>
           <div className="space-y-4">
-            {[
-              { name: 'Sarah M.', rating: 5, comment: 'Life-changing course! The instructor explains everything so clearly.' },
-              { name: 'John D.', rating: 5, comment: 'Best investment in myself. Highly recommend to anyone starting their journey.' },
-              { name: 'Emily R.', rating: 4, comment: 'Great content and well-structured. Would love more practical examples.' }
-            ].map((review, idx) => (
+            {(course.testimonials || [
+              { name: 'Sarah M.', rating: 5, text: 'Life-changing course! The instructor explains everything so clearly.' },
+              { name: 'John D.', rating: 5, text: 'Best investment in myself. Highly recommend to anyone starting their journey.' },
+              { name: 'Emily R.', rating: 4, text: 'Great content and well-structured. Would love more practical examples.' }
+            ]).map((review, idx) => (
               <div key={idx} className="glass-card rounded-2xl p-4">
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-3">
