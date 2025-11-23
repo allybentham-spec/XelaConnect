@@ -280,7 +280,101 @@ const LonelinessQuiz = () => {
   };
 
   const result = showResults ? getResultMessage() : null;
-  const progress = ((currentQuestion + 1) / questions.length) * 100;
+  const progress = started ? ((currentQuestion + 1) / questions.length) * 100 : 0;
+
+  // Welcome Screen
+  if (!started) {
+    return (
+      <div className="min-h-screen pb-32">
+        <div className="max-w-3xl mx-auto px-6 py-8 space-y-6">
+          <Button
+            variant="ghost"
+            onClick={() => navigate('/dashboard')}
+            className="text-white hover:bg-white/10 -ml-2"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Dashboard
+          </Button>
+
+          <Card className="glass-card rounded-3xl p-12 border-0 animate-fade-in-up">
+            <div className="max-w-2xl mx-auto text-center space-y-8">
+              <div className="flex items-center justify-center mb-6">
+                <div className="glass-card-light p-6 rounded-3xl">
+                  <Heart className="w-16 h-16 text-[#39CCB7]" />
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h1 className="text-4xl sm:text-5xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  Connection Assessment
+                </h1>
+                <p className="text-xl text-white/80 leading-relaxed">
+                  A science-backed evaluation of your emotional well-being and social connection.
+                </p>
+              </div>
+
+              <div className="glass-card-light rounded-2xl p-8 space-y-6">
+                <h3 className="text-lg font-semibold text-white">What You'll Discover</h3>
+                <div className="grid sm:grid-cols-2 gap-4 text-left">
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2 text-[#39CCB7]">
+                      <CheckCircle className="w-5 h-5" />
+                      <span className="text-white/90 text-sm font-medium">Your connection strengths</span>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2 text-[#39CCB7]">
+                      <CheckCircle className="w-5 h-5" />
+                      <span className="text-white/90 text-sm font-medium">Areas for growth</span>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2 text-[#39CCB7]">
+                      <CheckCircle className="w-5 h-5" />
+                      <span className="text-white/90 text-sm font-medium">Personalized insights</span>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center space-x-2 text-[#39CCB7]">
+                      <CheckCircle className="w-5 h-5" />
+                      <span className="text-white/90 text-sm font-medium">Actionable next steps</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-3 gap-4">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-[#39CCB7] mb-1">14</div>
+                  <div className="text-sm text-white/60">Questions</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-[#39CCB7] mb-1">~4</div>
+                  <div className="text-sm text-white/60">Minutes</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-[#39CCB7] mb-1">4</div>
+                  <div className="text-sm text-white/60">Dimensions</div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <p className="text-white/50 text-sm mb-6">
+                  Your responses are private and used only to provide personalized recommendations.
+                </p>
+                <Button
+                  onClick={() => setStarted(true)}
+                  className="w-full h-16 rounded-2xl bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 text-lg font-bold"
+                >
+                  Begin Assessment
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    );
+  }
 
   if (showResults) {
     return (
