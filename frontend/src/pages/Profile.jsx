@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
-import { Settings, LogOut, ChevronRight, User as UserIcon, Shield, Bell, HelpCircle, Gift, ShoppingBag, Sparkles, Award, BookOpen, Lock, Globe, Trash2, Edit } from 'lucide-react';
+import { Settings, LogOut, ChevronRight, User as UserIcon, Shield, Bell, HelpCircle, Gift, ShoppingBag, Sparkles, Award, BookOpen, Lock, Globe, Trash2, Edit, Upload, CheckCircle, AlertCircle, Camera, Moon, Sun, CreditCard, BarChart3, AlertTriangle, Power } from 'lucide-react';
 import { toast } from '../hooks/use-toast';
 import { identityBadges } from '../mock';
 import { reflectionsAPI } from '../utils/api';
