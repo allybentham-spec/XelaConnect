@@ -30,21 +30,24 @@ const Dashboard = () => {
       label: 'Day Streak',
       value: mockDashboardStats.streak,
       color: '#39CCB7',
-      subtitle: 'Keep going!'
+      subtitle: 'Keep going!',
+      action: () => navigate('/activity')
     },
     {
       icon: Users,
       label: 'Connections',
       value: mockDashboardStats.connections,
       color: '#8834AE',
-      subtitle: 'Your people'
+      subtitle: 'Your people',
+      action: () => navigate('/discover')
     },
     {
       icon: BookOpen,
       label: 'Active Courses',
       value: mockDashboardStats.coursesInProgress,
       color: '#207690',
-      subtitle: 'Learning'
+      subtitle: 'Learning',
+      action: () => navigate('/courses')
     }
   ];
 
