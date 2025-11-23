@@ -338,23 +338,31 @@ const EmotionalIntelligencePath = () => {
               </div>
               
               {/* General Mental Health */}
-              <details className="glass-card rounded-2xl overflow-hidden group">
-                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <Heart className="w-5 h-5 text-[#39ccb7]" />
-                    <span className="text-white font-medium">General Mental Health Support</span>
+              <details className="glass-card rounded-2xl overflow-hidden group border border-transparent hover:border-white/10 transition-all">
+                <summary className="p-5 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 rounded-xl bg-[#39ccb7]/20 flex items-center justify-center">
+                      <Heart className="w-5 h-5 text-[#39ccb7]" />
+                    </div>
+                    <span className="text-white font-semibold text-lg">General Mental Health Support</span>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                  <ChevronRight className="w-5 h-5 text-[#39ccb7] group-open:rotate-90 transition-transform" />
                 </summary>
-                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">SAMHSA National Helpline</span>
-                    <a href="tel:1-800-662-4357" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-800-662-4357</a>
-                  </div>
-                  <div className="flex items-center justify-between py-2">
-                    <span className="text-white/80">NAMI HelpLine</span>
-                    <a href="tel:1-800-950-6264" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-800-950-6264</a>
-                  </div>
+                <div className="px-5 pb-5 pt-3 space-y-2 border-t border-white/5">
+                  <a href="tel:1-800-662-4357" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">SAMHSA National Helpline</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">1-800-662-4357</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
+                  <a href="tel:1-800-950-6264" className="flex items-center justify-between p-4 rounded-xl hover:bg-white/10 transition-all group/item">
+                    <span className="text-white/90 group-hover/item:text-white font-medium">NAMI HelpLine</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-[#39ccb7] font-bold group-hover/item:text-[#39ccb7]/80">1-800-950-6264</span>
+                      <Phone className="w-4 h-4 text-[#39ccb7]" />
+                    </div>
+                  </a>
                 </div>
               </details>
 
