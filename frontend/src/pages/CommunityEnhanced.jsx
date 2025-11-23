@@ -22,6 +22,7 @@ import { circlesAPI } from '../utils/api';
 import { toast } from '../hooks/use-toast';
 
 const CommunityEnhanced = () => {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [circles, setCircles] = useState([]);
   const [loading, setLoading] = useState(true);
