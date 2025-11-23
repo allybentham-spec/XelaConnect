@@ -58,14 +58,31 @@ const Welcome = () => {
     {
       title: "How It Works",
       preview: "Three simple steps to meaningful friendship.",
-      content: "Tell Us Who You Are: Share what makes you unique — your energy, interests, and what you're looking for in friendships. Our thoughtful onboarding helps us understand you beyond surface-level details.\n\nMeet People Who Actually Get You: Browse authentic profiles, join Community Circles around shared interests, and discover people whose energy matches yours. No endless swiping — just quality connections.\n\nBuild Friendships That Last: Start real conversations, share reflections, and grow together. With tools like Xela Talks (your AI companion) and built-in messaging, meaningful friendships happen naturally.",
+      isHowItWorks: true,
+      steps: [
+        {
+          number: "1",
+          title: "Tell Us Who You Are",
+          content: "Share what makes you unique — your energy, interests, and what you're looking for in friendships. Our thoughtful onboarding helps us understand you beyond surface-level details."
+        },
+        {
+          number: "2",
+          title: "Meet People Who Actually Get You",
+          content: "Browse authentic profiles, join Community Circles around shared interests, and discover people whose energy matches yours. No endless swiping — just quality connections."
+        },
+        {
+          number: "3",
+          title: "Build Friendships That Last",
+          content: "Start real conversations, share reflections, and grow together. With tools like Xela Talks (your AI companion) and built-in messaging, meaningful friendships happen naturally."
+        }
+      ],
       image: "https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=800&q=80"
     },
     {
       title: "A Safe Space You Can Trust",
       preview: "Your peace of mind matters — you're protected here.",
       content: "Your peace of mind matters to us. XelaConnect is built on verified members, clear community standards, and a genuine commitment to keeping this space positive and respectful. You're protected here, and we take that responsibility seriously. This is a place where you can be vulnerable, authentic, and confident that the community will hold that with care.",
-      image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
+      image: null
     }
   ];
 
