@@ -484,13 +484,16 @@ const EmotionalIntelligencePath = () => {
                       <Phone className="w-4 h-4 text-[#39ccb7]" />
                     </div>
                   </a>
-                  <div className="p-4 rounded-xl bg-white/5">
-                    <p className="text-white/90 font-medium mb-2">Safe Place TXT 4 HELP</p>
-                    <div className="flex items-center space-x-2">
-                      <MessageCircle className="w-4 h-4 text-[#39ccb7]" />
-                      <span className="text-[#39ccb7] font-bold">Text "4HELP" to 44357</span>
+                  <a href="sms:44357&body=4HELP" className="block group/text">
+                    <div className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all cursor-pointer">
+                      <p className="text-white/90 font-medium mb-2 group-hover/text:text-[#39ccb7] transition-colors">Safe Place TXT 4 HELP</p>
+                      <div className="flex items-center space-x-2">
+                        <MessageCircle className="w-4 h-4 text-[#39ccb7]" />
+                        <span className="text-[#39ccb7] font-bold">Text "4HELP" to 44357</span>
+                      </div>
+                      <p className="text-white/50 text-xs mt-2">Tap to send text now</p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </details>
 
