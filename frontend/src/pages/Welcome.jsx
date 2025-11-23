@@ -122,6 +122,51 @@ const Welcome = () => {
           </div>
         </div>
 
+        {/* Network Info Section */}
+        <div className="glass-card rounded-2xl p-6 border border-[#39CCB7]/20 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 rounded-full bg-[#39CCB7] animate-pulse" />
+                <span className="text-[#39CCB7] text-sm font-medium">Live Community</span>
+              </div>
+              <span className="text-white/60 text-xs">2,847 members active now</span>
+            </div>
+            
+            <div className="grid grid-cols-3 gap-3 py-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">12K+</div>
+                <div className="text-xs text-white/60">Members</div>
+              </div>
+              <div className="w-px bg-white/10" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">450+</div>
+                <div className="text-xs text-white/60">Active Circles</div>
+              </div>
+              <div className="w-px bg-white/10" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white mb-1">98%</div>
+                <div className="text-xs text-white/60">Satisfaction</div>
+              </div>
+            </div>
+
+            <p className="text-white/70 text-sm text-center leading-relaxed">
+              Join a network where emotional intelligence meets authentic connection. Where depth isn't optional—it's the standard.
+            </p>
+
+            <Button
+              onClick={() => navigate('/signup')}
+              className="w-full h-14 rounded-2xl bg-gradient-to-r from-[#39CCB7] via-[#5BB8A8] to-[#8834AE] hover:opacity-90 smooth-transition shadow-lg text-lg font-bold relative overflow-hidden group"
+            >
+              <span className="relative z-10 flex items-center justify-center">
+                <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+                Start Your Transformation
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8834AE] to-[#39CCB7] opacity-0 group-hover:opacity-100 transition-opacity" />
+            </Button>
+          </div>
+        </div>
+
         {/* CTA Buttons */}
         <div className="space-y-4">
           <Button
