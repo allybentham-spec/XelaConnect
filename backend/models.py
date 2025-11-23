@@ -146,3 +146,26 @@ class GoogleAuthRequest(BaseModel):
 class AuthResponse(BaseModel):
     user: User
     session_token: str
+
+
+# Reflection Models
+class Reflection(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_id: str
+    prompt: str
+    content: str
+    is_public: bool = False
+    created_at: datetime = Field(default_factory=lambda: datetime.utcnow())
+    updated_at: datetime = Field(default_factory=lambda: datetime.utcnow())
+
+    class Config:
+        json_encoders = {datetime: lambda v: v.isoformat()}
+
+class ReflectionCreate(BaseModel):
+    prompt: str
+    content: str
+    is_public: bool = False
+
+class ReflectionUpdate(BaseModel):
+    content: Optional[str] = None
+    is_public: Optional[bool] = None
