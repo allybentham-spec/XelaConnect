@@ -37,7 +37,7 @@ const Welcome = () => {
             <Heart className="w-5 h-5 text-[#39CCB7] mt-1 flex-shrink-0" />
             <div>
               <p className="text-white/90 text-sm leading-relaxed">
-                Most people feel lonely — you're not alone for feeling this way.
+                Real connection is possible. You deserve relationships that feel like home.
               </p>
             </div>
           </div>
@@ -45,7 +45,7 @@ const Welcome = () => {
             <Users className="w-5 h-5 text-[#8834AE] mt-1 flex-shrink-0" />
             <div>
               <p className="text-white/70 text-xs">
-                3 in 5 adults feel disconnected. Xela helps you reconnect with real people.
+                Built for humans seeking genuine belonging, emotional safety, and aligned friendships.
               </p>
             </div>
           </div>
