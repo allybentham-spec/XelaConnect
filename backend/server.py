@@ -332,6 +332,156 @@ async def get_course_detail(course_id: str, user = Depends(get_current_user)):
         "is_purchased": course_id in [p.get("course_id") for p in user.get("courses_progress", [])]
     }
 
+@api_router.get("/courses/{course_id}/enrollment")
+async def check_enrollment(course_id: str, user = Depends(get_current_user)):
+    """Check if user is enrolled in a course"""
+    is_enrolled = course_id in [p.get("course_id") for p in user.get("courses_progress", [])]
+    return {"enrolled": is_enrolled}
+
+@api_router.post("/courses/{course_id}/enroll")
+async def enroll_course(course_id: str, user = Depends(get_current_user)):
+    """Enroll user in a course"""
+    course = await db.courses.find_one({"id": course_id})
+    
+    if not course:
+        raise HTTPException(status_code=404, detail="Course not found")
+    
+    # Check if already enrolled
+    if course_id in [p.get("course_id") for p in user.get("courses_progress", [])]:
+        return {"message": "Already enrolled", "enrolled": True}
+    
+    # Add course to user's progress
+    await db.users.update_one(
+        {"id": user["id"]},
+        {
+            "$push": {
+                "courses_progress": {
+                    "course_id": course_id,
+                    "progress": 0,
+                    "completed_lessons": [],
+                    "enrolled_at": datetime.now(timezone.utc).isoformat()
+                }
+            }
+        }
+    )
+    
+    return {"message": "Enrolled successfully", "enrolled": True}
+
+@api_router.get("/courses/{course_id}/content")
+async def get_course_content(course_id: str, user = Depends(get_current_user)):
+    """Get course content with modules and lessons"""
+    course = await db.courses.find_one({"id": course_id})
+    
+    if not course:
+        raise HTTPException(status_code=404, detail="Course not found")
+    
+    # Check if user is enrolled
+    is_enrolled = course_id in [p.get("course_id") for p in user.get("courses_progress", [])]
+    if not is_enrolled:
+        raise HTTPException(status_code=403, detail="Not enrolled in this course")
+    
+    if "_id" in course:
+        del course["_id"]
+    
+    # Add default modules if not present
+    if "modules" not in course or not course["modules"]:
+        course["modules"] = [
+            {
+                "title": "Getting Started",
+                "lessons": [
+                    {
+                        "id": f"{course_id}_lesson_1",
+                        "title": "Introduction to the Course",
+                        "description": "Learn what this course is about and what you'll achieve",
+                        "duration": "10 min",
+                        "order": 1,
+                        "content": "Welcome to this transformative journey!"
+                    },
+                    {
+                        "id": f"{course_id}_lesson_2",
+                        "title": "Setting Your Intentions",
+                        "description": "Define your goals and expectations",
+                        "duration": "15 min",
+                        "order": 2,
+                        "content": "Let's set clear intentions for your learning path."
+                    }
+                ]
+            },
+            {
+                "title": "Core Concepts",
+                "lessons": [
+                    {
+                        "id": f"{course_id}_lesson_3",
+                        "title": "Understanding the Fundamentals",
+                        "description": "Dive deep into the core principles",
+                        "duration": "20 min",
+                        "order": 3,
+                        "content": "The foundation of mastery begins here."
+                    }
+                ]
+            }
+        ]
+    
+    # Add total lessons count
+    total_lessons = sum(len(module.get("lessons", [])) for module in course.get("modules", []))
+    course["totalLessons"] = total_lessons
+    
+    return course
+
+@api_router.get("/courses/{course_id}/progress")
+async def get_course_progress(course_id: str, user = Depends(get_current_user)):
+    """Get user's progress in a course"""
+    user_progress = next(
+        (p for p in user.get("courses_progress", []) if p.get("course_id") == course_id),
+        {"progress": 0, "completed_lessons": []}
+    )
+    
+    return {
+        "progress": user_progress.get("progress", 0),
+        "completedLessons": user_progress.get("completed_lessons", [])
+    }
+
+@api_router.post("/courses/{course_id}/lessons/{lesson_id}/complete")
+async def mark_lesson_complete(course_id: str, lesson_id: str, user = Depends(get_current_user)):
+    """Mark a lesson as complete"""
+    # Find user's progress for this course
+    course_progress = next(
+        (p for p in user.get("courses_progress", []) if p.get("course_id") == course_id),
+        None
+    )
+    
+    if not course_progress:
+        raise HTTPException(status_code=404, detail="Not enrolled in this course")
+    
+    # Add lesson to completed if not already there
+    if lesson_id not in course_progress.get("completed_lessons", []):
+        # Get course to calculate progress
+        course = await db.courses.find_one({"id": course_id})
+        if not course:
+            raise HTTPException(status_code=404, detail="Course not found")
+        
+        total_lessons = sum(len(module.get("lessons", [])) for module in course.get("modules", []))
+        new_completed_count = len(course_progress.get("completed_lessons", [])) + 1
+        new_progress = (new_completed_count / total_lessons * 100) if total_lessons > 0 else 0
+        
+        # Update user's progress
+        await db.users.update_one(
+            {"id": user["id"], "courses_progress.course_id": course_id},
+            {
+                "$push": {"courses_progress.$.completed_lessons": lesson_id},
+                "$set": {"courses_progress.$.progress": new_progress}
+            }
+        )
+        
+        return {
+            "message": "Lesson marked as complete",
+            "progress": new_progress,
+            "completed": True
+        }
+    
+    return {"message": "Lesson already completed", "completed": True}
+
+
 # Include all routers in the main app
 app.include_router(api_router)
 app.include_router(messaging_router, prefix="/api")
