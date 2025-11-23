@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-import { Sparkles, Heart, Users, ChevronDown, ChevronUp, X, Star } from 'lucide-react';
+import { Sparkles, Heart, Users, ChevronDown, ChevronUp, X, Star, UserPlus, LogIn } from 'lucide-react';
 
 const Welcome = () => {
   const navigate = useNavigate();
