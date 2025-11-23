@@ -138,24 +138,24 @@ const Welcome = () => {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 rounded-full bg-[#39CCB7] animate-pulse" />
-                <span className="text-[#39CCB7] text-sm font-semibold">Live Community</span>
+                <span className="text-[#39CCB7] text-sm font-semibold">Growing Community</span>
               </div>
-              <span className="text-white/70 text-xs font-medium">2,847 online now</span>
+              <span className="text-white/70 text-xs font-medium">Active members online</span>
             </div>
             
             {/* Stats Cards */}
             <div className="grid grid-cols-3 gap-2">
               <div className="glass-card-light rounded-xl p-4 text-center backdrop-blur-xl">
-                <div className="text-2xl font-bold text-white mb-1">12K+</div>
+                <div className="text-2xl font-bold text-white mb-1">500+</div>
                 <div className="text-xs text-white/70">Members</div>
               </div>
               <div className="glass-card-light rounded-xl p-4 text-center backdrop-blur-xl">
-                <div className="text-2xl font-bold text-white mb-1">450+</div>
+                <div className="text-2xl font-bold text-white mb-1">25+</div>
                 <div className="text-xs text-white/70">Circles</div>
               </div>
               <div className="glass-card-light rounded-xl p-4 text-center backdrop-blur-xl">
-                <div className="text-2xl font-bold text-white mb-1">98%</div>
-                <div className="text-xs text-white/70">Happy</div>
+                <div className="text-2xl font-bold text-white mb-1">Real</div>
+                <div className="text-xs text-white/70">Connections</div>
               </div>
             </div>
 
@@ -166,7 +166,7 @@ const Welcome = () => {
               <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" className="w-10 h-10 rounded-full border-2 border-white/20 object-cover" alt="Member" />
               <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" className="w-10 h-10 rounded-full border-2 border-white/20 object-cover" alt="Member" />
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#39CCB7] to-[#8834AE] border-2 border-white/20 flex items-center justify-center text-white text-xs font-bold">
-                +12K
+                +500
               </div>
             </div>
 
@@ -182,7 +182,7 @@ const Welcome = () => {
             >
               <span className="relative z-10 flex items-center justify-center">
                 <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                Start Your Transformation
+                Begin Your Journey
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-[#8834AE] to-[#39CCB7] opacity-0 group-hover:opacity-100 transition-opacity" />
             </Button>
