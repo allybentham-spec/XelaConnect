@@ -39,6 +39,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/community" element={<Community />} />
             <Route path="/courses" element={<Courses />} />
+            <Route path="/course/:courseId" element={<CourseDetail />} />
+            <Route path="/course/:courseId/learn" element={<CourseLearning />} />
             <Route path="/discover" element={<Discover />} />
             <Route path="/xelatalks" element={<XelaTalks />} />
             <Route path="/activity" element={<Activity />} />
