@@ -274,49 +274,247 @@ const EmotionalIntelligencePath = () => {
               You Don't Have to Hold Everything Alone
             </h2>
 
-            {/* Hotline Block */}
-            <Card className="bg-gradient-to-br from-[#39ccb7]/20 to-[#8834ae]/20 rounded-2xl p-8 border-2 border-[#39ccb7]/30">
-              <div className="flex items-center justify-center space-x-4 mb-4">
-                <div className="w-16 h-16 rounded-full bg-[#39ccb7]/20 flex items-center justify-center relative">
-                  <div className="absolute inset-0 rounded-full bg-[#39ccb7] animate-ping opacity-20" />
-                  <Phone className="w-8 h-8 text-[#39ccb7] relative z-10" />
-                </div>
-              </div>
-              
-              <div className="text-center space-y-2">
-                <h3 className="text-xl font-semibold text-white">
-                  Loneliness & Emotional Support Line
-                </h3>
-                <p className="text-3xl font-bold text-[#39ccb7]">
-                  📞 1-800-273-8255
-                </p>
-                <p className="text-white/60 text-sm">
-                  For moments when you need a calm human voice.
-                </p>
-              </div>
-            </Card>
-
-            {/* Additional Resources */}
-            <div className="grid md:grid-cols-2 gap-3 mt-6">
-              {[
-                { label: "Crisis Text Line", icon: MessageCircle },
-                { label: "Anonymous Listener Chat", icon: Users },
-                { label: "Emotional Safety Resources", icon: Shield },
-                { label: "Community Support Circles", icon: Heart },
-                { label: "Professional Guidance Directory", icon: Target }
-              ].map((resource, idx) => (
-                <button
-                  key={idx}
-                  className="glass-card rounded-2xl p-4 hover:bg-white/10 transition-all text-left"
-                >
-                  <div className="flex items-center space-x-3">
-                    <resource.icon className="w-5 h-5 text-[#39ccb7]" />
-                    <span className="text-white">{resource.label}</span>
-                    <ChevronRight className="w-4 h-4 text-white/40 ml-auto" />
+            {/* Primary Crisis Hotlines */}
+            <div className="space-y-4">
+              {/* 988 Suicide & Crisis Lifeline */}
+              <Card className="bg-gradient-to-br from-[#39ccb7]/20 to-[#8834ae]/20 rounded-2xl p-6 border-2 border-[#39ccb7]/30">
+                <div className="flex items-center justify-center space-x-4 mb-4">
+                  <div className="w-16 h-16 rounded-full bg-[#39ccb7]/20 flex items-center justify-center relative">
+                    <div className="absolute inset-0 rounded-full bg-[#39ccb7] animate-ping opacity-20" />
+                    <Phone className="w-8 h-8 text-[#39ccb7] relative z-10" />
                   </div>
-                </button>
-              ))}
+                </div>
+                
+                <div className="text-center space-y-2">
+                  <h3 className="text-xl font-semibold text-white">
+                    988 Suicide & Crisis Lifeline
+                  </h3>
+                  <a href="tel:988" className="block">
+                    <p className="text-3xl font-bold text-[#39ccb7] hover:text-[#39ccb7]/80 transition-colors">
+                      📞 988
+                    </p>
+                  </a>
+                  <p className="text-white/60 text-sm">
+                    For moments when you need a calm human voice.
+                  </p>
+                </div>
+              </Card>
+
+              {/* Crisis Text Line */}
+              <Card className="glass-card rounded-2xl p-5 border border-[#39ccb7]/20">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-xl bg-[#39ccb7]/20 flex items-center justify-center">
+                      <MessageCircle className="w-6 h-6 text-[#39ccb7]" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold">Crisis Text Line</h4>
+                      <p className="text-white/60 text-sm">Text support available 24/7</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[#39ccb7] font-bold">Text 741741</p>
+                  </div>
+                </div>
+              </Card>
             </div>
+
+            {/* Categorized Support Resources */}
+            <div className="space-y-4 mt-8">
+              <h3 className="text-lg font-semibold text-white/90 mb-4">Find Support That Feels Right for You</h3>
+              
+              {/* General Mental Health */}
+              <details className="glass-card rounded-2xl overflow-hidden group">
+                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Heart className="w-5 h-5 text-[#39ccb7]" />
+                    <span className="text-white font-medium">General Mental Health Support</span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                </summary>
+                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">SAMHSA National Helpline</span>
+                    <a href="tel:1-800-662-4357" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-800-662-4357</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">NAMI HelpLine</span>
+                    <a href="tel:1-800-950-6264" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-800-950-6264</a>
+                  </div>
+                </div>
+              </details>
+
+              {/* LGBTQ+ Community */}
+              <details className="glass-card rounded-2xl overflow-hidden group">
+                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Heart className="w-5 h-5 text-[#8834ae]" />
+                    <span className="text-white font-medium">LGBTQ+ Community</span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                </summary>
+                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">Trans Lifeline</span>
+                    <a href="tel:877-565-8860" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(877) 565-8860</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">TrevorLifeline (Youth)</span>
+                    <a href="tel:866-488-7386" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(866) 488-7386</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">LGBT National Hotline</span>
+                    <a href="tel:888-843-4564" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">888-843-4564</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">LGBT Youth Talkline</span>
+                    <a href="tel:800-246-7743" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">800-246-7743</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">LGBT Coming Out Support</span>
+                    <a href="tel:888-688-5428" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">888-688-5428</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">LGBT Senior Helpline</span>
+                    <a href="tel:888-234-7243" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">888-234-7243</a>
+                  </div>
+                </div>
+              </details>
+
+              {/* Teens & Youth */}
+              <details className="glass-card rounded-2xl overflow-hidden group">
+                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Users className="w-5 h-5 text-[#39ccb7]" />
+                    <span className="text-white font-medium">Teens & Youth Support</span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                </summary>
+                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">YouthLine</span>
+                    <a href="tel:877-968-8491" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(877) 968-8491</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">Teen Line</span>
+                    <a href="tel:800-852-8336" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">800-852-8336</a>
+                  </div>
+                  <div className="py-2">
+                    <span className="text-white/80">Safe Place TXT 4 HELP</span>
+                    <p className="text-[#39ccb7] font-semibold text-sm mt-1">Text "4HELP" to 44357</p>
+                  </div>
+                </div>
+              </details>
+
+              {/* Veterans & Military */}
+              <details className="glass-card rounded-2xl overflow-hidden group">
+                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Shield className="w-5 h-5 text-[#39ccb7]" />
+                    <span className="text-white font-medium">Veterans & Military</span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                </summary>
+                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
+                  <div className="py-2">
+                    <span className="text-white/80">Veterans Crisis Line</span>
+                    <p className="text-[#39ccb7] font-semibold text-sm mt-1">Call 988 then press 1</p>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">Centerstone Military Services</span>
+                    <a href="tel:866-781-8010" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(866) 781-8010</a>
+                  </div>
+                </div>
+              </details>
+
+              {/* Parents & Caregivers */}
+              <details className="glass-card rounded-2xl overflow-hidden group">
+                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Heart className="w-5 h-5 text-[#39ccb7]" />
+                    <span className="text-white font-medium">Parents & Caregivers</span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                </summary>
+                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">National Maternal Mental Health</span>
+                    <a href="tel:1-833-852-6262" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-833-852-6262</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">Parent & Youth Helpline</span>
+                    <a href="tel:1-855-427-2736" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-855-427-2736</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">Caregiver Action Network</span>
+                    <a href="tel:855-227-3640" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(855) 227-3640</a>
+                  </div>
+                </div>
+              </details>
+
+              {/* BIPOC Community */}
+              <details className="glass-card rounded-2xl overflow-hidden group">
+                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Heart className="w-5 h-5 text-[#8834ae]" />
+                    <span className="text-white font-medium">BIPOC Community</span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                </summary>
+                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">Call BlackLine</span>
+                    <a href="tel:800-604-5841" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">800-604-5841</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">Su Familia (Hispanic/Latino)</span>
+                    <a href="tel:1-866-783-2645" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-866-783-2645</a>
+                  </div>
+                </div>
+              </details>
+
+              {/* Grief & Loss */}
+              <details className="glass-card rounded-2xl overflow-hidden group">
+                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Heart className="w-5 h-5 text-[#39ccb7]" />
+                    <span className="text-white font-medium">Grief & Loss Support</span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                </summary>
+                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">Friends for Survival</span>
+                    <a href="tel:800-646-7322" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(800) 646-7322</a>
+                  </div>
+                </div>
+              </details>
+
+              {/* Additional Support */}
+              <details className="glass-card rounded-2xl overflow-hidden group">
+                <summary className="p-4 cursor-pointer hover:bg-white/10 transition-all list-none flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <Target className="w-5 h-5 text-[#39ccb7]" />
+                    <span className="text-white font-medium">Additional Support</span>
+                  </div>
+                  <ChevronRight className="w-5 h-5 text-white/40 group-open:rotate-90 transition-transform" />
+                </summary>
+                <div className="p-4 pt-0 space-y-3 border-t border-white/10">
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">National Grad Crisis Line</span>
+                    <a href="tel:877-472-3457" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">(877) 472-3457</a>
+                  </div>
+                  <div className="flex items-center justify-between py-2">
+                    <span className="text-white/80">Disaster Distress Helpline</span>
+                    <a href="tel:1-800-985-5990" className="text-[#39ccb7] font-semibold hover:text-[#39ccb7]/80">1-800-985-5990</a>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <p className="text-center text-white/60 text-sm italic mt-6">
+              Every call matters. Every text matters. You matter.
+            </p>
           </div>
         </Card>
 
