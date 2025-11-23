@@ -49,6 +49,14 @@ const Welcome = () => {
               </p>
             </div>
           </div>
+          <div className="flex items-start space-x-3">
+            <Sparkles className="w-5 h-5 text-[#39CCB7]/60 mt-1 flex-shrink-0" />
+            <div>
+              <p className="text-white/60 text-xs">
+                3 in 5 adults feel disconnected. Your need for connection is real, valid, and shared.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* CTA Buttons */}
