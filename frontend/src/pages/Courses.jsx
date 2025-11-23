@@ -9,6 +9,7 @@ import { coursesAPI } from '../utils/api';
 import { toast } from '../hooks/use-toast';
 
 const Courses = () => {
+  const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('All');
