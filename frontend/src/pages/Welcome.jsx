@@ -310,52 +310,99 @@ const Welcome = () => {
                   >
                     {expandedSections[index] ? (
                       <div className="animate-fade-in">
-                        {/* Expanded View with Large Image */}
-                        <div className="relative h-72 overflow-hidden">
-                          <img 
-                            src={section.image}
-                            alt={section.title}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/40 to-transparent" />
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              toggleSection(index);
-                            }}
-                            className="absolute top-4 right-4 p-2 rounded-full glass-card hover:bg-white/20"
-                          >
-                            <ChevronUp className="w-5 h-5 text-white" />
-                          </button>
-                        </div>
+                        {/* Expanded View */}
+                        {section.image && (
+                          <div className="relative h-72 overflow-hidden">
+                            <img 
+                              src={section.image}
+                              alt={section.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/40 to-transparent" />
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                toggleSection(index);
+                              }}
+                              className="absolute top-4 right-4 p-2 rounded-full glass-card hover:bg-white/20"
+                            >
+                              <ChevronUp className="w-5 h-5 text-white" />
+                            </button>
+                          </div>
+                        )}
                         
                         {/* Content */}
                         <div className="p-6">
-                          <h3 className="text-xl font-bold text-white mb-3">{section.title}</h3>
-                          <p className="text-white/80 text-sm leading-relaxed whitespace-pre-line">
-                            {section.content}
-                          </p>
+                          <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-xl font-bold text-white">{section.title}</h3>
+                            {!section.image && (
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleSection(index);
+                                }}
+                                className="p-2 rounded-full glass-card hover:bg-white/20"
+                              >
+                                <ChevronUp className="w-5 h-5 text-white" />
+                              </button>
+                            )}
+                          </div>
+                          
+                          {section.isHowItWorks ? (
+                            <div className="space-y-4">
+                              {section.steps.map((step, stepIdx) => (
+                                <div key={stepIdx} className="glass-card-light rounded-xl p-5">
+                                  <div className="flex items-start space-x-4">
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#39CCB7] to-[#8834AE] flex items-center justify-center flex-shrink-0">
+                                      <span className="text-white font-bold text-lg">{step.number}</span>
+                                    </div>
+                                    <div className="flex-1">
+                                      <h4 className="text-white font-semibold mb-2">{step.title}</h4>
+                                      <p className="text-white/80 text-sm leading-relaxed">{step.content}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <p className="text-white/80 text-sm leading-relaxed whitespace-pre-line">
+                              {section.content}
+                            </p>
+                          )}
                         </div>
                       </div>
                     ) : (
                       <div>
-                        {/* Collapsed Preview with Image */}
-                        <div className="relative h-48 overflow-hidden">
-                          <img 
-                            src={section.image}
-                            alt={section.title}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e]/90 via-[#1a1a2e]/60 to-transparent" />
-                          <div className="absolute bottom-4 left-4 right-4">
-                            <p className="text-white font-semibold text-base leading-relaxed">
-                              {section.preview}
-                            </p>
+                        {/* Collapsed Preview */}
+                        {section.image ? (
+                          <div className="relative h-48 overflow-hidden">
+                            <img 
+                              src={section.image}
+                              alt={section.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e]/90 via-[#1a1a2e]/60 to-transparent" />
+                            <div className="absolute bottom-4 left-4 right-4">
+                              <p className="text-white font-semibold text-base leading-relaxed">
+                                {section.preview}
+                              </p>
+                            </div>
+                            <div className="absolute top-4 right-4 p-2 rounded-full glass-card-light">
+                              <ChevronDown className="w-5 h-5 text-[#39CCB7]" />
+                            </div>
                           </div>
-                          <div className="absolute top-4 right-4 p-2 rounded-full glass-card-light">
-                            <ChevronDown className="w-5 h-5 text-[#39CCB7]" />
+                        ) : (
+                          <div className="p-6">
+                            <div className="flex items-center justify-between">
+                              <p className="text-white font-semibold text-base leading-relaxed pr-4">
+                                {section.preview}
+                              </p>
+                              <div className="p-2 rounded-full glass-card-light flex-shrink-0">
+                                <ChevronDown className="w-5 h-5 text-[#39CCB7]" />
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     )}
                   </div>
