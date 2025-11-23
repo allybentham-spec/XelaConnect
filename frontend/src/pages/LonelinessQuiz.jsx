@@ -177,6 +177,15 @@ const LonelinessQuiz = () => {
 
   const handleAnswer = (questionId, value) => {
     setAnswers({ ...answers, [questionId]: value });
+    
+    // Auto-advance to next question after selection
+    setTimeout(() => {
+      if (currentQuestion < questions.length - 1) {
+        setCurrentQuestion(currentQuestion + 1);
+      } else {
+        calculateResults();
+      }
+    }, 400); // Small delay for visual feedback
   };
 
   const handleNext = () => {
