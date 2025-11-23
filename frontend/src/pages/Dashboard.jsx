@@ -209,19 +209,10 @@ const Dashboard = () => {
             </div>
 
             {/* Stats Preview */}
-            <div className="grid grid-cols-3 gap-3 pt-4">
-              <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
-                <div className="text-lg font-bold text-[#39CCB7]">3min</div>
-                <div className="text-xs text-white/70">Complete</div>
-              </div>
-              <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
-                <div className="text-lg font-bold text-[#39CCB7]">14</div>
-                <div className="text-xs text-white/70">Questions</div>
-              </div>
-              <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
-                <div className="text-lg font-bold text-[#39CCB7]">5</div>
-                <div className="text-xs text-white/70">Options Each</div>
-              </div>
+            <div className="glass-card-light rounded-xl p-4 backdrop-blur-xl text-center">
+              <p className="text-white/90 text-sm font-medium">
+                ⏱️ 3 min | ✏️ 14 questions | 👉 Easy tap-to-select
+              </p>
             </div>
 
             <Button
