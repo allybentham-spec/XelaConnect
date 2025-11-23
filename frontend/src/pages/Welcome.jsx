@@ -284,46 +284,60 @@ const Welcome = () => {
               </div>
 
               {/* Expandable Sections */}
-              <div className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
                 {sections.map((section, index) => (
-                  <div key={index} className="glass-card rounded-xl overflow-hidden">
-                    <button
-                      onClick={() => toggleSection(index)}
-                      className="w-full p-5 flex items-center justify-between text-left hover:bg-white/5 smooth-transition"
-                    >
-                      <div className="flex-1">
-                        <p className="text-white/90 text-sm leading-relaxed">
-                          {section.preview}
-                        </p>
-                      </div>
-                      <div className="ml-4 flex-shrink-0">
-                        {expandedSections[index] ? (
-                          <ChevronUp className="w-5 h-5 text-[#39CCB7]" />
-                        ) : (
-                          <ChevronDown className="w-5 h-5 text-white/40" />
-                        )}
-                      </div>
-                    </button>
-                    
-                    {expandedSections[index] && (
+                  <div 
+                    key={index} 
+                    className="glass-card rounded-2xl overflow-hidden hover:scale-[1.02] transition-all cursor-pointer"
+                    onClick={() => toggleSection(index)}
+                  >
+                    {expandedSections[index] ? (
                       <div className="animate-fade-in">
-                        {/* Image */}
-                        {section.image && (
-                          <div className="relative h-48 overflow-hidden">
-                            <img 
-                              src={section.image}
-                              alt={section.title}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-transparent to-transparent" />
-                          </div>
-                        )}
+                        {/* Expanded View with Large Image */}
+                        <div className="relative h-72 overflow-hidden">
+                          <img 
+                            src={section.image}
+                            alt={section.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/40 to-transparent" />
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              toggleSection(index);
+                            }}
+                            className="absolute top-4 right-4 p-2 rounded-full glass-card hover:bg-white/20"
+                          >
+                            <ChevronUp className="w-5 h-5 text-white" />
+                          </button>
+                        </div>
                         
                         {/* Content */}
-                        <div className="px-5 pb-5 pt-4">
-                          <p className="text-white/70 text-sm leading-relaxed whitespace-pre-line">
+                        <div className="p-6">
+                          <h3 className="text-xl font-bold text-white mb-3">{section.title}</h3>
+                          <p className="text-white/80 text-sm leading-relaxed whitespace-pre-line">
                             {section.content}
                           </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        {/* Collapsed Preview with Image */}
+                        <div className="relative h-48 overflow-hidden">
+                          <img 
+                            src={section.image}
+                            alt={section.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e]/90 via-[#1a1a2e]/60 to-transparent" />
+                          <div className="absolute bottom-4 left-4 right-4">
+                            <p className="text-white font-semibold text-base leading-relaxed">
+                              {section.preview}
+                            </p>
+                          </div>
+                          <div className="absolute top-4 right-4 p-2 rounded-full glass-card-light">
+                            <ChevronDown className="w-5 h-5 text-[#39CCB7]" />
+                          </div>
                         </div>
                       </div>
                     )}
