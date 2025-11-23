@@ -34,6 +34,12 @@ export const circlesAPI = {
 export const coursesAPI = {
   getAll: () => api.get('/courses'),
   getById: (id) => api.get(`/courses/${id}`),
+  get: (id) => api.get(`/courses/${id}`),
+  checkEnrollment: (id) => api.get(`/courses/${id}/enrollment`),
+  enroll: (id) => api.post(`/courses/${id}/enroll`),
+  getContent: (id) => api.get(`/courses/${id}/content`),
+  getProgress: (id) => api.get(`/courses/${id}/progress`),
+  markComplete: (courseId, lessonId) => api.post(`/courses/${courseId}/lessons/${lessonId}/complete`),
 };
 
 export const authAPI = {
