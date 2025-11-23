@@ -746,25 +746,6 @@ const Profile = () => {
           </div>
         )}
 
-        {/* Daily Usage */}
-        <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
-            <BarChart3 className="w-6 h-6 text-[#39CCB7]" />
-            <span>Daily Usage</span>
-          </h2>
-          
-          <Card className="glass-card rounded-3xl p-6 border-0">
-            <p className="text-white/80 text-sm mb-4">
-              Your daily limits reset every 24 hours. Upgrade for unlimited access.
-            </p>
-            
-            <div className="glass-card-light rounded-xl p-6 text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#39CCB7] mx-auto mb-3"></div>
-              <p className="text-white/60 text-sm">Loading usage data...</p>
-            </div>
-          </Card>
-        </div>
-
         {/* Account Management */}
         <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.35s' }}>
           <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
