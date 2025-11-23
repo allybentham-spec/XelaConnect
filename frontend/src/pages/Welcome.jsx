@@ -282,10 +282,25 @@ const Welcome = () => {
                     </button>
                     
                     {expandedSections[index] && (
-                      <div className="px-5 pb-5 pt-2 animate-fade-in">
-                        <p className="text-white/70 text-sm leading-relaxed whitespace-pre-line">
-                          {section.content}
-                        </p>
+                      <div className="animate-fade-in">
+                        {/* Image */}
+                        {section.image && (
+                          <div className="relative h-48 overflow-hidden">
+                            <img 
+                              src={section.image}
+                              alt={section.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-transparent to-transparent" />
+                          </div>
+                        )}
+                        
+                        {/* Content */}
+                        <div className="px-5 pb-5 pt-4">
+                          <p className="text-white/70 text-sm leading-relaxed whitespace-pre-line">
+                            {section.content}
+                          </p>
+                        </div>
                       </div>
                     )}
                   </div>
