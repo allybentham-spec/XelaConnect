@@ -263,15 +263,24 @@ const Welcome = () => {
               <X className="w-5 h-5 text-white/80" />
             </button>
 
-            <div className="p-8 space-y-6">
-              {/* Header */}
-              <div className="text-center space-y-2 mb-8">
-                <h2 className="text-3xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
-                  What Changes When You Join
-                </h2>
-                <p className="text-white/60 text-sm">
-                  Where real connection begins.
-                </p>
+            <div className="p-10 space-y-8">
+              {/* Header with Image */}
+              <div className="relative rounded-2xl overflow-hidden mb-8">
+                <img 
+                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80"
+                  alt="Community"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/60 to-transparent flex items-end justify-center pb-8">
+                  <div className="text-center">
+                    <h2 className="text-5xl font-bold text-white mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
+                      What Changes When You Join
+                    </h2>
+                    <p className="text-white/90 text-lg">
+                      Where real connection begins.
+                    </p>
+                  </div>
+                </div>
               </div>
 
               {/* Expandable Sections */}
