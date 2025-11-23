@@ -407,13 +407,26 @@ const Profile = () => {
 
               {/* Interests */}
               <div>
-                <label className="text-white/70 text-sm mb-2 block">Interests</label>
-                <input
-                  type="text"
-                  placeholder="Wellness, Fitness, Creative (comma-separated)"
-                  className="w-full glass-card-light rounded-xl px-4 py-3 text-white border-0 focus:ring-2 focus:ring-[#39CCB7] outline-none"
-                  onChange={(e) => setProfileData({ ...profileData, interests: e.target.value.split(',').map(i => i.trim()) })}
-                />
+                <label className="text-white/70 text-sm mb-3 block">Interests (Select all that apply)</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {interestOptions.map((interest, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => handleInterestToggle(interest)}
+                      className={`px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                        profileData.interests.includes(interest)
+                          ? 'bg-gradient-to-r from-[#39CCB7] to-[#8834AE] text-white'
+                          : 'glass-card-light text-white/70 hover:bg-white/10'
+                      }`}
+                    >
+                      {interest}
+                    </button>
+                  ))}
+                </div>
+                <p className="text-white/50 text-xs mt-3">
+                  Selected: {profileData.interests.length} interests
+                </p>
               </div>
 
               {/* Save Button */}
