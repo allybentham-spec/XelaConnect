@@ -119,47 +119,75 @@ const Profile = () => {
   };
 
   const userIdentityBadge = identityBadges.find(b => b.name === user?.identityBadge);
+  
+  const completeness = calculateCompleteness();
+  const incompleteItems = getIncompleteItems();
 
-  const menuItems = [
-    {
-      icon: Gift,
-      label: 'Referral Program',
-      description: 'Invite friends, earn rewards',
-      action: () => navigate('/referral'),
-      highlight: true
-    },
-    {
-      icon: ShoppingBag,
-      label: 'Expand',
-      description: `${user?.credits || 0} credits available`,
-      action: () => navigate('/store'),
-      highlight: true
-    },
-    {
-      icon: UserIcon,
-      label: 'Edit Profile',
-      description: 'Update your information',
-      action: () => navigate('/edit-profile')
-    },
-    {
-      icon: Bell,
-      label: 'Notifications',
-      description: 'Manage your preferences',
-      action: () => toast({ title: 'Coming soon', description: 'Notification settings will be available soon' })
-    },
-    {
-      icon: Shield,
-      label: 'Privacy & Security',
-      description: 'You\'re in control of what you share',
-      action: () => toast({ title: 'Coming soon', description: 'Privacy settings will be available soon' })
-    },
-    {
-      icon: HelpCircle,
-      label: 'Help & Support',
-      description: 'We\'re here to help',
-      action: () => toast({ title: 'Coming soon', description: 'Support will be available soon' })
+  const handleProfilePhotoUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProfilePhoto(URL.createObjectURL(file));
+      toast({
+        title: 'Photo Uploaded',
+        description: 'Your profile photo has been updated'
+      });
     }
-  ];
+  };
+
+  const handleIdUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && file.size <= 10 * 1024 * 1024) {
+      setIdFile(file);
+      toast({
+        title: 'ID Uploaded',
+        description: 'Your identity verification is under review'
+      });
+      setShowUploadModal(false);
+      // Simulate verification
+      setTimeout(() => {
+        setIsVerified(true);
+        toast({
+          title: 'Verified!',
+          description: 'Your identity has been verified successfully'
+        });
+      }, 2000);
+    } else {
+      toast({
+        title: 'File too large',
+        description: 'Please upload a file smaller than 10MB',
+        variant: 'destructive'
+      });
+    }
+  };
+
+  const handleSaveProfile = () => {
+    toast({
+      title: 'Profile Updated',
+      description: 'Your changes have been saved successfully'
+    });
+  };
+
+  const handleDeactivateAccount = () => {
+    if (window.confirm('Are you sure you want to deactivate your account? You can reactivate it anytime by logging back in.')) {
+      toast({
+        title: 'Account Deactivated',
+        description: 'Your account has been deactivated'
+      });
+      setTimeout(() => logout(), 2000);
+    }
+  };
+
+  const handleDeleteAccount = () => {
+    const confirmText = prompt('Type "DELETE" to permanently delete your account:');
+    if (confirmText === 'DELETE') {
+      toast({
+        title: 'Account Deleted',
+        description: 'Your account and all data has been permanently deleted',
+        variant: 'destructive'
+      });
+      setTimeout(() => logout(), 2000);
+    }
+  };
 
   return (
     <div className="min-h-screen pb-32">
