@@ -202,47 +202,79 @@ const LonelinessQuiz = () => {
     return total;
   };
 
+  const getCategoryScores = () => {
+    const categories = {
+      emotional: [1, 2, 3, 4],
+      social: [5, 6, 7, 8],
+      purpose: [9, 10, 11],
+      quality: [12, 13, 14]
+    };
+
+    const scores = {};
+    Object.keys(categories).forEach(cat => {
+      const catQuestions = categories[cat];
+      const catScore = catQuestions.reduce((sum, qId) => sum + (answers[qId] || 0), 0);
+      const maxScore = catQuestions.length * 3;
+      scores[cat] = {
+        score: catScore,
+        percentage: Math.round((catScore / maxScore) * 100),
+        max: maxScore
+      };
+    });
+    return scores;
+  };
+
   const getResultMessage = () => {
     const score = getScore();
+    const categoryScores = getCategoryScores();
     
-    if (score <= 8) {
+    if (score <= 18) {
       return {
-        level: "Low Loneliness",
+        level: "Thriving",
         color: "#39CCB7",
-        title: "You're Doing Great!",
-        message: "Your connection levels are healthy. You have meaningful relationships and feel supported. Keep nurturing these connections and continue being open to new friendships.",
+        title: "You're Flourishing!",
+        message: "Your connection ecosystem is healthy and fulfilling. You have meaningful relationships, feel understood, and maintain emotional depth with the people in your life. You're doing the work.",
         recommendations: [
-          "Join community circles to expand your network",
-          "Share your experience with others who are struggling",
-          "Maintain your current relationships through regular check-ins"
-        ]
+          "Continue nurturing your existing relationships with intentional check-ins",
+          "Consider becoming a mentor in community circles to support others",
+          "Explore new dimensions of connection through our advanced courses",
+          "Share your story—your experience can inspire others on their journey"
+        ],
+        categoryScores,
+        insight: "Your strongest connection area is where you feel most authentic. Keep building on this foundation."
       };
-    } else if (score <= 13) {
+    } else if (score <= 28) {
       return {
-        level: "Moderate Loneliness",
+        level: "Growing",
         color: "#8834AE",
-        title: "Room for Growth",
-        message: "You experience some feelings of disconnection. This is common and there are clear paths to deepen your connections. Small steps can make a big difference.",
+        title: "You're on the Right Path",
+        message: "You have some solid connections but recognize there's room to deepen them. This self-awareness is the first step to transformation. You're ready for the next level.",
         recommendations: [
-          "Discover people who match your interests and values",
-          "Join 2-3 community circles that resonate with you",
-          "Practice reaching out to existing connections more often",
-          "Try our guided conversation prompts in Xela Talks"
-        ]
+          "Join 2-3 community circles aligned with your values and interests",
+          "Practice vulnerability with one trusted person this week",
+          "Use our Emotional Intelligence Path to build connection skills",
+          "Schedule regular 1-on-1 time with people who energize you",
+          "Try our guided conversation starters in Xela Talks"
+        ],
+        categoryScores,
+        insight: "You have the foundation—now it's about intentionality. Small, consistent actions compound into deep connection."
       };
     } else {
       return {
-        level: "High Loneliness",
+        level: "Seeking",
         color: "#207690",
         title: "You're Not Alone in This",
-        message: "Many people feel this way, and it takes courage to acknowledge it. The good news? Connection is a skill that can be learned and practiced. You're in the right place.",
+        message: "Many high-achieving, thoughtful people feel exactly what you're feeling. The fact that you're here, taking this assessment, shows incredible self-awareness and courage. Connection is a skill—and you're about to learn it.",
         recommendations: [
-          "Start with our Emotional Intelligence Path",
-          "Join supportive circles where vulnerability is welcomed",
-          "Use Xela Talks to practice opening up in a safe space",
-          "Consider our guided programs for building connection skills",
-          "Remember: Reaching out is strength, not weakness"
-        ]
+          "Start with our Emotional Intelligence Path—it's designed for exactly where you are right now",
+          "Join beginner-friendly circles where vulnerability is normalized and encouraged",
+          "Book a session with Xela Talks to practice opening up in a judgment-free space",
+          "Focus on quality over quantity: one genuine connection > 100 surface relationships",
+          "Remember: This is temporary. You're building something real.",
+          "Consider our Connection Jumpstart program for structured support"
+        ],
+        categoryScores,
+        insight: "Your journey starts now. Every person in our thriving community started exactly where you are."
       };
     }
   };
