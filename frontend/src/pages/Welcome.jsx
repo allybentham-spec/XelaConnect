@@ -254,7 +254,7 @@ const Welcome = () => {
           />
           
           {/* Modal Content */}
-          <div className="relative w-full max-w-2xl max-h-[85vh] bg-gradient-to-br from-[#1a1a2e]/95 via-[#16213e]/95 to-[#0f1419]/95 backdrop-blur-xl border border-white/10 rounded-t-3xl shadow-2xl animate-slide-up overflow-y-auto">
+          <div className="relative w-full max-w-5xl max-h-[90vh] bg-gradient-to-br from-[#1a1a2e]/95 via-[#16213e]/95 to-[#0f1419]/95 backdrop-blur-xl border border-white/10 rounded-t-3xl shadow-2xl animate-slide-up overflow-y-auto">
             {/* Close Button */}
             <button
               onClick={() => setShowModal(false)}
