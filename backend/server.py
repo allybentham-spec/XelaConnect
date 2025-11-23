@@ -497,6 +497,126 @@ async def mark_lesson_complete(course_id: str, lesson_id: str, user = Depends(ge
     
     return {"message": "Lesson already completed", "completed": True}
 
+# ==================== REFLECTION ENDPOINTS ====================
+
+@api_router.post("/reflections")
+async def create_reflection(reflection_data: ReflectionCreate, user = Depends(get_current_user)):
+    """Create a new reflection"""
+    from datetime import timezone
+    
+    reflection = Reflection(
+        user_id=user["id"],
+        prompt=reflection_data.prompt,
+        content=reflection_data.content,
+        is_public=reflection_data.is_public,
+        created_at=datetime.now(timezone.utc),
+        updated_at=datetime.now(timezone.utc)
+    )
+    
+    reflection_dict = reflection.dict()
+    await db.reflections.insert_one(reflection_dict)
+    
+    # Remove MongoDB _id
+    if "_id" in reflection_dict:
+        del reflection_dict["_id"]
+    
+    return reflection_dict
+
+@api_router.get("/reflections")
+async def get_user_reflections(user = Depends(get_current_user)):
+    """Get all reflections for the current user"""
+    reflections = await db.reflections.find(
+        {"user_id": user["id"]},
+        {"_id": 0}
+    ).sort("created_at", -1).to_list(1000)
+    
+    return {"reflections": reflections}
+
+@api_router.get("/reflections/public")
+async def get_public_reflections(limit: int = 50):
+    """Get public reflections from all users"""
+    reflections = await db.reflections.find(
+        {"is_public": True},
+        {"_id": 0}
+    ).sort("created_at", -1).limit(limit).to_list(limit)
+    
+    # Get user info for each reflection
+    for reflection in reflections:
+        user = await db.users.find_one({"id": reflection["user_id"]}, {"_id": 0, "name": 1, "picture": 1})
+        if user:
+            reflection["user"] = user
+    
+    return {"reflections": reflections}
+
+@api_router.get("/reflections/{reflection_id}")
+async def get_reflection(reflection_id: str, user = Depends(get_current_user)):
+    """Get a specific reflection"""
+    reflection = await db.reflections.find_one(
+        {"id": reflection_id, "user_id": user["id"]},
+        {"_id": 0}
+    )
+    
+    if not reflection:
+        raise HTTPException(status_code=404, detail="Reflection not found")
+    
+    return reflection
+
+@api_router.put("/reflections/{reflection_id}")
+async def update_reflection(
+    reflection_id: str, 
+    reflection_update: ReflectionUpdate, 
+    user = Depends(get_current_user)
+):
+    """Update a reflection"""
+    from datetime import timezone
+    
+    # Check if reflection exists and belongs to user
+    reflection = await db.reflections.find_one(
+        {"id": reflection_id, "user_id": user["id"]}
+    )
+    
+    if not reflection:
+        raise HTTPException(status_code=404, detail="Reflection not found")
+    
+    # Build update dict
+    update_data = {}
+    if reflection_update.content is not None:
+        update_data["content"] = reflection_update.content
+    if reflection_update.is_public is not None:
+        update_data["is_public"] = reflection_update.is_public
+    
+    update_data["updated_at"] = datetime.now(timezone.utc)
+    
+    # Update reflection
+    await db.reflections.update_one(
+        {"id": reflection_id},
+        {"$set": update_data}
+    )
+    
+    # Get updated reflection
+    updated_reflection = await db.reflections.find_one(
+        {"id": reflection_id},
+        {"_id": 0}
+    )
+    
+    return updated_reflection
+
+@api_router.delete("/reflections/{reflection_id}")
+async def delete_reflection(reflection_id: str, user = Depends(get_current_user)):
+    """Delete a reflection"""
+    # Check if reflection exists and belongs to user
+    reflection = await db.reflections.find_one(
+        {"id": reflection_id, "user_id": user["id"]}
+    )
+    
+    if not reflection:
+        raise HTTPException(status_code=404, detail="Reflection not found")
+    
+    # Delete reflection
+    await db.reflections.delete_one({"id": reflection_id})
+    
+    return {"message": "Reflection deleted successfully"}
+
 
 # Include all routers in the main app
 app.include_router(api_router)
