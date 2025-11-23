@@ -711,11 +711,31 @@ const EmotionalIntelligencePath = () => {
                         placeholder="Take your time. Write freely..."
                         className="w-full h-40 bg-white/5 border border-white/10 rounded-xl p-4 text-white placeholder:text-white/40 focus:bg-white/10 focus:border-[#39ccb7] outline-none resize-none"
                       />
+                      
+                      {/* Privacy Toggle */}
+                      <div className="mt-4 flex items-center justify-between p-4 glass-card rounded-xl">
+                        <div>
+                          <p className="text-white font-medium">Share with Community</p>
+                          <p className="text-white/60 text-sm">Make this reflection visible to others</p>
+                        </div>
+                        <button
+                          onClick={() => setIsPublic(!isPublic)}
+                          className={`relative w-14 h-8 rounded-full transition-all ${
+                            isPublic ? 'bg-[#39ccb7]' : 'bg-white/20'
+                          }`}
+                        >
+                          <div className={`absolute top-1 w-6 h-6 rounded-full bg-white transition-all ${
+                            isPublic ? 'right-1' : 'left-1'
+                          }`} />
+                        </button>
+                      </div>
+
                       <Button
                         onClick={handleSaveReflection}
-                        className="mt-4 w-full bg-gradient-to-r from-[#39ccb7] to-[#8834ae] hover:opacity-90"
+                        disabled={saving}
+                        className="mt-4 w-full bg-gradient-to-r from-[#39ccb7] to-[#8834ae] hover:opacity-90 disabled:opacity-50"
                       >
-                        Save Reflection
+                        {saving ? 'Saving...' : 'Save Reflection'}
                       </Button>
                     </div>
                   )}
