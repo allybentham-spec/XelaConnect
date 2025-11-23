@@ -341,24 +341,26 @@ const EmotionalIntelligencePath = () => {
               </a>
 
               {/* Crisis Text Line */}
-              <div className="glass-card rounded-3xl p-6 border border-[#39ccb7]/20 hover:border-[#39ccb7]/40 hover:bg-white/5 transition-all">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-14 h-14 rounded-2xl bg-[#39ccb7]/20 flex items-center justify-center">
-                      <MessageCircle className="w-7 h-7 text-[#39ccb7]" />
+              <a href="sms:741741&body=HELLO" className="block group">
+                <div className="glass-card rounded-3xl p-6 border border-[#39ccb7]/20 hover:border-[#39ccb7]/40 hover:bg-white/5 hover:scale-[1.01] transition-all cursor-pointer">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-14 h-14 rounded-2xl bg-[#39ccb7]/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <MessageCircle className="w-7 h-7 text-[#39ccb7]" />
+                      </div>
+                      <div>
+                        <h4 className="text-white font-semibold text-lg group-hover:text-[#39ccb7] transition-colors">Crisis Text Line</h4>
+                        <p className="text-white/60 text-sm">Available 24/7 • Confidential • Tap to text</p>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-white font-semibold text-lg">Crisis Text Line</h4>
-                      <p className="text-white/60 text-sm">Available 24/7 • Confidential</p>
+                    <div className="text-right bg-[#39ccb7]/10 px-6 py-3 rounded-2xl group-hover:bg-[#39ccb7]/20 transition-all">
+                      <p className="text-xs text-white/60 mb-1">Text this word:</p>
+                      <p className="text-[#39ccb7] font-bold text-xl">HELLO</p>
+                      <p className="text-xs text-white/60 mt-1">to 741741</p>
                     </div>
-                  </div>
-                  <div className="text-right bg-[#39ccb7]/10 px-6 py-3 rounded-2xl">
-                    <p className="text-xs text-white/60 mb-1">Text this word:</p>
-                    <p className="text-[#39ccb7] font-bold text-xl">HELLO</p>
-                    <p className="text-xs text-white/60 mt-1">to 741741</p>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* Categorized Support Resources */}
