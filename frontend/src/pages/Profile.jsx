@@ -15,6 +15,45 @@ const Profile = () => {
   const [reflections, setReflections] = useState([]);
   const [loadingReflections, setLoadingReflections] = useState(true);
   const [editingReflection, setEditingReflection] = useState(null);
+  
+  // New state for enhanced profile
+  const [darkMode, setDarkMode] = useState(false);
+  const [profileData, setProfileData] = useState({
+    name: user?.name || '',
+    email: user?.email || '',
+    bio: '',
+    energyType: '',
+    interests: []
+  });
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [idFile, setIdFile] = useState(null);
+  const [profilePhoto, setProfilePhoto] = useState(null);
+  const [isVerified, setIsVerified] = useState(false);
+  
+  // Profile completeness calculation
+  const calculateCompleteness = () => {
+    let completed = 0;
+    const total = 6;
+    
+    if (profilePhoto || user?.picture) completed++;
+    if (profileData.bio) completed++;
+    if (profileData.energyType) completed++;
+    if (profileData.interests.length > 0) completed++;
+    if (isVerified) completed++;
+    if (user?.name) completed++;
+    
+    return Math.round((completed / total) * 100);
+  };
+  
+  const getIncompleteItems = () => {
+    const items = [];
+    if (!profilePhoto && !user?.picture) items.push('Add profile photo');
+    if (!profileData.bio) items.push('Write your bio');
+    if (!profileData.energyType) items.push('Complete energy signature');
+    if (profileData.interests.length === 0) items.push('Add interests');
+    if (!isVerified) items.push('Verify your identity');
+    return items;
+  };
 
   useEffect(() => {
     fetchReflections();
