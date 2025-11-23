@@ -388,7 +388,16 @@ const CommunityEnhanced = () => {
                     {/* Action Buttons */}
                     <div className="flex items-center space-x-2">
                       <Button
-                        onClick={() => handleJoinCircle(circle)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (isJoined) {
+                            // If already joined, go directly to circle
+                            navigate(`/circle/${circle.id}`);
+                          } else {
+                            // If not joined, join first then navigate
+                            handleJoinCircle(circle);
+                          }
+                        }}
                         className={`flex-1 rounded-xl smooth-transition ${
                           isJoined
                             ? 'bg-white/10 text-white hover:bg-white/15'
@@ -398,7 +407,7 @@ const CommunityEnhanced = () => {
                         {isJoined ? (
                           <>
                             <CheckCircle2 className="w-4 h-4 mr-2" />
-                            Joined
+                            Enter Circle
                           </>
                         ) : (
                           <>
@@ -409,7 +418,10 @@ const CommunityEnhanced = () => {
                       </Button>
                       
                       <Button
-                        onClick={() => setSelectedCircle(circle)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedCircle(circle);
+                        }}
                         variant="ghost"
                         className="text-white hover:bg-white/10 rounded-xl"
                       >
