@@ -280,19 +280,20 @@ async def join_circle(circle_id: str, user = Depends(get_current_user_optional))
     return {"message": "Successfully joined circle", "circle": updated_circle}
 
 @api_router.post("/circles/{circle_id}/leave")
-async def leave_circle(circle_id: str, user = Depends(get_current_user)):
+async def leave_circle(circle_id: str, user = Depends(get_current_user_optional)):
     """Leave a circle"""
-    # Remove user from circle members
-    await db.circles.update_one(
-        {"id": circle_id},
-        {
-            "$pull": {"members": user["id"]},
-            "$inc": {"members_count": -1}
-        }
-    )
-    
-    # Remove circle from user's joined circles
-    await db.users.update_one(
+    if user:
+        # Remove user from circle members
+        await db.circles.update_one(
+            {"id": circle_id},
+            {
+                "$pull": {"members": user["id"]},
+                "$inc": {"members_count": -1}
+            }
+        )
+        
+        # Remove circle from user's joined circles
+        await db.users.update_one(
         {"id": user["id"]},
         {"$pull": {"circles_joined": circle_id}}
     )
