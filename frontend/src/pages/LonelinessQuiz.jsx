@@ -32,9 +32,11 @@ const LonelinessQuiz = () => {
       question: "How often do you feel left out?",
       subtext: "Consider both social situations and deeper relationships",
       options: [
-        { value: 1, label: "Hardly ever", description: "I feel included and valued" },
-        { value: 2, label: "Some of the time", description: "Sometimes I feel on the outside" },
-        { value: 3, label: "Often", description: "I regularly feel excluded" }
+        { value: 1, label: "Never", description: "I always feel included and valued" },
+        { value: 2, label: "Rarely", description: "Very seldom, and it doesn't bother me much" },
+        { value: 3, label: "Sometimes", description: "Occasionally I feel on the outside" },
+        { value: 4, label: "Often", description: "I regularly feel excluded" },
+        { value: 5, label: "Always", description: "I constantly feel like an outsider" }
       ]
     },
     {
