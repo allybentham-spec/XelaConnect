@@ -269,59 +269,73 @@ const EmotionalIntelligencePath = () => {
 
         {/* Support + Hotline Access */}
         <Card className="glass-card rounded-3xl p-8 border-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-white text-center" style={{ fontFamily: 'Playfair Display, serif' }}>
-              You Don't Have to Hold Everything Alone
-            </h2>
+          <div className="space-y-8">
+            <div className="text-center space-y-3">
+              <h2 className="text-4xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
+                You Don't Have to Hold Everything Alone
+              </h2>
+              <p className="text-white/60 text-lg">
+                Real people. Real support. Right now.
+              </p>
+            </div>
 
             {/* Primary Crisis Hotlines */}
             <div className="space-y-4">
               {/* 988 Suicide & Crisis Lifeline */}
-              <Card className="bg-gradient-to-br from-[#39ccb7]/20 to-[#8834ae]/20 rounded-2xl p-6 border-2 border-[#39ccb7]/30">
-                <div className="flex items-center justify-center space-x-4 mb-4">
-                  <div className="w-16 h-16 rounded-full bg-[#39ccb7]/20 flex items-center justify-center relative">
-                    <div className="absolute inset-0 rounded-full bg-[#39ccb7] animate-ping opacity-20" />
-                    <Phone className="w-8 h-8 text-[#39ccb7] relative z-10" />
+              <a href="tel:988" className="block group">
+                <Card className="bg-gradient-to-br from-[#39ccb7]/20 to-[#8834ae]/20 rounded-3xl p-8 border-2 border-[#39ccb7]/30 hover:border-[#39ccb7]/60 hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                  <div className="flex items-center justify-center space-x-4 mb-6">
+                    <div className="w-20 h-20 rounded-full bg-[#39ccb7]/20 flex items-center justify-center relative">
+                      <div className="absolute inset-0 rounded-full bg-[#39ccb7] animate-ping opacity-20" />
+                      <Phone className="w-10 h-10 text-[#39ccb7] relative z-10 group-hover:scale-110 transition-transform" />
+                    </div>
                   </div>
-                </div>
-                
-                <div className="text-center space-y-2">
-                  <h3 className="text-xl font-semibold text-white">
-                    988 Suicide & Crisis Lifeline
-                  </h3>
-                  <a href="tel:988" className="block">
-                    <p className="text-3xl font-bold text-[#39ccb7] hover:text-[#39ccb7]/80 transition-colors">
-                      📞 988
+                  
+                  <div className="text-center space-y-3">
+                    <h3 className="text-2xl font-semibold text-white group-hover:text-[#39ccb7] transition-colors">
+                      988 Suicide & Crisis Lifeline
+                    </h3>
+                    <div className="inline-block px-8 py-4 rounded-2xl bg-white/10 group-hover:bg-white/20 transition-all">
+                      <p className="text-4xl font-bold text-[#39ccb7] group-hover:scale-110 transition-transform inline-block">
+                        📞 988
+                      </p>
+                    </div>
+                    <p className="text-white/70 text-base">
+                      24/7 • Confidential • Free • Tap to call now
                     </p>
-                  </a>
-                  <p className="text-white/60 text-sm">
-                    For moments when you need a calm human voice.
-                  </p>
-                </div>
-              </Card>
+                  </div>
+                </Card>
+              </a>
 
               {/* Crisis Text Line */}
-              <Card className="glass-card rounded-2xl p-5 border border-[#39ccb7]/20">
+              <div className="glass-card rounded-3xl p-6 border border-[#39ccb7]/20 hover:border-[#39ccb7]/40 hover:bg-white/5 transition-all">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#39ccb7]/20 flex items-center justify-center">
-                      <MessageCircle className="w-6 h-6 text-[#39ccb7]" />
+                    <div className="w-14 h-14 rounded-2xl bg-[#39ccb7]/20 flex items-center justify-center">
+                      <MessageCircle className="w-7 h-7 text-[#39ccb7]" />
                     </div>
                     <div>
-                      <h4 className="text-white font-semibold">Crisis Text Line</h4>
-                      <p className="text-white/60 text-sm">Text support available 24/7</p>
+                      <h4 className="text-white font-semibold text-lg">Crisis Text Line</h4>
+                      <p className="text-white/60 text-sm">Available 24/7 • Confidential</p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-[#39ccb7] font-bold">Text 741741</p>
+                  <div className="text-right bg-[#39ccb7]/10 px-6 py-3 rounded-2xl">
+                    <p className="text-xs text-white/60 mb-1">Text this word:</p>
+                    <p className="text-[#39ccb7] font-bold text-xl">HELLO</p>
+                    <p className="text-xs text-white/60 mt-1">to 741741</p>
                   </div>
                 </div>
-              </Card>
+              </div>
             </div>
 
             {/* Categorized Support Resources */}
-            <div className="space-y-4 mt-8">
-              <h3 className="text-lg font-semibold text-white/90 mb-4">Find Support That Feels Right for You</h3>
+            <div className="space-y-4 mt-10">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-semibold text-white mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  Find Support That Feels Right for You
+                </h3>
+                <p className="text-white/60 text-sm">Tap any category to see specialized resources</p>
+              </div>
               
               {/* General Mental Health */}
               <details className="glass-card rounded-2xl overflow-hidden group">
