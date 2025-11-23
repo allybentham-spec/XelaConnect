@@ -26,6 +26,7 @@ import VideoLobby from './pages/VideoLobby';
 import VideoCall from './pages/VideoCall';
 import CourseDetail from './pages/CourseDetail';
 import CourseLearning from './pages/CourseLearning';
+import EmotionalIntelligencePath from './pages/EmotionalIntelligencePath';
 
 function App() {
   return (
