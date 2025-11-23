@@ -19,9 +19,11 @@ const LonelinessQuiz = () => {
       question: "How often do you feel that you lack companionship?",
       subtext: "Think about the quality of emotional support in your life",
       options: [
-        { value: 1, label: "Hardly ever", description: "I feel supported and connected" },
-        { value: 2, label: "Some of the time", description: "It varies depending on the day" },
-        { value: 3, label: "Often", description: "I frequently feel alone" }
+        { value: 1, label: "Never", description: "I always feel supported and connected" },
+        { value: 2, label: "Rarely", description: "Very occasionally, but I bounce back quickly" },
+        { value: 3, label: "Sometimes", description: "It varies depending on the situation" },
+        { value: 4, label: "Often", description: "I frequently feel alone" },
+        { value: 5, label: "Always", description: "This is a constant feeling for me" }
       ]
     },
     {
