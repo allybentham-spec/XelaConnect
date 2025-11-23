@@ -590,9 +590,20 @@ const LonelinessQuiz = () => {
         {/* Question Card */}
         <Card className="glass-card rounded-3xl p-8 border-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-white leading-relaxed">
-              {questions[currentQuestion].question}
-            </h2>
+            {/* Category Badge */}
+            <div className="inline-flex items-center space-x-2 glass-card-light px-4 py-2 rounded-full">
+              <div className="w-2 h-2 rounded-full bg-[#39CCB7]" />
+              <span className="text-white/80 text-sm font-medium">{questions[currentQuestion].category}</span>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-semibold text-white leading-relaxed mb-2">
+                {questions[currentQuestion].question}
+              </h2>
+              <p className="text-white/60 text-sm italic">
+                {questions[currentQuestion].subtext}
+              </p>
+            </div>
 
             <div className="space-y-3">
               {questions[currentQuestion].options.map((option, idx) => (
@@ -605,11 +616,14 @@ const LonelinessQuiz = () => {
                       : 'glass-card hover:bg-white/5'
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-white font-medium">{option.label}</span>
-                    {answers[questions[currentQuestion].id] === option.value && (
-                      <CheckCircle className="w-5 h-5 text-[#39CCB7]" />
-                    )}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-white font-semibold">{option.label}</span>
+                      {answers[questions[currentQuestion].id] === option.value && (
+                        <CheckCircle className="w-5 h-5 text-[#39CCB7]" />
+                      )}
+                    </div>
+                    <p className="text-white/60 text-sm">{option.description}</p>
                   </div>
                 </button>
               ))}
