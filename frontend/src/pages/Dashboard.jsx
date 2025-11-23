@@ -96,7 +96,11 @@ const Dashboard = () => {
         </div>
 
         {/* Emotional Growth Card */}
-        <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <Card 
+          onClick={() => navigate('/emotional-intelligence')}
+          className="glass-card rounded-3xl p-6 border-0 cursor-pointer hover:bg-white/10 hover:scale-[1.02] smooth-transition animate-fade-in-up" 
+          style={{ animationDelay: '0.2s' }}
+        >
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
