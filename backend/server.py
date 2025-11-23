@@ -338,8 +338,10 @@ async def get_course_detail(course_id: str, user = Depends(get_current_user_opti
     }
 
 @api_router.get("/courses/{course_id}/enrollment")
-async def check_enrollment(course_id: str, user = Depends(get_current_user)):
+async def check_enrollment(course_id: str, user = Depends(get_current_user_optional)):
     """Check if user is enrolled in a course"""
+    if not user:
+        return {"enrolled": False}
     is_enrolled = course_id in [p.get("course_id") for p in user.get("courses_progress", [])]
     return {"enrolled": is_enrolled}
 
