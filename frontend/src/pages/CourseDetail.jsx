@@ -278,15 +278,23 @@ const CourseDetail = () => {
 
         {/* Course Curriculum */}
         <Card className="glass-card rounded-3xl p-8 border-0">
-          <h2 className="text-2xl font-bold text-white mb-6">Course Curriculum</h2>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-white">Course Curriculum</h2>
+            {course.preview_modules && course.preview_modules.length > 0 && (
+              <Badge className="bg-[#39CCB7]/20 text-[#39CCB7] border-0">
+                {course.preview_modules.length} Free Preview Module{course.preview_modules.length > 1 ? 's' : ''}
+              </Badge>
+            )}
+          </div>
           <div className="space-y-3">
-            {(course.curriculum || [
-              { module: 'Introduction & Foundations', lessons: 4, duration: '45 min', locked: false },
-              { module: 'Core Concepts', lessons: 6, duration: '1.5 hours', locked: !isEnrolled },
-              { module: 'Practical Applications', lessons: 5, duration: '1.2 hours', locked: !isEnrolled },
-              { module: 'Advanced Techniques', lessons: 6, duration: '2 hours', locked: !isEnrolled },
-              { module: 'Final Project', lessons: 3, duration: '1 hour', locked: !isEnrolled }
-            ]).map((module, idx) => (
+            {(course.modules || [
+              { title: 'Introduction & Foundations', lessons: [{ title: 'Getting Started' }], duration: '45 min' },
+              { title: 'Core Concepts', lessons: [{ title: 'Deep Dive' }], duration: '1.5 hours' }
+            ]).map((module, idx) => {
+              const isPreview = course.preview_modules && course.preview_modules.includes(idx);
+              const isLocked = !isEnrolled && !isPreview;
+              
+              return (
               <div
                 key={idx}
                 className="glass-card rounded-2xl p-4 hover:bg-white/10 transition-all cursor-pointer"
