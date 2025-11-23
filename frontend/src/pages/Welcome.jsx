@@ -195,7 +195,7 @@ const Welcome = () => {
             </div>
 
             <Button
-              onClick={() => navigate('/signup')}
+              onClick={() => navigate('/expand')}
               className="w-full h-14 rounded-2xl bg-gradient-to-r from-[#39CCB7] via-[#5BB8A8] to-[#8834AE] hover:opacity-90 smooth-transition shadow-lg text-lg font-bold relative overflow-hidden group"
             >
               <span className="relative z-10 flex items-center justify-center">
@@ -207,34 +207,11 @@ const Welcome = () => {
           </div>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="space-y-4">
-          <Button
-            onClick={() => navigate('/signup')}
-            className="w-full h-14 text-lg font-semibold rounded-2xl bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 smooth-transition shadow-lg"
-          >
-            Create Account
-          </Button>
-          
-          <Button
-            onClick={() => navigate('/login')}
-            variant="outline"
-            className="w-full h-14 text-lg font-semibold rounded-2xl glass-button text-white border-white/20"
-          >
-            Sign In
-          </Button>
-
-          <button
-            onClick={() => navigate('/dashboard')}
-            className="w-full text-center text-sm text-white/60 hover:text-white/80 smooth-transition py-2"
-          >
-            Continue as Guest
-          </button>
-
-          {/* What Changes Link */}
+        {/* What Changes Link */}
+        <div className="flex justify-center">
           <button
             onClick={() => setShowModal(true)}
-            className="w-full text-center text-base text-[#39CCB7] hover:text-[#39CCB7]/80 smooth-transition py-3 font-medium flex items-center justify-center gap-2"
+            className="text-center text-base text-[#39CCB7] hover:text-[#39CCB7]/80 smooth-transition py-3 font-medium flex items-center gap-2"
           >
             What changes when you join <span className="text-lg">→</span>
           </button>
