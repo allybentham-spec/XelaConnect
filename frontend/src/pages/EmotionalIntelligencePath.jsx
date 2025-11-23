@@ -27,6 +27,8 @@ const EmotionalIntelligencePath = () => {
   const [showAuditResult, setShowAuditResult] = useState(false);
   const [expandedPrompt, setExpandedPrompt] = useState(null);
   const [journalText, setJournalText] = useState('');
+  const [isPublic, setIsPublic] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [currentCoachingIndex, setCurrentCoachingIndex] = useState(0);
 
   // Mock emotional growth stats - in production, these would come from user data
