@@ -211,7 +211,7 @@ const Dashboard = () => {
             {/* Stats Preview */}
             <div className="grid grid-cols-3 gap-3 pt-4">
               <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
-                <div className="text-lg font-bold text-[#39CCB7]">4min</div>
+                <div className="text-lg font-bold text-[#39CCB7]">3min</div>
                 <div className="text-xs text-white/70">Complete</div>
               </div>
               <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
@@ -219,8 +219,8 @@ const Dashboard = () => {
                 <div className="text-xs text-white/70">Questions</div>
               </div>
               <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
-                <div className="text-lg font-bold text-[#39CCB7]">4</div>
-                <div className="text-xs text-white/70">Dimensions</div>
+                <div className="text-lg font-bold text-[#39CCB7]">5</div>
+                <div className="text-xs text-white/70">Options Each</div>
               </div>
             </div>
 
