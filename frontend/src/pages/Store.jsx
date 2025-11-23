@@ -131,7 +131,7 @@ const Store = () => {
         {/* Header */}
         <div className="space-y-3 animate-fade-in-up">
           <h1 className="text-3xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Store
+            Expand
           </h1>
           <div className="flex items-center justify-between">
             <p className="text-white/60">Unlock your full potential</p>
