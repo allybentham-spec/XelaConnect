@@ -9,7 +9,8 @@ from dotenv import load_dotenv
 
 from models import (
     User, UserCreate, LoginRequest, GoogleAuthRequest, AuthResponse,
-    Circle, Course, Connection, Conversation, Message, Activity, Referral
+    Circle, Course, Connection, Conversation, Message, Activity, Referral,
+    Reflection, ReflectionCreate, ReflectionUpdate
 )
 from auth import (
     hash_password, verify_password, create_user_session,
