@@ -177,10 +177,11 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Expand Your Circle Section */}
+        {/* Connection Check-In Section */}
         <Card 
-          className="glass-card rounded-3xl overflow-hidden border border-[#39CCB7]/30 animate-fade-in-up relative" 
+          className="glass-card rounded-3xl overflow-hidden border border-[#39CCB7]/30 animate-fade-in-up relative cursor-pointer hover:scale-[1.01] transition-all" 
           style={{ animationDelay: '0.45s' }}
+          onClick={() => navigate('/connection-quiz')}
         >
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 opacity-30">
@@ -192,41 +193,49 @@ const Dashboard = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-[#39CCB7]/50 via-[#1a1a2e]/80 to-[#8834AE]/50" />
           </div>
           
-          <div className="relative z-10 p-6 space-y-4">
-            <div className="text-center space-y-2">
-              <div className="flex items-center justify-center mb-3">
-                <div className="glass-card-light p-3 rounded-2xl backdrop-blur-xl">
-                  <Users className="w-7 h-7 text-[#39CCB7]" />
+          <div className="relative z-10 p-8 space-y-4">
+            <div className="text-center space-y-3">
+              <div className="flex items-center justify-center mb-4">
+                <div className="glass-card-light p-4 rounded-2xl backdrop-blur-xl">
+                  <Heart className="w-8 h-8 text-[#39CCB7]" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Expand Your Circle
+                How Connected Do You Feel?
               </h3>
-              <p className="text-white/90 text-sm leading-relaxed max-w-md mx-auto">
-                Get matched with people who truly understand you. Find your community.
+              <p className="text-white/90 text-base leading-relaxed max-w-lg mx-auto">
+                Take our quick 2-minute check-in to understand your connection needs and get personalized recommendations.
               </p>
             </div>
 
-            {/* Action Buttons */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <Button
-                onClick={() => navigate('/community')}
-                className="h-20 rounded-2xl glass-button text-white hover:bg-white/10 flex flex-col items-center justify-center border border-white/20"
-              >
-                <Users className="w-6 h-6 mb-2 text-[#39CCB7]" />
-                <span className="font-semibold">Join Circles</span>
-                <span className="text-xs text-white/60 mt-1">Find your community</span>
-              </Button>
-
-              <Button
-                onClick={() => navigate('/discover')}
-                className="h-20 rounded-2xl glass-button text-white hover:bg-white/10 flex flex-col items-center justify-center border border-white/20"
-              >
-                <Sparkles className="w-6 h-6 mb-2 text-[#8834AE]" />
-                <span className="font-semibold">Discover</span>
-                <span className="text-xs text-white/60 mt-1">Meet your people</span>
-              </Button>
+            {/* Stats Preview */}
+            <div className="grid grid-cols-3 gap-3 pt-4">
+              <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
+                <div className="text-lg font-bold text-[#39CCB7]">2min</div>
+                <div className="text-xs text-white/70">Quick</div>
+              </div>
+              <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
+                <div className="text-lg font-bold text-[#39CCB7]">6</div>
+                <div className="text-xs text-white/70">Questions</div>
+              </div>
+              <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
+                <div className="text-lg font-bold text-[#39CCB7]">Free</div>
+                <div className="text-xs text-white/70">Always</div>
+              </div>
             </div>
+
+            <Button
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate('/connection-quiz');
+              }}
+              className="w-full h-14 rounded-2xl bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 smooth-transition shadow-lg text-lg font-bold relative overflow-hidden group"
+            >
+              <span className="relative z-10 flex items-center justify-center">
+                <Heart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                Start Your Check-In
+              </span>
+            </Button>
           </div>
         </Card>
 
