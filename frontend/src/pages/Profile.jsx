@@ -91,7 +91,7 @@ const Profile = () => {
     },
     {
       icon: ShoppingBag,
-      label: 'Store',
+      label: 'Expand',
       description: `${user?.credits || 0} credits available`,
       action: () => navigate('/store'),
       highlight: true
