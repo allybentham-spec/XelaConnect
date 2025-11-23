@@ -111,7 +111,8 @@ const Courses = () => {
             {filteredCourses.map((course, idx) => (
             <Card
               key={course.id}
-              className="glass-card rounded-3xl p-6 border-0 hover:bg-white/10 smooth-transition animate-fade-in-up"
+              onClick={() => navigate(`/course/${course.id}`)}
+              className="glass-card rounded-3xl p-6 border-0 hover:bg-white/10 smooth-transition animate-fade-in-up cursor-pointer"
               style={{ animationDelay: `${0.3 + idx * 0.1}s` }}
             >
               <div className="flex space-x-4">
