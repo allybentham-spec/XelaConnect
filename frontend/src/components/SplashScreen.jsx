@@ -109,11 +109,11 @@ const SplashScreen = ({ onComplete }) => {
         }
 
         .animate-breath {
-          animation: breath 4s ease-in-out infinite;
+          animation: breath 5s ease-in-out infinite;
         }
 
         .animate-breath-delayed {
-          animation: breath-delayed 4s ease-in-out infinite 0.6s;
+          animation: breath-delayed 5s ease-in-out infinite 0.8s;
         }
       `}</style>
     </div>
