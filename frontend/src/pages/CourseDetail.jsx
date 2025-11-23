@@ -236,9 +236,9 @@ const CourseDetail = () => {
                 <>
                   <Button
                     onClick={handleEnroll}
-                    className="flex-1 bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 text-white py-6 rounded-xl text-lg"
+                    className="flex-1 bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 text-white py-6 rounded-xl text-lg font-semibold"
                   >
-                    {course.price === 'Free' ? 'Enroll Free' : `Enroll - ${course.price}`}
+                    {course.price === 'Free' || !course.price ? 'Start Free Preview' : `Enroll Now - ${course.price}`}
                   </Button>
                   <Button
                     variant="ghost"
