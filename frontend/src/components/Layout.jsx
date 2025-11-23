@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, Users, BookOpen, MessageCircle, Zap, User } from 'lucide-react';
+import { Home, Users, BookOpen, MessageCircle, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 const Layout = ({ children }) => {
@@ -12,7 +12,6 @@ const Layout = ({ children }) => {
     { name: 'Messages', href: '/messages', icon: MessageCircle },
     { name: 'Community', href: '/community', icon: Users },
     { name: 'Courses', href: '/courses', icon: BookOpen },
-    { name: 'Discover', href: '/discover', icon: Zap },
     { name: 'Profile', href: '/profile', icon: User }
   ];
 
