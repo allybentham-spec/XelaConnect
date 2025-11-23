@@ -152,9 +152,14 @@ const CourseDetail = () => {
           {/* Content */}
           <div className="p-8 space-y-6">
             <div>
-              <h1 className="text-3xl font-bold text-white mb-3">
+              <h1 className="text-3xl font-bold text-white mb-2">
                 {course.title}
               </h1>
+              {course.tagline && (
+                <p className="text-[#39CCB7] text-lg italic mb-3">
+                  {course.tagline}
+                </p>
+              )}
               <p className="text-white/70 text-lg leading-relaxed">
                 {course.description}
               </p>
