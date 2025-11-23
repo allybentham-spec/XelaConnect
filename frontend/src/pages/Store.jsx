@@ -24,15 +24,17 @@ const Store = () => {
       icon: TrendingUp,
       credits: 30,
       usd: 2.99,
-      color: '#39CCB7'
+      color: '#39CCB7',
+      popular: true
     },
     {
-      name: 'Circle Spotlight',
-      description: 'Feature your circle for 7 days',
+      name: 'Super Boost',
+      description: '10x visibility for 48 hours',
       icon: Zap,
-      credits: 50,
-      usd: 4.99,
-      color: '#8834AE'
+      credits: 80,
+      usd: 7.99,
+      color: '#8834AE',
+      popular: false
     },
     {
       name: 'Extra AI Sessions',
@@ -40,42 +42,53 @@ const Store = () => {
       icon: Sparkles,
       credits: 20,
       usd: 1.99,
-      color: '#207690'
+      color: '#207690',
+      popular: false
     },
     {
       name: 'Stealth Mode',
-      description: 'Browse profiles privately',
+      description: 'Browse profiles privately for 7 days',
       icon: Eye,
       credits: 60,
       usd: 5.99,
-      color: '#6AAD73'
+      color: '#6AAD73',
+      popular: false
     },
     {
       name: 'Extended Reach',
-      description: 'Visible in more cities',
+      description: 'Visible in 5+ additional cities',
       icon: MapPin,
       credits: 130,
       usd: 12.99,
-      color: '#3240AC'
-    }
-  ];
-
-  const courseBundles = [
-    {
-      name: 'Social Confidence Bundle',
-      courses: 3,
-      value: 59.97,
-      price: 39,
-      credits: 390,
-      icon: BookOpen
+      color: '#3240AC',
+      popular: false
     },
     {
-      name: 'Complete Growth Package',
-      courses: 7,
-      value: 139.93,
-      price: 79,
-      credits: 790,
-      icon: Crown
+      name: 'Priority Matching',
+      description: 'Get matched faster for 14 days',
+      icon: Target,
+      credits: 45,
+      usd: 4.49,
+      color: '#39CCB7',
+      popular: false
+    },
+    {
+      name: 'Connection Bundle',
+      description: '50 extra connection requests',
+      icon: Heart,
+      credits: 100,
+      usd: 9.99,
+      color: '#8834AE',
+      popular: false
+    },
+    {
+      name: 'Premium Badge',
+      description: 'Stand out with a premium badge for 30 days',
+      icon: Crown,
+      credits: 150,
+      usd: 14.99,
+      color: '#207690',
+      popular: false
     }
   ];
 
