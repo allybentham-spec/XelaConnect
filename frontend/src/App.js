@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Community from './pages/Community';
+import CommunityEnhanced from './pages/CommunityEnhanced';
 import Courses from './pages/Courses';
 import Discover from './pages/DiscoverEnhanced';
 import XelaTalks from './pages/XelaTalks';
