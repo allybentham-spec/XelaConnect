@@ -55,6 +55,7 @@ function App() {
             <Route path="/video-lobby" element={<VideoLobby />} />
             <Route path="/video-call" element={<VideoCall />} />
             <Route path="/emotional-intelligence" element={<EmotionalIntelligencePath />} />
+            <Route path="/circle/:circleId" element={<CircleDetail />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Toaster />
