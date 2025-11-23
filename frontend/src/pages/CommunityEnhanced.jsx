@@ -328,7 +328,17 @@ const CommunityEnhanced = () => {
                   {/* Content */}
                   <div className="p-6 space-y-4">
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#39CCB7] transition-colors">
+                      <h3 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (isJoined) {
+                            navigate(`/circle/${circle.id}`);
+                          }
+                        }}
+                        className={`text-xl font-semibold text-white mb-2 group-hover:text-[#39CCB7] transition-colors ${
+                          isJoined ? 'cursor-pointer' : ''
+                        }`}
+                      >
                         {circle.name}
                       </h3>
                       <p className="text-sm text-white/70 leading-relaxed line-clamp-2">
