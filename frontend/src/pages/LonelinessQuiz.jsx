@@ -358,7 +358,7 @@ const LonelinessQuiz = () => {
                   <div className="text-sm text-white/60">Questions</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-[#39CCB7] mb-1">~4</div>
+                  <div className="text-3xl font-bold text-[#39CCB7] mb-1">~3</div>
                   <div className="text-sm text-white/60">Minutes</div>
                 </div>
                 <div className="text-center">
