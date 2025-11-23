@@ -240,7 +240,10 @@ const Subscription = () => {
             <p className="text-white/60 text-sm">Your data is encrypted and protected. Cancel anytime.</p>
           </Card>
 
-          <Card className="glass-card rounded-2xl p-6 border-0">
+          <Card 
+            onClick={() => navigate('/?testimonials=true')}
+            className="glass-card rounded-2xl p-6 border-0 cursor-pointer hover:bg-white/5 transition-all"
+          >
             <div className="flex items-center space-x-3 mb-3">
               <div className="p-2 rounded-lg bg-[#8834AE]/20">
                 <TrendingUp className="w-5 h-5 text-[#8834AE]" />
@@ -248,6 +251,7 @@ const Subscription = () => {
               <h3 className="text-white font-semibold">Proven Results</h3>
             </div>
             <p className="text-white/60 text-sm">95% of premium members report deeper connections.</p>
+            <p className="text-[#39CCB7] text-xs mt-2 font-medium">View testimonials →</p>
           </Card>
 
           <Card className="glass-card rounded-2xl p-6 border-0">
@@ -263,7 +267,10 @@ const Subscription = () => {
 
         {/* FAQ Link */}
         <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <button className="text-[#39CCB7] hover:text-[#39CCB7]/80 font-medium">
+          <button 
+            onClick={() => navigate('/emotional-intelligence')}
+            className="text-[#39CCB7] hover:text-[#39CCB7]/80 font-medium transition-colors"
+          >
             Questions? View our FAQ →
           </button>
         </div>
