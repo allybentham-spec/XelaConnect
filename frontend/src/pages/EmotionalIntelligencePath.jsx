@@ -342,24 +342,30 @@ const EmotionalIntelligencePath = () => {
 
               {/* Crisis Text Line */}
               <a href="sms:741741&body=HELLO" className="block group">
-                <div className="glass-card rounded-3xl p-6 border border-[#39ccb7]/20 hover:border-[#39ccb7]/40 hover:bg-white/5 hover:scale-[1.01] transition-all cursor-pointer">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <div className="w-14 h-14 rounded-2xl bg-[#39ccb7]/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <MessageCircle className="w-7 h-7 text-[#39ccb7]" />
-                      </div>
-                      <div>
-                        <h4 className="text-white font-semibold text-lg group-hover:text-[#39ccb7] transition-colors">Crisis Text Line</h4>
-                        <p className="text-white/60 text-sm">Available 24/7 • Confidential • Tap to text</p>
-                      </div>
-                    </div>
-                    <div className="text-right bg-[#39ccb7]/10 px-6 py-3 rounded-2xl group-hover:bg-[#39ccb7]/20 transition-all">
-                      <p className="text-xs text-white/60 mb-1">Text this word:</p>
-                      <p className="text-[#39ccb7] font-bold text-xl">HELLO</p>
-                      <p className="text-xs text-white/60 mt-1">to 741741</p>
+                <Card className="bg-gradient-to-br from-[#8834ae]/20 to-[#39ccb7]/20 rounded-3xl p-8 border-2 border-[#8834ae]/30 hover:border-[#8834ae]/60 hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                  <div className="flex items-center justify-center space-x-4 mb-6">
+                    <div className="w-20 h-20 rounded-full bg-[#8834ae]/20 flex items-center justify-center relative">
+                      <div className="absolute inset-0 rounded-full bg-[#8834ae] animate-ping opacity-20" />
+                      <MessageCircle className="w-10 h-10 text-[#8834ae] relative z-10 group-hover:scale-110 transition-transform" />
                     </div>
                   </div>
-                </div>
+                  
+                  <div className="text-center space-y-3">
+                    <h3 className="text-2xl font-semibold text-white group-hover:text-[#8834ae] transition-colors">
+                      Crisis Text Line
+                    </h3>
+                    <div className="inline-block px-8 py-4 rounded-2xl bg-white/10 group-hover:bg-white/20 transition-all">
+                      <p className="text-xs text-white/60 mb-1">Text this word:</p>
+                      <p className="text-4xl font-bold text-[#8834ae] group-hover:scale-110 transition-transform inline-block">
+                        HELLO
+                      </p>
+                      <p className="text-xs text-white/60 mt-1">to 741741</p>
+                    </div>
+                    <p className="text-white/70 text-base">
+                      24/7 • Confidential • Free • Tap to text now
+                    </p>
+                  </div>
+                </Card>
               </a>
             </div>
 
