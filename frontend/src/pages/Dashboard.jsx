@@ -177,79 +177,42 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Connection Enhancement Card */}
-        <Card 
-          onClick={() => navigate('/expand')}
-          className="glass-card rounded-3xl overflow-hidden border border-[#39CCB7]/30 cursor-pointer hover:scale-[1.02] smooth-transition animate-fade-in-up relative" 
-          style={{ animationDelay: '0.45s' }}
-        >
-          {/* Background Image with Overlay */}
-          <div className="absolute inset-0 opacity-30">
-            <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
-              alt="Connection"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#39CCB7]/50 via-[#1a1a2e]/80 to-[#8834AE]/50" />
-          </div>
-          
-          <div className="relative z-10 p-8 space-y-5">
-            <div className="flex items-center justify-center mb-3">
-              <div className="glass-card-light p-4 rounded-2xl backdrop-blur-xl">
-                <Users className="w-8 h-8 text-[#39CCB7]" />
+        {/* Discover & Connect Section */}
+        <div className="grid grid-cols-2 gap-3 animate-fade-in-up" style={{ animationDelay: '0.45s' }}>
+          <Card 
+            onClick={() => navigate('/community')}
+            className="glass-card rounded-2xl p-6 border-0 hover:bg-white/10 hover:scale-[1.02] smooth-transition cursor-pointer"
+          >
+            <div className="space-y-3">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#39CCB7]/20">
+                <Users className="w-6 h-6 text-[#39CCB7]" />
+              </div>
+              <div>
+                <h3 className="text-white font-semibold text-lg mb-1">Join Circles</h3>
+                <p className="text-white/60 text-sm">
+                  Find communities that match your vibe
+                </p>
               </div>
             </div>
-            
-            <div className="text-center space-y-3">
-              <h3 className="text-2xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
-                Expand Your Circle
-              </h3>
-              <p className="text-white/90 text-sm leading-relaxed max-w-sm mx-auto">
-                Get matched with people who truly understand you. Access premium tools designed to turn connections into lifelong friendships.
-              </p>
-            </div>
+          </Card>
 
-            {/* Feature Cards Grid */}
-            <div className="grid grid-cols-3 gap-2">
-              <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
-                <div className="text-lg font-bold text-[#39CCB7] mb-1">∞</div>
-                <div className="text-xs text-white/70">Unlimited Matches</div>
+          <Card 
+            onClick={() => navigate('/discover')}
+            className="glass-card rounded-2xl p-6 border-0 hover:bg-white/10 hover:scale-[1.02] smooth-transition cursor-pointer"
+          >
+            <div className="space-y-3">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-[#8834AE]/20">
+                <Sparkles className="w-6 h-6 text-[#8834AE]" />
               </div>
-              <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
-                <div className="text-lg font-bold text-[#39CCB7] mb-1">50+</div>
-                <div className="text-xs text-white/70">Courses</div>
-              </div>
-              <div className="glass-card-light rounded-xl p-3 text-center backdrop-blur-xl">
-                <div className="text-lg font-bold text-[#39CCB7] mb-1">VIP</div>
-                <div className="text-xs text-white/70">Circles</div>
-              </div>
-            </div>
-
-            {/* Visual Connection Preview */}
-            <div className="glass-card-light rounded-2xl p-4 backdrop-blur-xl">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-white/90 text-xs font-medium">Connection Success Rate</span>
-                <span className="text-[#39CCB7] text-xs font-bold">95%</span>
-              </div>
-              <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-[#39CCB7] to-[#8834AE] rounded-full" style={{ width: '95%' }} />
+              <div>
+                <h3 className="text-white font-semibold text-lg mb-1">Discover</h3>
+                <p className="text-white/60 text-sm">
+                  Meet people who understand you
+                </p>
               </div>
             </div>
-
-            <Button
-              onClick={(e) => {
-                e.stopPropagation();
-                navigate('/expand');
-              }}
-              className="w-full h-14 rounded-2xl bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 smooth-transition shadow-lg text-lg font-bold relative overflow-hidden group"
-            >
-              <span className="relative z-10 flex items-center justify-center">
-                <Heart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                Find Your People
-              </span>
-            </Button>
-          </div>
-        </Card>
+          </Card>
+        </div>
 
         {/* Gentle Reminder */}
         <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
