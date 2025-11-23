@@ -256,7 +256,7 @@ const LonelinessQuiz = () => {
         categoryScores,
         insight: "Your strongest connection area is where you feel most authentic. Keep building on this foundation."
       };
-    } else if (score <= 28) {
+    } else if (score <= 49) {
       return {
         level: "Growing",
         color: "#8834AE",
