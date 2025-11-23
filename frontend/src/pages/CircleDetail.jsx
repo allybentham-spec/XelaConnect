@@ -221,14 +221,15 @@ const CircleDetail = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center space-x-2 px-6 py-3 border-b-2 transition-all ${
+                  className={`flex items-center space-x-2 px-4 py-3 border-b-2 transition-all text-sm sm:text-base whitespace-nowrap ${
                     activeTab === tab.id
                       ? 'border-[#39CCB7] text-white'
                       : 'border-transparent text-white/60 hover:text-white'
                   }`}
                 >
-                  <tab.icon className="w-4 h-4" />
-                  <span>{tab.label}</span>
+                  <tab.icon className="w-4 h-4 flex-shrink-0" />
+                  <span className="hidden sm:inline">{tab.label}</span>
+                  <span className="sm:hidden">{tab.label.slice(0, 8)}</span>
                 </button>
               ))}
             </div>
