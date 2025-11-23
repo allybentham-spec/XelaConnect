@@ -392,8 +392,8 @@ async def get_course_content(course_id: str, user = Depends(get_current_user_opt
     if "_id" in course:
         del course["_id"]
     
-    # Add default modules if not present
-    if "modules" not in course or not course["modules"]:
+    # Add default modules if not present or if modules are empty
+    if "modules" not in course or not course["modules"] or not any(m.get("lessons") for m in course.get("modules", [])):
         course["modules"] = [
             {
                 "title": "Getting Started",
