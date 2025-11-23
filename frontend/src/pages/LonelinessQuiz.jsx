@@ -45,9 +45,11 @@ const LonelinessQuiz = () => {
       question: "Do you feel understood by the people around you?",
       subtext: "Think about whether people truly 'get' who you are",
       options: [
-        { value: 1, label: "Most of the time", description: "People understand my perspective" },
-        { value: 2, label: "Sometimes", description: "Some understand, others don't" },
-        { value: 3, label: "Rarely or never", description: "I feel misunderstood" }
+        { value: 1, label: "Always", description: "People deeply understand my perspective" },
+        { value: 2, label: "Most of the time", description: "I feel understood by most people" },
+        { value: 3, label: "Sometimes", description: "Some understand, others don't" },
+        { value: 4, label: "Rarely", description: "Few people really get me" },
+        { value: 5, label: "Never", description: "I feel completely misunderstood" }
       ]
     },
     {
