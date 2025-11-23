@@ -42,7 +42,7 @@ const CircleDetail = () => {
     tagline: "Cultivate vitality through community & intention",
     mission: "This circle is for people who want to cultivate vitality, joy, and life force energy through community, movement, and intention.",
     image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800",
-    members_count: 847,
+    members_count: 127,
     activity_level: "Very Active",
     values: [
       "Respect",
