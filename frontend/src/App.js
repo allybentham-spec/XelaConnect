@@ -29,6 +29,7 @@ import CourseDetail from './pages/CourseDetail';
 import CourseLearning from './pages/CourseLearning';
 import EmotionalIntelligencePath from './pages/EmotionalIntelligencePath';
 import CircleDetail from './pages/CircleDetail';
+import ThreadDetail from './pages/ThreadDetail';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
