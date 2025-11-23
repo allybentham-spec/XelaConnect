@@ -122,37 +122,59 @@ const Welcome = () => {
           </div>
         </div>
 
-        {/* Network Info Section */}
-        <div className="glass-card rounded-2xl p-6 border border-[#39CCB7]/20 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
+        {/* Network Info Section with Imagery */}
+        <div className="glass-card rounded-3xl overflow-hidden border border-[#39CCB7]/20 animate-fade-in-up relative" style={{ animationDelay: '0.1s' }}>
+          {/* Background Image Overlay */}
+          <div className="absolute inset-0 opacity-20">
+            <img 
+              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
+              alt="Community"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#39CCB7]/40 via-transparent to-[#8834AE]/40" />
+          </div>
+
+          <div className="relative z-10 p-6 space-y-4">
+            <div className="flex items-center justify-between mb-2">
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 rounded-full bg-[#39CCB7] animate-pulse" />
-                <span className="text-[#39CCB7] text-sm font-medium">Live Community</span>
+                <span className="text-[#39CCB7] text-sm font-semibold">Live Community</span>
               </div>
-              <span className="text-white/60 text-xs">2,847 members active now</span>
+              <span className="text-white/70 text-xs font-medium">2,847 online now</span>
             </div>
             
-            <div className="grid grid-cols-3 gap-3 py-4">
-              <div className="text-center">
+            {/* Stats Cards */}
+            <div className="grid grid-cols-3 gap-2">
+              <div className="glass-card-light rounded-xl p-4 text-center backdrop-blur-xl">
                 <div className="text-2xl font-bold text-white mb-1">12K+</div>
-                <div className="text-xs text-white/60">Members</div>
+                <div className="text-xs text-white/70">Members</div>
               </div>
-              <div className="w-px bg-white/10" />
-              <div className="text-center">
+              <div className="glass-card-light rounded-xl p-4 text-center backdrop-blur-xl">
                 <div className="text-2xl font-bold text-white mb-1">450+</div>
-                <div className="text-xs text-white/60">Active Circles</div>
+                <div className="text-xs text-white/70">Circles</div>
               </div>
-              <div className="w-px bg-white/10" />
-              <div className="text-center">
+              <div className="glass-card-light rounded-xl p-4 text-center backdrop-blur-xl">
                 <div className="text-2xl font-bold text-white mb-1">98%</div>
-                <div className="text-xs text-white/60">Satisfaction</div>
+                <div className="text-xs text-white/70">Happy</div>
               </div>
             </div>
 
-            <p className="text-white/70 text-sm text-center leading-relaxed">
-              Join a network where emotional intelligence meets authentic connection. Where depth isn't optional—it's the standard.
-            </p>
+            {/* People Preview */}
+            <div className="flex items-center justify-center -space-x-3 py-3">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" className="w-10 h-10 rounded-full border-2 border-white/20 object-cover" alt="Member" />
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" className="w-10 h-10 rounded-full border-2 border-white/20 object-cover" alt="Member" />
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" className="w-10 h-10 rounded-full border-2 border-white/20 object-cover" alt="Member" />
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" className="w-10 h-10 rounded-full border-2 border-white/20 object-cover" alt="Member" />
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#39CCB7] to-[#8834AE] border-2 border-white/20 flex items-center justify-center text-white text-xs font-bold">
+                +12K
+              </div>
+            </div>
+
+            <div className="glass-card-light rounded-2xl p-4 backdrop-blur-xl">
+              <p className="text-white/90 text-sm text-center leading-relaxed font-medium">
+                Join a network where emotional intelligence meets authentic connection. Where depth isn't optional—it's the standard.
+              </p>
+            </div>
 
             <Button
               onClick={() => navigate('/signup')}
