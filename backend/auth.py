@@ -94,6 +94,35 @@ async def get_current_user(authorization: str = Header(None)):
     
     return user
 
+async def get_current_user_optional(authorization: str = Header(None)):
+    """Get current user from session token (optional - returns None if not authenticated)"""
+    if not authorization or not authorization.startswith("Bearer "):
+        return None
+    
+    session_token = authorization.replace("Bearer ", "")
+    
+    # Find session
+    session = await db.user_sessions.find_one({
+        "session_token": session_token,
+        "expires_at": {"$gt": datetime.utcnow()}
+    })
+    
+    if not session:
+        return None
+    
+    # Get user
+    user = await db.users.find_one({"id": session["user_id"]})
+    
+    if not user:
+        return None
+    
+    # Remove MongoDB _id for clean response
+    if "_id" in user:
+        del user["_id"]
+    
+    return user
+
+
 async def delete_session(session_token: str):
     """Delete a session (logout)"""
     await db.user_sessions.delete_one({"session_token": session_token})
