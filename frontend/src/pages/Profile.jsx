@@ -1,16 +1,74 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
-import { Settings, LogOut, ChevronRight, User as UserIcon, Shield, Bell, HelpCircle, Gift, ShoppingBag, Sparkles, Award } from 'lucide-react';
+import { Settings, LogOut, ChevronRight, User as UserIcon, Shield, Bell, HelpCircle, Gift, ShoppingBag, Sparkles, Award, BookOpen, Lock, Globe, Trash2, Edit } from 'lucide-react';
 import { toast } from '../hooks/use-toast';
 import { identityBadges } from '../mock';
+import { reflectionsAPI } from '../utils/api';
 
 const Profile = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [reflections, setReflections] = useState([]);
+  const [loadingReflections, setLoadingReflections] = useState(true);
+  const [editingReflection, setEditingReflection] = useState(null);
+
+  useEffect(() => {
+    fetchReflections();
+  }, []);
+
+  const fetchReflections = async () => {
+    try {
+      setLoadingReflections(true);
+      const response = await reflectionsAPI.getAll();
+      setReflections(response.data.reflections || []);
+    } catch (error) {
+      console.error('Error fetching reflections:', error);
+    } finally {
+      setLoadingReflections(false);
+    }
+  };
+
+  const handleTogglePrivacy = async (reflectionId, currentPrivacy) => {
+    try {
+      await reflectionsAPI.update(reflectionId, { is_public: !currentPrivacy });
+      toast({
+        title: 'Privacy Updated',
+        description: !currentPrivacy ? 'Reflection is now public' : 'Reflection is now private'
+      });
+      fetchReflections();
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to update privacy',
+        variant: 'destructive'
+      });
+    }
+  };
+
+  const handleDeleteReflection = async (reflectionId) => {
+    if (!window.confirm('Are you sure you want to delete this reflection?')) {
+      return;
+    }
+
+    try {
+      await reflectionsAPI.delete(reflectionId);
+      toast({
+        title: 'Reflection Deleted',
+        description: 'Your reflection has been removed'
+      });
+      fetchReflections();
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to delete reflection',
+        variant: 'destructive'
+      });
+    }
+  };
 
   const handleLogout = () => {
     logout();
