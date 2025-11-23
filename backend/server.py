@@ -310,7 +310,7 @@ async def get_courses():
     return {"courses": courses}
 
 @api_router.get("/courses/{course_id}")
-async def get_course_detail(course_id: str, user = Depends(get_current_user)):
+async def get_course_detail(course_id: str, user = Depends(get_current_user_optional)):
     """Get course details with user progress"""
     course = await db.courses.find_one({"id": course_id})
     
@@ -320,16 +320,21 @@ async def get_course_detail(course_id: str, user = Depends(get_current_user)):
     if "_id" in course:
         del course["_id"]
     
-    # Get user's progress for this course
-    user_progress = next(
-        (p for p in user.get("courses_progress", []) if p.get("course_id") == course_id),
-        {"progress": 0, "completed_modules": []}
-    )
+    # If user is authenticated, get their progress
+    if user:
+        user_progress = next(
+            (p for p in user.get("courses_progress", []) if p.get("course_id") == course_id),
+            {"progress": 0, "completed_modules": []}
+        )
+        is_purchased = course_id in [p.get("course_id") for p in user.get("courses_progress", [])]
+    else:
+        user_progress = {"progress": 0, "completed_modules": []}
+        is_purchased = False
     
     return {
         "course": course,
         "user_progress": user_progress,
-        "is_purchased": course_id in [p.get("course_id") for p in user.get("courses_progress", [])]
+        "is_purchased": is_purchased
     }
 
 @api_router.get("/courses/{course_id}/enrollment")
