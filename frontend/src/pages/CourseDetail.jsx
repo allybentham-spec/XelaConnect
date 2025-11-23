@@ -209,13 +209,16 @@ const CourseDetail = () => {
             </div>
 
             {/* Instructor */}
-            <div className="flex items-center space-x-4 p-4 glass-card rounded-2xl">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#39CCB7] to-[#8834AE] flex items-center justify-center text-white font-semibold text-lg">
+            <div className="flex items-center space-x-4 p-6 glass-card rounded-2xl">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#39CCB7] to-[#8834AE] flex items-center justify-center text-white font-semibold text-2xl">
                 {course.instructor?.charAt(0) || 'X'}
               </div>
-              <div>
-                <p className="text-white font-medium">{course.instructor || 'Expert Instructor'}</p>
-                <p className="text-white/50 text-sm">Course Instructor</p>
+              <div className="flex-1">
+                <p className="text-white font-semibold text-lg">{course.instructor || 'Expert Instructor'}</p>
+                <p className="text-white/60 text-sm mb-2">Course Instructor</p>
+                {course.instructor_bio && (
+                  <p className="text-white/70 text-sm leading-relaxed">{course.instructor_bio}</p>
+                )}
               </div>
             </div>
 
