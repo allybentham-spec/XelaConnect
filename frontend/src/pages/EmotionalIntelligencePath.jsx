@@ -103,16 +103,46 @@ const EmotionalIntelligencePath = () => {
     } else {
       setExpandedPrompt(index);
       setJournalText('');
+      setIsPublic(false);
     }
   };
 
-  const handleSaveReflection = () => {
-    toast({
-      title: '✨ Reflection Saved',
-      description: 'Your words matter. Keep tending to your inner world.'
-    });
-    setExpandedPrompt(null);
-    setJournalText('');
+  const handleSaveReflection = async () => {
+    if (!journalText.trim()) {
+      toast({
+        title: 'Empty Reflection',
+        description: 'Please write something before saving.',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    setSaving(true);
+    try {
+      await reflectionsAPI.create({
+        prompt: reflectionPrompts[expandedPrompt],
+        content: journalText,
+        is_public: isPublic
+      });
+
+      toast({
+        title: '✨ Reflection Saved',
+        description: 'Your words matter. Keep tending to your inner world.'
+      });
+      
+      setExpandedPrompt(null);
+      setJournalText('');
+      setIsPublic(false);
+    } catch (error) {
+      console.error('Error saving reflection:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to save reflection. Please try again.',
+        variant: 'destructive'
+      });
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
