@@ -44,7 +44,7 @@ const Community = () => {
     
     if (isJoined) {
       // If already joined, navigate to circle detail
-      navigate(`/circle/${circleId}`);
+      navigate(`/circles/${circleId}`);
     } else {
       // Join and then navigate
       try {
@@ -61,7 +61,7 @@ const Community = () => {
       
       // Navigate to circle detail page
       setTimeout(() => {
-        navigate(`/circle/${circleId}`);
+        navigate(`/circles/${circleId}`);
       }, 500);
     }
   };
