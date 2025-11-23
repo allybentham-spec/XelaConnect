@@ -415,17 +415,80 @@ const LonelinessQuiz = () => {
               </div>
 
               {/* Score Display */}
-              <div className="glass-card-light rounded-2xl p-6 max-w-md mx-auto">
-                <p className="text-white/60 text-sm mb-2">Your Connection Score</p>
-                <div className="text-5xl font-bold text-white mb-2">{getScore()}/18</div>
-                <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+              <div className="glass-card-light rounded-2xl p-6">
+                <p className="text-white/60 text-sm mb-3 text-center">Your Connection Score</p>
+                <div className="text-5xl font-bold text-white mb-4 text-center">{getScore()}/42</div>
+                <div className="h-3 bg-white/10 rounded-full overflow-hidden mb-6">
                   <div 
                     className="h-full rounded-full transition-all duration-500"
                     style={{ 
-                      width: `${(getScore() / 18) * 100}%`,
+                      width: `${(getScore() / 42) * 100}%`,
                       background: `linear-gradient(to right, ${result.color}, #8834AE)`
                     }}
                   />
+                </div>
+
+                {/* Category Breakdown */}
+                <div className="space-y-3">
+                  <p className="text-white/70 text-sm font-medium mb-3">Dimension Breakdown:</p>
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-white/80">Emotional Connection</span>
+                      <span className="text-[#39CCB7] font-semibold">{result.categoryScores.emotional.percentage}%</span>
+                    </div>
+                    <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-[#39CCB7] rounded-full transition-all duration-500"
+                        style={{ width: `${100 - result.categoryScores.emotional.percentage}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-white/80">Social Belonging</span>
+                      <span className="text-[#8834AE] font-semibold">{result.categoryScores.social.percentage}%</span>
+                    </div>
+                    <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-[#8834AE] rounded-full transition-all duration-500"
+                        style={{ width: `${100 - result.categoryScores.social.percentage}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-white/80">Purpose & Meaning</span>
+                      <span className="text-[#207690] font-semibold">{result.categoryScores.purpose.percentage}%</span>
+                    </div>
+                    <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-[#207690] rounded-full transition-all duration-500"
+                        style={{ width: `${100 - result.categoryScores.purpose.percentage}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-white/80">Relationship Quality</span>
+                      <span className="text-[#39CCB7] font-semibold">{result.categoryScores.quality.percentage}%</span>
+                    </div>
+                    <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-[#39CCB7] rounded-full transition-all duration-500"
+                        style={{ width: `${100 - result.categoryScores.quality.percentage}%` }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-4 border-t border-white/10">
+                  <p className="text-white/60 text-xs text-center italic">
+                    {result.insight}
+                  </p>
                 </div>
               </div>
 
