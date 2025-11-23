@@ -13,7 +13,7 @@ from models import (
 )
 from auth import (
     hash_password, verify_password, create_user_session,
-    get_current_user, get_user_from_emergent_session, delete_session, db
+    get_current_user, get_current_user_optional, get_user_from_emergent_session, delete_session, db
 )
 from messaging import messaging_router
 from presence import presence_router, safety_router
