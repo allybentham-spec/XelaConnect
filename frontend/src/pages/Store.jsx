@@ -94,104 +94,106 @@ const Store = () => {
 
   return (
     <div className="min-h-screen pb-32">
-      <div className="max-w-lg mx-auto px-6 py-8 space-y-6">
+      <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
         {/* Header */}
-        <div className="space-y-3 animate-fade-in-up">
-          <h1 className="text-3xl font-bold text-white" style={{ fontFamily: 'Playfair Display, serif' }}>
-            Expand
-          </h1>
+        <div className="space-y-4 animate-fade-in-up">
           <div className="flex items-center justify-between">
-            <p className="text-white/60">Unlock your full potential</p>
-            <Badge className="glass-card-light border-0 text-white px-4 py-2">
-              <Sparkles className="w-4 h-4 mr-2" />
+            <div>
+              <h1 className="text-4xl font-bold text-white mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
+                Power-Ups Store
+              </h1>
+              <p className="text-white/70">Boost your profile and accelerate your connections</p>
+            </div>
+            <Badge className="glass-card-light border-0 text-white px-5 py-3 text-lg">
+              <Sparkles className="w-5 h-5 mr-2" />
               {userCredits} credits
             </Badge>
           </div>
+
+          {/* Subscription CTA Banner */}
+          <Card 
+            onClick={() => navigate('/subscription')}
+            className="glass-card rounded-2xl p-6 border border-[#39CCB7]/30 cursor-pointer hover:scale-[1.01] transition-all relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-[#39CCB7]/10 to-[#8834AE]/10" />
+            <div className="relative z-10 flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="glass-card-light p-3 rounded-xl">
+                  <Crown className="w-6 h-6 text-[#39CCB7]" />
+                </div>
+                <div>
+                  <h3 className="text-white font-semibold text-lg">Want Unlimited Access?</h3>
+                  <p className="text-white/60 text-sm">Check out our Premium & Elite subscriptions</p>
+                </div>
+              </div>
+              <Button className="bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90">
+                View Plans
+              </Button>
+            </div>
+          </Card>
         </div>
 
-        {/* Subscription Tiers */}
-        <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-          <h2 className="text-xl font-semibold text-white">Subscriptions</h2>
-          {subscriptionTiers.map((tier, idx) => (
-            <Card
-              key={idx}
-              className={`glass-card rounded-3xl p-6 border-0 relative overflow-hidden ${
-                tier.popular ? 'ring-2 ring-[#8834AE]' : ''
-              }`}
+        {/* Power-Ups Grid */}
+        <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-semibold text-white">Available Power-Ups</h2>
+            <button 
+              onClick={() => navigate('/subscription')}
+              className="text-[#39CCB7] hover:text-[#39CCB7]/80 text-sm font-medium"
             >
-              {tier.popular && (
-                <Badge className="absolute top-4 right-4 bg-gradient-to-r from-[#39CCB7] to-[#8834AE] border-0">
-                  Most Popular
-                </Badge>
-              )}
-              
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{tier.name}</h3>
-                  <div className="flex items-baseline space-x-2">
-                    <span className="text-4xl font-bold text-white">${tier.price}</span>
-                    <span className="text-white/60">/{tier.period}</span>
-                  </div>
-                </div>
+              Many included in Premium →
+            </button>
+          </div>
 
-                <div className="space-y-2">
-                  {tier.features.map((feature, fIdx) => (
-                    <div key={fIdx} className="flex items-center space-x-2 text-sm text-white/80">
-                      <div
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{ background: tier.color }}
-                      />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <Button
-                  onClick={() => handlePurchase(tier)}
-                  className={`w-full h-12 rounded-xl font-semibold ${
-                    tier.popular
-                      ? 'bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90'
-                      : 'glass-button text-white hover:bg-white/10'
+          <div className="grid md:grid-cols-2 gap-4">
+            {powerUps.map((powerUp, idx) => {
+              const Icon = powerUp.icon;
+              return (
+                <Card 
+                  key={idx} 
+                  className={`glass-card rounded-3xl p-6 border-0 hover:bg-white/5 transition-all ${
+                    powerUp.popular ? 'ring-2 ring-[#39CCB7]/50' : ''
                   }`}
                 >
-                  Subscribe Now
-                </Button>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        {/* Add-ons */}
-        <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <h2 className="text-xl font-semibold text-white">Power-Ups</h2>
-          <div className="grid grid-cols-1 gap-3">
-            {addOns.map((addon, idx) => {
-              const Icon = addon.icon;
-              return (
-                <Card key={idx} className="glass-card rounded-2xl p-4 border-0">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-3 flex-1">
+                  {powerUp.popular && (
+                    <Badge className="absolute top-4 right-4 bg-[#39CCB7]/20 text-[#39CCB7] border-0 text-xs">
+                      Popular
+                    </Badge>
+                  )}
+                  
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-4">
                       <div
-                        className="p-3 rounded-xl"
-                        style={{ background: `${addon.color}20` }}
+                        className="p-4 rounded-2xl flex-shrink-0"
+                        style={{ background: `${powerUp.color}20` }}
                       >
-                        <Icon className="w-5 h-5" style={{ color: addon.color }} />
+                        <Icon className="w-7 h-7" style={{ color: powerUp.color }} />
                       </div>
                       <div className="flex-1">
-                        <div className="text-white font-medium">{addon.name}</div>
-                        <div className="text-sm text-white/60">{addon.description}</div>
-                        <div className="text-xs text-white/50 mt-1">
-                          {addon.credits} credits or ${addon.usd}
-                        </div>
+                        <h3 className="text-white font-semibold text-lg mb-1">{powerUp.name}</h3>
+                        <p className="text-white/70 text-sm leading-relaxed">{powerUp.description}</p>
                       </div>
                     </div>
-                    <Button
-                      size="sm"
-                      onClick={() => handlePurchase(addon)}
-                      className="h-9 rounded-xl glass-button text-white hover:bg-white/10"
-                    >
-                      Buy
-                    </Button>
+
+                    <div className="flex items-center justify-between pt-2 border-t border-white/10">
+                      <div>
+                        <div className="text-white/60 text-xs mb-1">Price</div>
+                        <div className="flex items-baseline space-x-2">
+                          <span className="text-white font-bold text-xl">${powerUp.usd}</span>
+                          <span className="text-white/50 text-sm">or {powerUp.credits} credits</span>
+                        </div>
+                      </div>
+                      <Button
+                        onClick={() => handlePurchase(powerUp)}
+                        className={`h-11 px-6 rounded-xl font-semibold ${
+                          powerUp.popular
+                            ? 'bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90'
+                            : 'glass-button text-white hover:bg-white/10'
+                        }`}
+                      >
+                        Buy Now
+                      </Button>
+                    </div>
                   </div>
                 </Card>
               );
@@ -199,51 +201,20 @@ const Store = () => {
           </div>
         </div>
 
-        {/* Course Bundles */}
-        <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <h2 className="text-xl font-semibold text-white">Course Bundles</h2>
-          {courseBundles.map((bundle, idx) => {
-            const Icon = bundle.icon;
-            return (
-              <Card key={idx} className="glass-card rounded-3xl p-6 border-0">
-                <div className="space-y-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="glass-card-light p-3 rounded-xl">
-                        <Icon className="w-6 h-6 text-[#39CCB7]" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-white">{bundle.name}</h3>
-                        <p className="text-sm text-white/60">{bundle.courses} courses included</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-baseline space-x-2">
-                    <span className="text-3xl font-bold text-white">${bundle.price}</span>
-                    <span className="text-white/50 line-through">${bundle.value}</span>
-                    <Badge className="bg-[#39CCB7]/20 text-[#39CCB7] border-0">
-                      Save ${(bundle.value - bundle.price).toFixed(0)}
-                    </Badge>
-                  </div>
-
-                  <Button
-                    onClick={() => handlePurchase(bundle)}
-                    className="w-full h-12 rounded-xl bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 font-semibold"
-                  >
-                    Purchase Bundle
-                  </Button>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-
-        {/* Bottom Message */}
-        <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <p className="text-center text-white/70 text-sm leading-relaxed">
-            Invest in yourself. Your growth matters.
-          </p>
+        {/* Credits Info */}
+        <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex items-start space-x-4">
+            <div className="glass-card-light p-3 rounded-xl">
+              <Sparkles className="w-6 h-6 text-[#39CCB7]" />
+            </div>
+            <div>
+              <h3 className="text-white font-semibold mb-2">How Credits Work</h3>
+              <p className="text-white/70 text-sm leading-relaxed">
+                Purchase credits to use across all power-ups. Credits never expire and can be used anytime. 
+                Buy credits in bundles for better value, or use cash for individual purchases.
+              </p>
+            </div>
+          </div>
         </Card>
       </div>
     </div>
