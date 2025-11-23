@@ -6,63 +6,171 @@ import { Heart, ArrowLeft, ArrowRight, CheckCircle, Users, MessageCircle, Trendi
 
 const LonelinessQuiz = () => {
   const navigate = useNavigate();
+  const [started, setStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
 
   const questions = [
+    // Emotional Loneliness (4 questions)
     {
       id: 1,
+      category: "Emotional Connection",
       question: "How often do you feel that you lack companionship?",
+      subtext: "Think about the quality of emotional support in your life",
       options: [
-        { value: 1, label: "Hardly ever" },
-        { value: 2, label: "Some of the time" },
-        { value: 3, label: "Often" }
+        { value: 1, label: "Hardly ever", description: "I feel supported and connected" },
+        { value: 2, label: "Some of the time", description: "It varies depending on the day" },
+        { value: 3, label: "Often", description: "I frequently feel alone" }
       ]
     },
     {
       id: 2,
+      category: "Emotional Connection",
       question: "How often do you feel left out?",
+      subtext: "Consider both social situations and deeper relationships",
       options: [
-        { value: 1, label: "Hardly ever" },
-        { value: 2, label: "Some of the time" },
-        { value: 3, label: "Often" }
+        { value: 1, label: "Hardly ever", description: "I feel included and valued" },
+        { value: 2, label: "Some of the time", description: "Sometimes I feel on the outside" },
+        { value: 3, label: "Often", description: "I regularly feel excluded" }
       ]
     },
     {
       id: 3,
-      question: "How often do you feel isolated from others?",
+      category: "Emotional Connection",
+      question: "Do you feel understood by the people around you?",
+      subtext: "Think about whether people truly 'get' who you are",
       options: [
-        { value: 1, label: "Hardly ever" },
-        { value: 2, label: "Some of the time" },
-        { value: 3, label: "Often" }
+        { value: 1, label: "Most of the time", description: "People understand my perspective" },
+        { value: 2, label: "Sometimes", description: "Some understand, others don't" },
+        { value: 3, label: "Rarely or never", description: "I feel misunderstood" }
       ]
     },
     {
       id: 4,
-      question: "How would you rate the quality of your relationships?",
+      category: "Emotional Connection",
+      question: "How often can you be your authentic self with others?",
+      subtext: "No masks, no performance—just you",
       options: [
-        { value: 3, label: "I feel disconnected" },
-        { value: 2, label: "Some are meaningful" },
-        { value: 1, label: "Most are meaningful" }
+        { value: 1, label: "Most of the time", description: "I can be myself freely" },
+        { value: 2, label: "With select people", description: "Only with a few trusted individuals" },
+        { value: 3, label: "Rarely or never", description: "I often hide parts of myself" }
       ]
     },
+
+    // Social Loneliness (4 questions)
     {
       id: 5,
-      question: "When was the last time you had a deep conversation?",
+      category: "Social Belonging",
+      question: "How would you describe your sense of belonging to a community?",
+      subtext: "This could be friends, family, or chosen communities",
       options: [
-        { value: 1, label: "Within the past week" },
-        { value: 2, label: "Within the past month" },
-        { value: 3, label: "Can't remember" }
+        { value: 1, label: "Strong sense of belonging", description: "I have my people and my place" },
+        { value: 2, label: "Somewhat connected", description: "I belong to some groups but not deeply" },
+        { value: 3, label: "Feel like an outsider", description: "I haven't found my community yet" }
       ]
     },
     {
       id: 6,
-      question: "Do you feel understood by the people around you?",
+      category: "Social Belonging",
+      question: "When was the last time you had a meaningful conversation?",
+      subtext: "A conversation that left you feeling energized, not drained",
       options: [
-        { value: 1, label: "Most of the time" },
-        { value: 2, label: "Sometimes" },
-        { value: 3, label: "Rarely or never" }
+        { value: 1, label: "Within the past few days", description: "I regularly have deep talks" },
+        { value: 2, label: "Within the past month", description: "They happen occasionally" },
+        { value: 3, label: "Can't remember", description: "It's been too long" }
+      ]
+    },
+    {
+      id: 7,
+      category: "Social Belonging",
+      question: "How many people could you call if you needed support right now?",
+      subtext: "Real support, not just surface-level acquaintances",
+      options: [
+        { value: 1, label: "Several people", description: "I have a solid support system" },
+        { value: 2, label: "One or two people", description: "I have a couple close friends" },
+        { value: 3, label: "No one or uncertain", description: "I'm not sure who I'd call" }
+      ]
+    },
+    {
+      id: 8,
+      category: "Social Belonging",
+      question: "How often do you have social interactions that feel forced or draining?",
+      subtext: "Quality matters more than quantity",
+      options: [
+        { value: 1, label: "Rarely", description: "My interactions energize me" },
+        { value: 2, label: "Sometimes", description: "About half feel genuine" },
+        { value: 3, label: "Most of the time", description: "Social situations exhaust me" }
+      ]
+    },
+
+    // Existential Isolation (3 questions)
+    {
+      id: 9,
+      category: "Purpose & Meaning",
+      question: "Do you feel your relationships align with your values and goals?",
+      subtext: "Are the people in your life going in the same direction?",
+      options: [
+        { value: 1, label: "Yes, we're aligned", description: "We support each other's growth" },
+        { value: 2, label: "Somewhat", description: "Some alignment, some disconnect" },
+        { value: 3, label: "Not really", description: "I feel out of sync with others" }
+      ]
+    },
+    {
+      id: 10,
+      category: "Purpose & Meaning",
+      question: "How often do you feel isolated despite being around people?",
+      subtext: "The 'lonely in a crowded room' feeling",
+      options: [
+        { value: 1, label: "Rarely", description: "Connection feels real" },
+        { value: 2, label: "Occasionally", description: "It happens sometimes" },
+        { value: 3, label: "Frequently", description: "I often feel alone in crowds" }
+      ]
+    },
+    {
+      id: 11,
+      category: "Purpose & Meaning",
+      question: "Do you feel like you're living authentically or just going through the motions?",
+      subtext: "Are you building the life you actually want?",
+      options: [
+        { value: 1, label: "Living authentically", description: "I'm aligned with my values" },
+        { value: 2, label: "Somewhere in between", description: "Some areas feel right, others don't" },
+        { value: 3, label: "Going through motions", description: "I feel disconnected from my life" }
+      ]
+    },
+
+    // Connection Quality (3 questions)
+    {
+      id: 12,
+      category: "Relationship Quality",
+      question: "How would you rate the emotional depth of your closest relationships?",
+      subtext: "Can you share your fears, dreams, and vulnerabilities?",
+      options: [
+        { value: 1, label: "Deep and vulnerable", description: "We share everything" },
+        { value: 2, label: "Moderately deep", description: "We share some deeper things" },
+        { value: 3, label: "Surface-level", description: "We keep it light" }
+      ]
+    },
+    {
+      id: 13,
+      category: "Relationship Quality",
+      question: "Do your relationships feel reciprocal or one-sided?",
+      subtext: "Is the effort and care balanced?",
+      options: [
+        { value: 1, label: "Mostly reciprocal", description: "We show up for each other" },
+        { value: 2, label: "Mixed", description: "Some balanced, some not" },
+        { value: 3, label: "Often one-sided", description: "I give more than I receive" }
+      ]
+    },
+    {
+      id: 14,
+      category: "Relationship Quality",
+      question: "How comfortable are you being vulnerable with the people in your life?",
+      subtext: "Can you show up as your full, imperfect self?",
+      options: [
+        { value: 1, label: "Very comfortable", description: "Vulnerability feels safe" },
+        { value: 2, label: "Somewhat comfortable", description: "With certain people only" },
+        { value: 3, label: "Uncomfortable", description: "I keep my guard up" }
       ]
     }
   ];
