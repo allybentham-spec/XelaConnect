@@ -199,52 +199,181 @@ const Profile = () => {
           </h1>
           <p className="text-white/60">Manage your account and preferences</p>
         </div>
-        {/* Profile Header */}
-        <Card className="glass-card rounded-3xl p-8 border-0 text-center animate-fade-in-up">
-          <div className="flex flex-col items-center space-y-4">
-            {/* Avatar */}
-            <div className="relative">
-              <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-[#39CCB7]/20">
-                <img
-                  src={user?.picture || 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150'}
-                  alt={user?.name || 'User'}
-                  className="w-full h-full object-cover"
-                />
+        {/* Profile Completeness */}
+        <Card className="glass-card rounded-3xl p-6 border-0 animate-fade-in-up">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-xl font-semibold text-white">Profile Completeness</h2>
+              <div className="flex items-center space-x-2">
+                <AlertCircle className="w-5 h-5 text-[#39CCB7]" />
+                <span className="text-2xl font-bold text-white">{completeness}%</span>
               </div>
-              <div className="absolute -bottom-1 -right-1 glass-card-light p-2 rounded-full">
-                <Settings className="w-4 h-4 text-[#39CCB7]" />
-              </div>
+            </div>
+            
+            {/* Progress Bar */}
+            <div className="relative h-3 bg-white/10 rounded-full overflow-hidden">
+              <div 
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#39CCB7] to-[#8834AE] rounded-full transition-all duration-500"
+                style={{ width: `${completeness}%` }}
+              />
             </div>
 
-            {/* User Info */}
-            <div>
-              <h1 className="text-2xl font-bold text-white mb-1" style={{ fontFamily: 'Playfair Display, serif' }}>
-                {user?.name || 'Guest User'}
-              </h1>
-              <p className="text-white/60 text-sm">
-                {user?.email || 'guest@xelaconnect.com'}
-              </p>
-            </div>
+            {completeness < 100 && (
+              <>
+                <div className="pt-2">
+                  <p className="text-red-400 font-medium mb-3">Your profile needs attention</p>
+                  <p className="text-white/70 text-sm mb-4">Complete your profile to make better connections:</p>
+                  
+                  <ul className="space-y-2 mb-4">
+                    {incompleteItems.slice(0, 3).map((item, idx) => (
+                      <li key={idx} className="flex items-center space-x-2 text-white/80 text-sm">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                    {incompleteItems.length > 3 && (
+                      <li className="text-white/60 text-sm pl-4">+{incompleteItems.length - 3} more items</li>
+                    )}
+                  </ul>
+                </div>
 
-            {/* Stats */}
-            <div className="flex items-center space-x-6 pt-4">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-white">24</div>
-                <div className="text-xs text-white/60">Connections</div>
+                <Button
+                  onClick={() => document.getElementById('profile-section').scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full h-12 rounded-xl bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90"
+                >
+                  Complete Your Profile
+                </Button>
+              </>
+            )}
+
+            {completeness === 100 && (
+              <div className="flex items-center space-x-3 pt-2">
+                <CheckCircle className="w-6 h-6 text-[#39CCB7]" />
+                <p className="text-[#39CCB7] font-medium">Your profile is complete!</p>
               </div>
-              <div className="w-px h-8 bg-white/10" />
-              <div className="text-center">
-                <div className="text-2xl font-bold text-white">3</div>
-                <div className="text-xs text-white/60">Circles</div>
-              </div>
-              <div className="w-px h-8 bg-white/10" />
-              <div className="text-center">
-                <div className="text-2xl font-bold text-white">7</div>
-                <div className="text-xs text-white/60">Day Streak</div>
-              </div>
-            </div>
+            )}
           </div>
         </Card>
+
+        {/* Profile Section */}
+        <div id="profile-section" className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+          <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
+            <UserIcon className="w-6 h-6 text-[#39CCB7]" />
+            <span>Profile</span>
+          </h2>
+          
+          <Card className="glass-card rounded-3xl p-6 border-0">
+            <div className="space-y-6">
+              {/* Photo Upload */}
+              <div className="flex items-center space-x-4">
+                <div className="relative">
+                  <div className="w-20 h-20 rounded-full overflow-hidden ring-4 ring-[#39CCB7]/20">
+                    <img
+                      src={profilePhoto || user?.picture || 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150'}
+                      alt="Profile"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <label className="absolute -bottom-1 -right-1 glass-card-light p-2 rounded-full cursor-pointer hover:bg-white/20 transition-all">
+                    <Camera className="w-4 h-4 text-[#39CCB7]" />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleProfilePhotoUpload}
+                    />
+                  </label>
+                </div>
+                <div className="flex-1">
+                  <label className="w-full cursor-pointer">
+                    <div className="glass-card-light rounded-xl p-4 hover:bg-white/10 transition-all text-center">
+                      <Upload className="w-5 h-5 text-[#39CCB7] mx-auto mb-1" />
+                      <p className="text-white/80 text-sm font-medium">Upload Photo</p>
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      onChange={handleProfilePhotoUpload}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              {/* Name */}
+              <div>
+                <label className="text-white/70 text-sm mb-2 block">Name</label>
+                <input
+                  type="text"
+                  value={profileData.name}
+                  onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
+                  className="w-full glass-card-light rounded-xl px-4 py-3 text-white border-0 focus:ring-2 focus:ring-[#39CCB7] outline-none"
+                  placeholder={user?.name || 'allybentham'}
+                />
+                <p className="text-white/40 text-xs mt-2">Name is managed through your authentication provider</p>
+              </div>
+
+              {/* Email */}
+              <div>
+                <label className="text-white/70 text-sm mb-2 block">Email</label>
+                <input
+                  type="email"
+                  value={profileData.email}
+                  className="w-full glass-card-light rounded-xl px-4 py-3 text-white/60 border-0 outline-none cursor-not-allowed"
+                  placeholder={user?.email || 'allybentham@gmail.com'}
+                  disabled
+                />
+              </div>
+
+              {/* Bio */}
+              <div>
+                <label className="text-white/70 text-sm mb-2 block">Bio</label>
+                <textarea
+                  value={profileData.bio}
+                  onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
+                  className="w-full glass-card-light rounded-xl px-4 py-3 text-white border-0 focus:ring-2 focus:ring-[#39CCB7] outline-none resize-none"
+                  rows="4"
+                  placeholder="Tell us about yourself..."
+                />
+              </div>
+
+              {/* Energy Type */}
+              <div>
+                <label className="text-white/70 text-sm mb-2 block">Energy Type</label>
+                <select
+                  value={profileData.energyType}
+                  onChange={(e) => setProfileData({ ...profileData, energyType: e.target.value })}
+                  className="w-full glass-card-light rounded-xl px-4 py-3 text-white border-0 focus:ring-2 focus:ring-[#39CCB7] outline-none"
+                >
+                  <option value="">Select your energy type...</option>
+                  <option value="builder">Builder - Action-oriented & driven</option>
+                  <option value="connector">Connector - Relationship-focused</option>
+                  <option value="creative">Creative - Innovative & expressive</option>
+                  <option value="analyzer">Analyzer - Strategic & thoughtful</option>
+                </select>
+              </div>
+
+              {/* Interests */}
+              <div>
+                <label className="text-white/70 text-sm mb-2 block">Interests</label>
+                <input
+                  type="text"
+                  placeholder="Wellness, Fitness, Creative (comma-separated)"
+                  className="w-full glass-card-light rounded-xl px-4 py-3 text-white border-0 focus:ring-2 focus:ring-[#39CCB7] outline-none"
+                  onChange={(e) => setProfileData({ ...profileData, interests: e.target.value.split(',').map(i => i.trim()) })}
+                />
+              </div>
+
+              {/* Save Button */}
+              <Button
+                onClick={handleSaveProfile}
+                className="w-full h-12 rounded-xl bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90"
+              >
+                Save Changes
+              </Button>
+            </div>
+          </Card>
+        </div>
 
         {/* Identity Badge */}
         {userIdentityBadge && (
