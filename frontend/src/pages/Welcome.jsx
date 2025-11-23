@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Sparkles, Heart, Users, ChevronDown, ChevronUp, X, Star, UserPlus, LogIn } from 'lucide-react';
 
 const Welcome = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [showModal, setShowModal] = useState(false);
   const [expandedSections, setExpandedSections] = useState({});
+
+  useEffect(() => {
+    // Check if testimonials query param is present
+    if (searchParams.get('testimonials') === 'true') {
+      setShowModal(true);
+      // Scroll to testimonials section after modal opens
+      setTimeout(() => {
+        const testimonialsSection = document.getElementById('testimonials-section');
+        if (testimonialsSection) {
+          testimonialsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    }
+  }, [searchParams]);
 
   const toggleSection = (index) => {
     setExpandedSections(prev => ({
