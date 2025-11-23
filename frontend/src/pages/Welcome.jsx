@@ -195,7 +195,7 @@ const Welcome = () => {
             </div>
 
             <Button
-              onClick={() => navigate('/expand')}
+              onClick={() => navigate('/subscription')}
               className="w-full h-14 rounded-2xl bg-gradient-to-r from-[#39CCB7] via-[#5BB8A8] to-[#8834AE] hover:opacity-90 smooth-transition shadow-lg text-lg font-bold relative overflow-hidden group"
             >
               <span className="relative z-10 flex items-center justify-center">
