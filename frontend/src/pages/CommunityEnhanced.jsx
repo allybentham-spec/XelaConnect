@@ -369,11 +369,14 @@ const CommunityEnhanced = () => {
                       <Button
                         onClick={(e) => {
                           e.stopPropagation();
+                          console.log('Button clicked! isJoined:', isJoined, 'Circle ID:', circle.id);
                           if (isJoined) {
                             // If already joined, go directly to circle
+                            console.log('Navigating to circle:', `/circle/${circle.id}`);
                             navigate(`/circle/${circle.id}`);
                           } else {
                             // If not joined, join first then navigate
+                            console.log('Calling handleJoinCircle');
                             handleJoinCircle(circle);
                           }
                         }}
