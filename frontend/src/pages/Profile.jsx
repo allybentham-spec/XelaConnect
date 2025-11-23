@@ -461,38 +461,135 @@ const Profile = () => {
           </div>
         )}
 
-        {/* Badges & Achievements */}
-        {user?.badges && user.badges.length > 0 && (
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
-            <h2 className="text-lg font-semibold text-white mb-3">Achievements</h2>
-            <div className="flex flex-wrap gap-2">
-              {user.badges.map((badge, idx) => (
-                <Badge
-                  key={idx}
-                  className="glass-card-light border-0 text-white px-4 py-2 flex items-center space-x-2"
-                >
-                  <Award className="w-4 h-4 text-[#39CCB7]" />
-                  <span>{badge}</span>
-                </Badge>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Interests */}
-        <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <h2 className="text-lg font-semibold text-white mb-3">Your Interests</h2>
-          <div className="flex flex-wrap gap-2">
-            {(user?.interests || ['Wellness', 'Fitness', 'Creative']).map((interest, idx) => (
-              <Badge
-                key={idx}
-                className="glass-card-light border-0 text-white px-4 py-2"
+        {/* Preferences */}
+        <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
+            <Settings className="w-6 h-6 text-[#39CCB7]" />
+            <span>Preferences</span>
+          </h2>
+          
+          <Card className="glass-card rounded-3xl p-6 border-0">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                {darkMode ? <Moon className="w-6 h-6 text-[#39CCB7]" /> : <Sun className="w-6 h-6 text-[#39CCB7]" />}
+                <div>
+                  <p className="text-white font-medium">Dark Mode</p>
+                  <p className="text-white/60 text-sm">Adjust your display theme</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className={`relative w-14 h-8 rounded-full transition-all ${
+                  darkMode ? 'bg-[#39CCB7]' : 'bg-white/20'
+                }`}
               >
-                {interest}
-              </Badge>
-            ))}
-          </div>
+                <div
+                  className={`absolute top-1 w-6 h-6 rounded-full bg-white transition-all ${
+                    darkMode ? 'right-1' : 'left-1'
+                  }`}
+                />
+              </button>
+            </div>
+          </Card>
         </div>
+
+        {/* Subscription Management */}
+        <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.25s' }}>
+          <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
+            <CreditCard className="w-6 h-6 text-[#39CCB7]" />
+            <span>Subscription Management</span>
+          </h2>
+          
+          <Card className="glass-card rounded-3xl p-6 border-0">
+            <div className="space-y-4">
+              <p className="text-white/80 text-sm">Manage your subscription plan and billing</p>
+              
+              <div className="glass-card-light rounded-xl p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <p className="text-white/60 text-sm mb-1">Current Plan</p>
+                    <p className="text-white font-bold text-2xl">Premium</p>
+                  </div>
+                  <Badge className="glass-card bg-gradient-to-r from-[#39CCB7] to-[#8834AE] border-0 text-white px-4 py-2">
+                    Premium
+                  </Badge>
+                </div>
+                
+                <Button
+                  variant="outline"
+                  className="w-full h-12 rounded-xl glass-button text-white border-white/20 hover:bg-white/10"
+                  onClick={() => toast({ title: 'Coming Soon', description: 'Subscription management will be available soon' })}
+                >
+                  Cancel Subscription
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Daily Usage */}
+        <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
+            <BarChart3 className="w-6 h-6 text-[#39CCB7]" />
+            <span>Daily Usage</span>
+          </h2>
+          
+          <Card className="glass-card rounded-3xl p-6 border-0">
+            <p className="text-white/80 text-sm mb-4">
+              Your daily limits reset every 24 hours. Upgrade for unlimited access.
+            </p>
+            
+            <div className="glass-card-light rounded-xl p-6 text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#39CCB7] mx-auto mb-3"></div>
+              <p className="text-white/60 text-sm">Loading usage data...</p>
+            </div>
+          </Card>
+        </div>
+
+        {/* Account Management */}
+        <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.35s' }}>
+          <h2 className="text-2xl font-bold text-white flex items-center space-x-2">
+            <Shield className="w-6 h-6 text-[#39CCB7]" />
+            <span>Account Management</span>
+          </h2>
+          
+          <Card className="glass-card rounded-3xl p-6 border-0">
+            <p className="text-white/80 text-sm mb-6">
+              Manage your account status. These actions are reversible or permanent.
+            </p>
+            
+            <div className="space-y-3">
+              <Button
+                onClick={handleDeactivateAccount}
+                variant="outline"
+                className="w-full h-12 rounded-xl glass-button text-yellow-400 border-yellow-400/30 hover:bg-yellow-400/10"
+              >
+                <Power className="w-5 h-5 mr-2" />
+                Deactivate Account
+              </Button>
+              
+              <Button
+                onClick={handleDeleteAccount}
+                variant="outline"
+                className="w-full h-12 rounded-xl glass-button text-red-400 border-red-400/30 hover:bg-red-400/10"
+              >
+                <Trash2 className="w-5 h-5 mr-2" />
+                Delete Account Permanently
+              </Button>
+            </div>
+          </Card>
+        </div>
+
+        {/* Logout */}
+        <Button
+          onClick={handleLogout}
+          variant="outline"
+          className="w-full h-14 rounded-2xl glass-button text-white border-white/20 hover:bg-white/10 animate-fade-in-up"
+          style={{ animationDelay: '0.4s' }}
+        >
+          <LogOut className="w-5 h-5 mr-2" />
+          Logout
+        </Button>
 
 
         {/* My Reflections */}
