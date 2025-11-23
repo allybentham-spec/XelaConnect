@@ -566,31 +566,185 @@ const Profile = () => {
           </h2>
           
           <Card className="glass-card rounded-3xl p-6 border-0">
-            <div className="space-y-4">
-              <p className="text-white/80 text-sm">Manage your subscription plan and billing</p>
-              
-              <div className="glass-card-light rounded-xl p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <p className="text-white/60 text-sm mb-1">Current Plan</p>
-                    <p className="text-white font-bold text-2xl">Premium</p>
+            <div className="space-y-6">
+              {/* Current Plan Display */}
+              <div className="glass-card-light rounded-2xl p-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#39CCB7]/20 to-[#8834AE]/20 rounded-full blur-3xl" />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <p className="text-white/60 text-sm mb-1">Current Plan</p>
+                      <p className="text-white font-bold text-3xl">{currentPlan}</p>
+                      <p className="text-white/70 text-sm mt-1">$9.99/month • Renews Dec 23, 2024</p>
+                    </div>
+                    <Badge className="glass-card bg-gradient-to-r from-[#39CCB7] to-[#8834AE] border-0 text-white px-4 py-3 text-sm">
+                      Active
+                    </Badge>
                   </div>
-                  <Badge className="glass-card bg-gradient-to-r from-[#39CCB7] to-[#8834AE] border-0 text-white px-4 py-2">
-                    Premium
-                  </Badge>
+
+                  {currentPlan !== 'Elite' && (
+                    <div className="glass-card rounded-xl p-4 border border-[#39CCB7]/30 mb-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-white font-semibold mb-1">Upgrade to Elite</p>
+                          <p className="text-white/60 text-xs">Unlock ALL courses + VIP circles</p>
+                        </div>
+                        <Button
+                          onClick={() => navigate('/subscription')}
+                          className="bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90 px-6"
+                        >
+                          Upgrade
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Benefits Summary */}
+                  <div className="grid grid-cols-2 gap-3 mb-4">
+                    <div className="text-center p-3 rounded-xl bg-white/5">
+                      <div className="text-xl font-bold text-[#39CCB7]">∞</div>
+                      <div className="text-xs text-white/60">Connections</div>
+                    </div>
+                    <div className="text-center p-3 rounded-xl bg-white/5">
+                      <div className="text-xl font-bold text-[#39CCB7]">All</div>
+                      <div className="text-xs text-white/60">Circles</div>
+                    </div>
+                  </div>
                 </div>
-                
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-3">
                 <Button
+                  onClick={handlePauseSubscription}
                   variant="outline"
                   className="w-full h-12 rounded-xl glass-button text-white border-white/20 hover:bg-white/10"
-                  onClick={() => toast({ title: 'Coming Soon', description: 'Subscription management will be available soon' })}
                 >
+                  <Power className="w-4 h-4 mr-2" />
+                  Pause Subscription (30 days)
+                </Button>
+
+                <Button
+                  onClick={() => navigate('/subscription')}
+                  variant="outline"
+                  className="w-full h-12 rounded-xl glass-button text-white border-white/20 hover:bg-white/10"
+                >
+                  <TrendingUp className="w-4 h-4 mr-2" />
+                  Change Plan
+                </Button>
+
+                <Button
+                  onClick={handleCancelAttempt}
+                  variant="outline"
+                  className="w-full h-12 rounded-xl glass-button text-red-400 border-red-400/30 hover:bg-red-400/10"
+                >
+                  <AlertTriangle className="w-4 h-4 mr-2" />
                   Cancel Subscription
                 </Button>
               </div>
+
+              <p className="text-white/50 text-xs text-center">
+                Your subscription renews automatically. Cancel anytime.
+              </p>
             </div>
           </Card>
         </div>
+
+        {/* Cancellation Modal */}
+        {showCancelModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-6">
+            <div 
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm animate-fade-in"
+              onClick={() => setShowCancelModal(false)}
+            />
+            <Card className="relative glass-card rounded-3xl p-8 border-0 max-w-lg w-full animate-slide-up">
+              <button
+                onClick={() => setShowCancelModal(false)}
+                className="absolute top-6 right-6 p-2 rounded-full hover:bg-white/10 transition-all"
+              >
+                <X className="w-5 h-5 text-white/60" />
+              </button>
+
+              <div className="space-y-6">
+                <div className="text-center">
+                  <AlertTriangle className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-white mb-2">Wait! Before You Go...</h3>
+                  <p className="text-white/70">We'd hate to see you leave. Here's what you'll lose:</p>
+                </div>
+
+                <div className="glass-card-light rounded-2xl p-6 space-y-3">
+                  <div className="flex items-center space-x-3 text-white/80">
+                    <X className="w-5 h-5 text-red-400 flex-shrink-0" />
+                    <span className="text-sm">Unlimited connections and messages</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-white/80">
+                    <X className="w-5 h-5 text-red-400 flex-shrink-0" />
+                    <span className="text-sm">Access to all community circles</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-white/80">
+                    <X className="w-5 h-5 text-red-400 flex-shrink-0" />
+                    <span className="text-sm">Premium profile visibility</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-white/80">
+                    <X className="w-5 h-5 text-red-400 flex-shrink-0" />
+                    <span className="text-sm">All course previews and content</span>
+                  </div>
+                </div>
+
+                <div className="glass-card rounded-2xl p-6 border-2 border-[#39CCB7]/30">
+                  <p className="text-[#39CCB7] font-semibold mb-3">💡 Special Offer Just For You</p>
+                  <p className="text-white/80 text-sm mb-4">
+                    Stay with us and get 50% off your next month! That's just $4.99 for Premium.
+                  </p>
+                  <Button
+                    onClick={() => {
+                      setShowCancelModal(false);
+                      toast({ title: 'Discount Applied!', description: '50% off your next billing cycle' });
+                    }}
+                    className="w-full bg-gradient-to-r from-[#39CCB7] to-[#8834AE] hover:opacity-90"
+                  >
+                    Claim 50% Off & Stay
+                  </Button>
+                </div>
+
+                <div>
+                  <p className="text-white/70 text-sm mb-3">Still want to cancel? Tell us why:</p>
+                  <select
+                    value={cancelReason}
+                    onChange={(e) => setCancelReason(e.target.value)}
+                    className="w-full glass-card-light rounded-xl px-4 py-3 text-white border-0 focus:ring-2 focus:ring-[#39CCB7] outline-none mb-4"
+                  >
+                    <option value="">Select a reason...</option>
+                    <option value="too_expensive">Too expensive</option>
+                    <option value="not_using">Not using it enough</option>
+                    <option value="technical_issues">Technical issues</option>
+                    <option value="found_alternative">Found an alternative</option>
+                    <option value="taking_break">Taking a break</option>
+                    <option value="other">Other</option>
+                  </select>
+
+                  <div className="space-y-2">
+                    <Button
+                      onClick={handlePauseSubscription}
+                      variant="outline"
+                      className="w-full glass-button text-white border-white/20 hover:bg-white/10"
+                    >
+                      Just Pause for 30 Days Instead
+                    </Button>
+                    <Button
+                      onClick={handleFinalCancel}
+                      disabled={!cancelReason}
+                      variant="outline"
+                      className="w-full glass-button text-red-400 border-red-400/30 hover:bg-red-400/10 disabled:opacity-50"
+                    >
+                      Yes, Cancel My Subscription
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        )}
 
         {/* Daily Usage */}
         <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
